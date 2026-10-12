@@ -1,0 +1,1548 @@
+{
+  "categories": [
+    "collectif",
+    "changement",
+    "clarification",
+    "decision",
+    "relation",
+    "autonomie"
+  ],
+  "situations": [
+    {
+      "id": "situation-01",
+      "category": "collectif",
+      "title": "Un désaccord ralentit l’équipe",
+      "context": "Vous devez avancer malgré deux propositions opposées.",
+      "cards": [
+        {
+          "id": "s01-1",
+          "label": "Faire émerger les points de vue",
+          "primary": "ecoute",
+          "secondary": "collaboration"
+        },
+        {
+          "id": "s01-2",
+          "label": "Clarifier les arguments",
+          "primary": "communication",
+          "secondary": "structuration"
+        },
+        {
+          "id": "s01-3",
+          "label": "Tester les deux pistes",
+          "primary": "adaptabilite",
+          "secondary": "initiative"
+        },
+        {
+          "id": "s01-4",
+          "label": "Proposer une décision provisoire",
+          "primary": "initiative",
+          "secondary": "communication"
+        }
+      ]
+    },
+    {
+      "id": "situation-02",
+      "category": "collectif",
+      "title": "Une personne reste en retrait",
+      "context": "En réunion, une voix ne se fait presque jamais entendre.",
+      "cards": [
+        {
+          "id": "s02-1",
+          "label": "Lui laisser une place explicite",
+          "primary": "ecoute",
+          "secondary": "communication"
+        },
+        {
+          "id": "s02-2",
+          "label": "Changer le format de discussion",
+          "primary": "adaptabilite",
+          "secondary": "collaboration"
+        },
+        {
+          "id": "s02-3",
+          "label": "Faire circuler les contributions",
+          "primary": "collaboration",
+          "secondary": "communication"
+        },
+        {
+          "id": "s02-4",
+          "label": "Lui proposer un échange individuel",
+          "primary": "ecoute",
+          "secondary": "initiative"
+        }
+      ]
+    },
+    {
+      "id": "situation-03",
+      "category": "collectif",
+      "title": "Un travail collectif patine",
+      "context": "Tout le monde participe, mais les avancées restent floues.",
+      "cards": [
+        {
+          "id": "s03-1",
+          "label": "Reformuler le résultat attendu",
+          "primary": "communication",
+          "secondary": "structuration"
+        },
+        {
+          "id": "s03-2",
+          "label": "Distribuer les prochaines actions",
+          "primary": "structuration",
+          "secondary": "initiative"
+        },
+        {
+          "id": "s03-3",
+          "label": "Chercher les blocages de chacun",
+          "primary": "ecoute",
+          "secondary": "collaboration"
+        },
+        {
+          "id": "s03-4",
+          "label": "Expérimenter une autre organisation",
+          "primary": "adaptabilite",
+          "secondary": "initiative"
+        }
+      ]
+    },
+    {
+      "id": "situation-04",
+      "category": "changement",
+      "title": "Le plan change au dernier moment",
+      "context": "La priorité du jour n’est plus celle d’hier.",
+      "cards": [
+        {
+          "id": "s04-1",
+          "label": "Revoir ensemble les priorités",
+          "primary": "collaboration",
+          "secondary": "structuration"
+        },
+        {
+          "id": "s04-2",
+          "label": "Expliquer clairement ce qui change",
+          "primary": "communication",
+          "secondary": "ecoute"
+        },
+        {
+          "id": "s04-3",
+          "label": "Tester une première réponse rapide",
+          "primary": "initiative",
+          "secondary": "adaptabilite"
+        },
+        {
+          "id": "s04-4",
+          "label": "Repenser la méthode de travail",
+          "primary": "adaptabilite",
+          "secondary": "structuration"
+        }
+      ]
+    },
+    {
+      "id": "situation-05",
+      "category": "changement",
+      "title": "Un imprévu bouleverse la semaine",
+      "context": "Un obstacle rend votre approche initiale difficile à tenir.",
+      "cards": [
+        {
+          "id": "s05-1",
+          "label": "Explorer des chemins alternatifs",
+          "primary": "adaptabilite",
+          "secondary": "initiative"
+        },
+        {
+          "id": "s05-2",
+          "label": "Reprioriser les tâches",
+          "primary": "structuration",
+          "secondary": "adaptabilite"
+        },
+        {
+          "id": "s05-3",
+          "label": "Prévenir les personnes concernées",
+          "primary": "communication",
+          "secondary": "collaboration"
+        },
+        {
+          "id": "s05-4",
+          "label": "Comprendre l’impact pour chacun",
+          "primary": "ecoute",
+          "secondary": "collaboration"
+        }
+      ]
+    },
+    {
+      "id": "situation-06",
+      "category": "changement",
+      "title": "Une nouvelle manière de travailler",
+      "context": "L’équipe veut essayer un outil que vous ne connaissez pas.",
+      "cards": [
+        {
+          "id": "s06-1",
+          "label": "Proposer un essai limité",
+          "primary": "initiative",
+          "secondary": "adaptabilite"
+        },
+        {
+          "id": "s06-2",
+          "label": "Demander une démonstration",
+          "primary": "ecoute",
+          "secondary": "communication"
+        },
+        {
+          "id": "s06-3",
+          "label": "Définir un cadre pour l’essai",
+          "primary": "structuration",
+          "secondary": "initiative"
+        },
+        {
+          "id": "s06-4",
+          "label": "Organiser un partage entre collègues",
+          "primary": "collaboration",
+          "secondary": "communication"
+        }
+      ]
+    },
+    {
+      "id": "situation-07",
+      "category": "clarification",
+      "title": "Une demande manque de clarté",
+      "context": "Quelqu’un vous demande de résoudre un problème sans préciser son attente.",
+      "cards": [
+        {
+          "id": "s07-1",
+          "label": "Poser des questions sur le besoin",
+          "primary": "ecoute",
+          "secondary": "communication"
+        },
+        {
+          "id": "s07-2",
+          "label": "Proposer une première hypothèse",
+          "primary": "initiative",
+          "secondary": "adaptabilite"
+        },
+        {
+          "id": "s07-3",
+          "label": "Reformuler ce qui est compris",
+          "primary": "communication",
+          "secondary": "structuration"
+        },
+        {
+          "id": "s07-4",
+          "label": "Rassembler les personnes utiles",
+          "primary": "collaboration",
+          "secondary": "initiative"
+        }
+      ]
+    },
+    {
+      "id": "situation-08",
+      "category": "clarification",
+      "title": "Les informations se contredisent",
+      "context": "Plusieurs sources donnent des versions différentes d’un même sujet.",
+      "cards": [
+        {
+          "id": "s08-1",
+          "label": "Comparer et structurer les faits",
+          "primary": "structuration",
+          "secondary": "communication"
+        },
+        {
+          "id": "s08-2",
+          "label": "Interroger les personnes concernées",
+          "primary": "ecoute",
+          "secondary": "collaboration"
+        },
+        {
+          "id": "s08-3",
+          "label": "Partager les zones d’incertitude",
+          "primary": "communication",
+          "secondary": "adaptabilite"
+        },
+        {
+          "id": "s08-4",
+          "label": "Lancer une petite vérification",
+          "primary": "initiative",
+          "secondary": "structuration"
+        }
+      ]
+    },
+    {
+      "id": "situation-09",
+      "category": "clarification",
+      "title": "Une réunion s’éparpille",
+      "context": "Beaucoup d’idées intéressantes émergent, mais le sujet initial disparaît.",
+      "cards": [
+        {
+          "id": "s09-1",
+          "label": "Synthétiser les points communs",
+          "primary": "communication",
+          "secondary": "structuration"
+        },
+        {
+          "id": "s09-2",
+          "label": "Faire converger le groupe",
+          "primary": "collaboration",
+          "secondary": "ecoute"
+        },
+        {
+          "id": "s09-3",
+          "label": "Proposer un ordre du jour adapté",
+          "primary": "structuration",
+          "secondary": "adaptabilite"
+        },
+        {
+          "id": "s09-4",
+          "label": "Lancer une décision sur un point",
+          "primary": "initiative",
+          "secondary": "communication"
+        }
+      ]
+    },
+    {
+      "id": "situation-10",
+      "category": "decision",
+      "title": "Le délai est très court",
+      "context": "Il faut faire un choix alors que vous n’avez pas tous les éléments.",
+      "cards": [
+        {
+          "id": "s10-1",
+          "label": "Prendre une décision réversible",
+          "primary": "initiative",
+          "secondary": "adaptabilite"
+        },
+        {
+          "id": "s10-2",
+          "label": "Identifier les éléments essentiels",
+          "primary": "structuration",
+          "secondary": "communication"
+        },
+        {
+          "id": "s10-3",
+          "label": "Demander les objections importantes",
+          "primary": "ecoute",
+          "secondary": "collaboration"
+        },
+        {
+          "id": "s10-4",
+          "label": "Aligner rapidement les parties prenantes",
+          "primary": "collaboration",
+          "secondary": "communication"
+        }
+      ]
+    },
+    {
+      "id": "situation-11",
+      "category": "decision",
+      "title": "Une idée ambitieuse apparaît",
+      "context": "Elle peut débloquer le sujet, mais comporte quelques inconnues.",
+      "cards": [
+        {
+          "id": "s11-1",
+          "label": "Proposer un petit prototype",
+          "primary": "initiative",
+          "secondary": "adaptabilite"
+        },
+        {
+          "id": "s11-2",
+          "label": "Faire expliciter les risques",
+          "primary": "communication",
+          "secondary": "structuration"
+        },
+        {
+          "id": "s11-3",
+          "label": "Solliciter les expériences de l’équipe",
+          "primary": "collaboration",
+          "secondary": "ecoute"
+        },
+        {
+          "id": "s11-4",
+          "label": "Découper l’idée en étapes",
+          "primary": "structuration",
+          "secondary": "initiative"
+        }
+      ]
+    },
+    {
+      "id": "situation-12",
+      "category": "decision",
+      "title": "Le groupe hésite à se lancer",
+      "context": "Les discussions se poursuivent, sans réelle décision.",
+      "cards": [
+        {
+          "id": "s12-1",
+          "label": "Faire une proposition concrète",
+          "primary": "initiative",
+          "secondary": "communication"
+        },
+        {
+          "id": "s12-2",
+          "label": "Recueillir les préoccupations",
+          "primary": "ecoute",
+          "secondary": "collaboration"
+        },
+        {
+          "id": "s12-3",
+          "label": "Définir des critères de décision",
+          "primary": "structuration",
+          "secondary": "communication"
+        },
+        {
+          "id": "s12-4",
+          "label": "Imaginer une expérience courte",
+          "primary": "adaptabilite",
+          "secondary": "initiative"
+        }
+      ]
+    },
+    {
+      "id": "situation-13",
+      "category": "relation",
+      "title": "Un retour est difficile à entendre",
+      "context": "Une personne critique une proposition sur laquelle vous avez travaillé.",
+      "cards": [
+        {
+          "id": "s13-1",
+          "label": "Chercher ce qui motive son avis",
+          "primary": "ecoute",
+          "secondary": "adaptabilite"
+        },
+        {
+          "id": "s13-2",
+          "label": "Demander des exemples précis",
+          "primary": "communication",
+          "secondary": "structuration"
+        },
+        {
+          "id": "s13-3",
+          "label": "Revoir la proposition ensemble",
+          "primary": "collaboration",
+          "secondary": "adaptabilite"
+        },
+        {
+          "id": "s13-4",
+          "label": "Tester une modification rapidement",
+          "primary": "initiative",
+          "secondary": "adaptabilite"
+        }
+      ]
+    },
+    {
+      "id": "situation-14",
+      "category": "relation",
+      "title": "Un nouveau collègue arrive",
+      "context": "Il doit comprendre vite comment l’équipe fonctionne.",
+      "cards": [
+        {
+          "id": "s14-1",
+          "label": "Lui expliquer les repères essentiels",
+          "primary": "communication",
+          "secondary": "structuration"
+        },
+        {
+          "id": "s14-2",
+          "label": "Lui demander ce dont il a besoin",
+          "primary": "ecoute",
+          "secondary": "collaboration"
+        },
+        {
+          "id": "s14-3",
+          "label": "L’inviter à contribuer sur un sujet",
+          "primary": "collaboration",
+          "secondary": "initiative"
+        },
+        {
+          "id": "s14-4",
+          "label": "Adapter le fonctionnement à son regard neuf",
+          "primary": "adaptabilite",
+          "secondary": "ecoute"
+        }
+      ]
+    },
+    {
+      "id": "situation-15",
+      "category": "relation",
+      "title": "Une personne semble frustrée",
+      "context": "Un collègue n’arrive plus à avancer sereinement.",
+      "cards": [
+        {
+          "id": "s15-1",
+          "label": "Prendre le temps de l’écouter",
+          "primary": "ecoute",
+          "secondary": "collaboration"
+        },
+        {
+          "id": "s15-2",
+          "label": "Clarifier le problème avec lui",
+          "primary": "communication",
+          "secondary": "structuration"
+        },
+        {
+          "id": "s15-3",
+          "label": "Proposer d’aider sur une première action",
+          "primary": "initiative",
+          "secondary": "collaboration"
+        },
+        {
+          "id": "s15-4",
+          "label": "Chercher une autre manière d’avancer",
+          "primary": "adaptabilite",
+          "secondary": "structuration"
+        }
+      ]
+    },
+    {
+      "id": "situation-16",
+      "category": "autonomie",
+      "title": "Tu repères une amélioration possible",
+      "context": "Personne ne t’a demandé de t’en occuper directement.",
+      "cards": [
+        {
+          "id": "s16-1",
+          "label": "Proposer une première action",
+          "primary": "initiative",
+          "secondary": "communication"
+        },
+        {
+          "id": "s16-2",
+          "label": "Échanger sur l’impact collectif",
+          "primary": "collaboration",
+          "secondary": "ecoute"
+        },
+        {
+          "id": "s16-3",
+          "label": "Préparer un plan concis",
+          "primary": "structuration",
+          "secondary": "initiative"
+        },
+        {
+          "id": "s16-4",
+          "label": "Essayer discrètement à petite échelle",
+          "primary": "adaptabilite",
+          "secondary": "initiative"
+        }
+      ]
+    },
+    {
+      "id": "situation-17",
+      "category": "autonomie",
+      "title": "Un sujet nouveau t’est confié",
+      "context": "Tu disposes de peu de contexte pour commencer.",
+      "cards": [
+        {
+          "id": "s17-1",
+          "label": "Identifier les premières étapes",
+          "primary": "structuration",
+          "secondary": "initiative"
+        },
+        {
+          "id": "s17-2",
+          "label": "Demander des retours d’expérience",
+          "primary": "ecoute",
+          "secondary": "collaboration"
+        },
+        {
+          "id": "s17-3",
+          "label": "Partager tes premières questions",
+          "primary": "communication",
+          "secondary": "ecoute"
+        },
+        {
+          "id": "s17-4",
+          "label": "Explorer une solution par essai",
+          "primary": "adaptabilite",
+          "secondary": "initiative"
+        }
+      ]
+    },
+    {
+      "id": "situation-18",
+      "category": "autonomie",
+      "title": "Une opportunité inattendue se présente",
+      "context": "Elle est intéressante, mais sort de ce qui était prévu.",
+      "cards": [
+        {
+          "id": "s18-1",
+          "label": "Tester rapidement sa pertinence",
+          "primary": "initiative",
+          "secondary": "adaptabilite"
+        },
+        {
+          "id": "s18-2",
+          "label": "Vérifier son lien avec les priorités",
+          "primary": "structuration",
+          "secondary": "communication"
+        },
+        {
+          "id": "s18-3",
+          "label": "Consulter les personnes impactées",
+          "primary": "collaboration",
+          "secondary": "ecoute"
+        },
+        {
+          "id": "s18-4",
+          "label": "Proposer plusieurs options",
+          "primary": "communication",
+          "secondary": "adaptabilite"
+        }
+      ]
+    },
+    {
+      "id": "bonus-01",
+      "category": "collectif",
+      "title": "Un atelier part dans tous les sens",
+      "context": "Les idées fusent, mais personne ne sait comment avancer.",
+      "cards": [
+        {
+          "id": "bonus-01-c1",
+          "label": "Faire reformuler chacun",
+          "primary": "ecoute",
+          "secondary": "collaboration"
+        },
+        {
+          "id": "bonus-01-c2",
+          "label": "Regrouper les propositions",
+          "primary": "structuration",
+          "secondary": "communication"
+        },
+        {
+          "id": "bonus-01-c3",
+          "label": "Changer le format de travail",
+          "primary": "adaptabilite",
+          "secondary": "initiative"
+        },
+        {
+          "id": "bonus-01-c4",
+          "label": "Proposer une prochaine étape",
+          "primary": "initiative",
+          "secondary": "communication"
+        }
+      ]
+    },
+    {
+      "id": "bonus-02",
+      "category": "collectif",
+      "title": "Deux métiers défendent leurs priorités",
+      "context": "Le design et la technique n’avancent pas au même rythme.",
+      "cards": [
+        {
+          "id": "bonus-02-c1",
+          "label": "Identifier les besoins de chacun",
+          "primary": "ecoute",
+          "secondary": "collaboration"
+        },
+        {
+          "id": "bonus-02-c2",
+          "label": "Mettre à plat les contraintes",
+          "primary": "structuration",
+          "secondary": "communication"
+        },
+        {
+          "id": "bonus-02-c3",
+          "label": "Rechercher un compromis testable",
+          "primary": "adaptabilite",
+          "secondary": "initiative"
+        },
+        {
+          "id": "bonus-02-c4",
+          "label": "Organiser une décision rapide",
+          "primary": "initiative",
+          "secondary": "communication"
+        }
+      ]
+    },
+    {
+      "id": "bonus-03",
+      "category": "collectif",
+      "title": "Une décision ne fait pas consensus",
+      "context": "Une partie du groupe reste sceptique après une réunion.",
+      "cards": [
+        {
+          "id": "bonus-03-c1",
+          "label": "Écouter les objections",
+          "primary": "ecoute",
+          "secondary": "collaboration"
+        },
+        {
+          "id": "bonus-03-c2",
+          "label": "Rendre les critères visibles",
+          "primary": "structuration",
+          "secondary": "communication"
+        },
+        {
+          "id": "bonus-03-c3",
+          "label": "Faire évoluer la proposition",
+          "primary": "adaptabilite",
+          "secondary": "initiative"
+        },
+        {
+          "id": "bonus-03-c4",
+          "label": "Porter la décision retenue",
+          "primary": "initiative",
+          "secondary": "communication"
+        }
+      ]
+    },
+    {
+      "id": "bonus-04",
+      "category": "collectif",
+      "title": "Une nouvelle personne rejoint le projet",
+      "context": "Elle doit trouver sa place dans une équipe déjà rodée.",
+      "cards": [
+        {
+          "id": "bonus-04-c1",
+          "label": "Lui demander ses attentes",
+          "primary": "ecoute",
+          "secondary": "collaboration"
+        },
+        {
+          "id": "bonus-04-c2",
+          "label": "Présenter le fonctionnement commun",
+          "primary": "structuration",
+          "secondary": "communication"
+        },
+        {
+          "id": "bonus-04-c3",
+          "label": "Adapter le rythme d’intégration",
+          "primary": "adaptabilite",
+          "secondary": "initiative"
+        },
+        {
+          "id": "bonus-04-c4",
+          "label": "Lui confier une première initiative",
+          "primary": "initiative",
+          "secondary": "communication"
+        }
+      ]
+    },
+    {
+      "id": "bonus-05",
+      "category": "collectif",
+      "title": "Une réunion n’aboutit à rien",
+      "context": "Tout le monde participe, mais les échanges tournent en boucle.",
+      "cards": [
+        {
+          "id": "bonus-05-c1",
+          "label": "Faire un tour des avis",
+          "primary": "ecoute",
+          "secondary": "collaboration"
+        },
+        {
+          "id": "bonus-05-c2",
+          "label": "Reformuler les points d’accord",
+          "primary": "structuration",
+          "secondary": "communication"
+        },
+        {
+          "id": "bonus-05-c3",
+          "label": "Changer d’angle d’approche",
+          "primary": "adaptabilite",
+          "secondary": "initiative"
+        },
+        {
+          "id": "bonus-05-c4",
+          "label": "Proposer une action immédiate",
+          "primary": "initiative",
+          "secondary": "communication"
+        }
+      ]
+    },
+    {
+      "id": "bonus-06",
+      "category": "changement",
+      "title": "Le planning est bouleversé",
+      "context": "Une contrainte extérieure change les priorités du mois.",
+      "cards": [
+        {
+          "id": "bonus-06-c1",
+          "label": "Partager les impacts à l’équipe",
+          "primary": "communication",
+          "secondary": "ecoute"
+        },
+        {
+          "id": "bonus-06-c2",
+          "label": "Revoir les objectifs ensemble",
+          "primary": "structuration",
+          "secondary": "initiative"
+        },
+        {
+          "id": "bonus-06-c3",
+          "label": "Tester une nouvelle organisation",
+          "primary": "adaptabilite",
+          "secondary": "communication"
+        },
+        {
+          "id": "bonus-06-c4",
+          "label": "Agir sur le premier blocage",
+          "primary": "initiative",
+          "secondary": "adaptabilite"
+        }
+      ]
+    },
+    {
+      "id": "bonus-07",
+      "category": "changement",
+      "title": "Une expérimentation échoue",
+      "context": "L’essai ne donne pas le résultat espéré.",
+      "cards": [
+        {
+          "id": "bonus-07-c1",
+          "label": "Recueillir les réactions",
+          "primary": "communication",
+          "secondary": "ecoute"
+        },
+        {
+          "id": "bonus-07-c2",
+          "label": "Documenter les apprentissages",
+          "primary": "structuration",
+          "secondary": "initiative"
+        },
+        {
+          "id": "bonus-07-c3",
+          "label": "Revoir les hypothèses",
+          "primary": "adaptabilite",
+          "secondary": "communication"
+        },
+        {
+          "id": "bonus-07-c4",
+          "label": "Lancer une nouvelle tentative",
+          "primary": "initiative",
+          "secondary": "adaptabilite"
+        }
+      ]
+    },
+    {
+      "id": "bonus-08",
+      "category": "changement",
+      "title": "Un outil habituel disparaît",
+      "context": "L’équipe doit travailler sans son logiciel favori.",
+      "cards": [
+        {
+          "id": "bonus-08-c1",
+          "label": "Écouter les difficultés",
+          "primary": "communication",
+          "secondary": "ecoute"
+        },
+        {
+          "id": "bonus-08-c2",
+          "label": "Clarifier les besoins essentiels",
+          "primary": "structuration",
+          "secondary": "initiative"
+        },
+        {
+          "id": "bonus-08-c3",
+          "label": "Explorer d’autres méthodes",
+          "primary": "adaptabilite",
+          "secondary": "communication"
+        },
+        {
+          "id": "bonus-08-c4",
+          "label": "Mettre en place un dépannage",
+          "primary": "initiative",
+          "secondary": "adaptabilite"
+        }
+      ]
+    },
+    {
+      "id": "bonus-09",
+      "category": "changement",
+      "title": "Le besoin change après le lancement",
+      "context": "De nouveaux retours remettent en question le plan initial.",
+      "cards": [
+        {
+          "id": "bonus-09-c1",
+          "label": "Recueillir les retours précis",
+          "primary": "communication",
+          "secondary": "ecoute"
+        },
+        {
+          "id": "bonus-09-c2",
+          "label": "Comparer aux objectifs de départ",
+          "primary": "structuration",
+          "secondary": "initiative"
+        },
+        {
+          "id": "bonus-09-c3",
+          "label": "Adapter le périmètre",
+          "primary": "adaptabilite",
+          "secondary": "communication"
+        },
+        {
+          "id": "bonus-09-c4",
+          "label": "Proposer un pivot",
+          "primary": "initiative",
+          "secondary": "adaptabilite"
+        }
+      ]
+    },
+    {
+      "id": "bonus-10",
+      "category": "changement",
+      "title": "Une idée inattendue émerge",
+      "context": "Quelqu’un propose une approche inhabituelle.",
+      "cards": [
+        {
+          "id": "bonus-10-c1",
+          "label": "Comprendre ce qui l’a inspirée",
+          "primary": "communication",
+          "secondary": "ecoute"
+        },
+        {
+          "id": "bonus-10-c2",
+          "label": "La confronter aux critères",
+          "primary": "structuration",
+          "secondary": "initiative"
+        },
+        {
+          "id": "bonus-10-c3",
+          "label": "Imaginer un petit test",
+          "primary": "adaptabilite",
+          "secondary": "communication"
+        },
+        {
+          "id": "bonus-10-c4",
+          "label": "Créer les conditions pour essayer",
+          "primary": "initiative",
+          "secondary": "adaptabilite"
+        }
+      ]
+    },
+    {
+      "id": "bonus-11",
+      "category": "clarification",
+      "title": "Un objectif est trop vague",
+      "context": "La mission commence sans définition claire de la réussite.",
+      "cards": [
+        {
+          "id": "bonus-11-c1",
+          "label": "Interroger les parties prenantes",
+          "primary": "ecoute",
+          "secondary": "communication"
+        },
+        {
+          "id": "bonus-11-c2",
+          "label": "Formaliser des critères",
+          "primary": "structuration",
+          "secondary": "initiative"
+        },
+        {
+          "id": "bonus-11-c3",
+          "label": "Proposer plusieurs interprétations",
+          "primary": "adaptabilite",
+          "secondary": "structuration"
+        },
+        {
+          "id": "bonus-11-c4",
+          "label": "Lancer une première exploration",
+          "primary": "initiative",
+          "secondary": "collaboration"
+        }
+      ]
+    },
+    {
+      "id": "bonus-12",
+      "category": "clarification",
+      "title": "Les informations se contredisent",
+      "context": "Deux sources fiables ne racontent pas la même chose.",
+      "cards": [
+        {
+          "id": "bonus-12-c1",
+          "label": "Comprendre les deux versions",
+          "primary": "ecoute",
+          "secondary": "communication"
+        },
+        {
+          "id": "bonus-12-c2",
+          "label": "Vérifier les données",
+          "primary": "structuration",
+          "secondary": "initiative"
+        },
+        {
+          "id": "bonus-12-c3",
+          "label": "Adapter l’hypothèse de travail",
+          "primary": "adaptabilite",
+          "secondary": "structuration"
+        },
+        {
+          "id": "bonus-12-c4",
+          "label": "Trancher une étape intermédiaire",
+          "primary": "initiative",
+          "secondary": "collaboration"
+        }
+      ]
+    },
+    {
+      "id": "bonus-13",
+      "category": "clarification",
+      "title": "Une demande arrive sans contexte",
+      "context": "On te sollicite pour une urgence mal expliquée.",
+      "cards": [
+        {
+          "id": "bonus-13-c1",
+          "label": "Demander le besoin réel",
+          "primary": "ecoute",
+          "secondary": "communication"
+        },
+        {
+          "id": "bonus-13-c2",
+          "label": "Identifier ce qui est déjà connu",
+          "primary": "structuration",
+          "secondary": "initiative"
+        },
+        {
+          "id": "bonus-13-c3",
+          "label": "Explorer plusieurs scénarios",
+          "primary": "adaptabilite",
+          "secondary": "structuration"
+        },
+        {
+          "id": "bonus-13-c4",
+          "label": "Proposer une action de cadrage",
+          "primary": "initiative",
+          "secondary": "collaboration"
+        }
+      ]
+    },
+    {
+      "id": "bonus-14",
+      "category": "clarification",
+      "title": "Une présentation crée la confusion",
+      "context": "Le groupe ressort avec des interprétations différentes.",
+      "cards": [
+        {
+          "id": "bonus-14-c1",
+          "label": "Recueillir les incompréhensions",
+          "primary": "ecoute",
+          "secondary": "communication"
+        },
+        {
+          "id": "bonus-14-c2",
+          "label": "Reformuler les messages clés",
+          "primary": "structuration",
+          "secondary": "initiative"
+        },
+        {
+          "id": "bonus-14-c3",
+          "label": "Changer la forme de présentation",
+          "primary": "adaptabilite",
+          "secondary": "structuration"
+        },
+        {
+          "id": "bonus-14-c4",
+          "label": "Organiser une clarification rapide",
+          "primary": "initiative",
+          "secondary": "collaboration"
+        }
+      ]
+    },
+    {
+      "id": "bonus-15",
+      "category": "clarification",
+      "title": "Les chiffres soulèvent une question",
+      "context": "Un indicateur important évolue sans explication.",
+      "cards": [
+        {
+          "id": "bonus-15-c1",
+          "label": "Demander les hypothèses",
+          "primary": "ecoute",
+          "secondary": "communication"
+        },
+        {
+          "id": "bonus-15-c2",
+          "label": "Vérifier la qualité des mesures",
+          "primary": "structuration",
+          "secondary": "initiative"
+        },
+        {
+          "id": "bonus-15-c3",
+          "label": "Explorer les explications possibles",
+          "primary": "adaptabilite",
+          "secondary": "structuration"
+        },
+        {
+          "id": "bonus-15-c4",
+          "label": "Déclencher une investigation courte",
+          "primary": "initiative",
+          "secondary": "collaboration"
+        }
+      ]
+    },
+    {
+      "id": "bonus-16",
+      "category": "decision",
+      "title": "Il faut choisir entre deux pistes",
+      "context": "Les deux options paraissent intéressantes, mais le temps manque.",
+      "cards": [
+        {
+          "id": "bonus-16-c1",
+          "label": "Consulter les personnes concernées",
+          "primary": "collaboration",
+          "secondary": "ecoute"
+        },
+        {
+          "id": "bonus-16-c2",
+          "label": "Comparer les critères importants",
+          "primary": "structuration",
+          "secondary": "communication"
+        },
+        {
+          "id": "bonus-16-c3",
+          "label": "Essayer sur une petite échelle",
+          "primary": "adaptabilite",
+          "secondary": "initiative"
+        },
+        {
+          "id": "bonus-16-c4",
+          "label": "Assumer un choix provisoire",
+          "primary": "initiative",
+          "secondary": "structuration"
+        }
+      ]
+    },
+    {
+      "id": "bonus-17",
+      "category": "decision",
+      "title": "Une opportunité arrive trop tôt",
+      "context": "Une proposition intéressante menace le planning actuel.",
+      "cards": [
+        {
+          "id": "bonus-17-c1",
+          "label": "Comprendre les attentes",
+          "primary": "collaboration",
+          "secondary": "ecoute"
+        },
+        {
+          "id": "bonus-17-c2",
+          "label": "Mesurer les compromis",
+          "primary": "structuration",
+          "secondary": "communication"
+        },
+        {
+          "id": "bonus-17-c3",
+          "label": "Adapter une partie du plan",
+          "primary": "adaptabilite",
+          "secondary": "initiative"
+        },
+        {
+          "id": "bonus-17-c4",
+          "label": "Décider de saisir ou non l’occasion",
+          "primary": "initiative",
+          "secondary": "structuration"
+        }
+      ]
+    },
+    {
+      "id": "bonus-18",
+      "category": "decision",
+      "title": "Le groupe manque de recul",
+      "context": "Une décision importante est attendue dans la journée.",
+      "cards": [
+        {
+          "id": "bonus-18-c1",
+          "label": "Recueillir les réserves",
+          "primary": "collaboration",
+          "secondary": "ecoute"
+        },
+        {
+          "id": "bonus-18-c2",
+          "label": "Clarifier les risques",
+          "primary": "structuration",
+          "secondary": "communication"
+        },
+        {
+          "id": "bonus-18-c3",
+          "label": "Chercher une option réversible",
+          "primary": "adaptabilite",
+          "secondary": "initiative"
+        },
+        {
+          "id": "bonus-18-c4",
+          "label": "Proposer une décision cadrée",
+          "primary": "initiative",
+          "secondary": "structuration"
+        }
+      ]
+    },
+    {
+      "id": "bonus-19",
+      "category": "decision",
+      "title": "Une demande dépasse les capacités",
+      "context": "L’équipe ne peut pas tout livrer dans les délais.",
+      "cards": [
+        {
+          "id": "bonus-19-c1",
+          "label": "Échanger sur les priorités",
+          "primary": "collaboration",
+          "secondary": "ecoute"
+        },
+        {
+          "id": "bonus-19-c2",
+          "label": "Mettre les efforts en perspective",
+          "primary": "structuration",
+          "secondary": "communication"
+        },
+        {
+          "id": "bonus-19-c3",
+          "label": "Redéfinir la solution",
+          "primary": "adaptabilite",
+          "secondary": "initiative"
+        },
+        {
+          "id": "bonus-19-c4",
+          "label": "Proposer un arbitrage",
+          "primary": "initiative",
+          "secondary": "structuration"
+        }
+      ]
+    },
+    {
+      "id": "bonus-20",
+      "category": "decision",
+      "title": "Deux risques sont difficiles à départager",
+      "context": "Aucune option ne paraît totalement rassurante.",
+      "cards": [
+        {
+          "id": "bonus-20-c1",
+          "label": "Écouter les inquiétudes",
+          "primary": "collaboration",
+          "secondary": "ecoute"
+        },
+        {
+          "id": "bonus-20-c2",
+          "label": "Établir une comparaison",
+          "primary": "structuration",
+          "secondary": "communication"
+        },
+        {
+          "id": "bonus-20-c3",
+          "label": "Chercher une expérimentation",
+          "primary": "adaptabilite",
+          "secondary": "initiative"
+        },
+        {
+          "id": "bonus-20-c4",
+          "label": "Décider avec des garde-fous",
+          "primary": "initiative",
+          "secondary": "structuration"
+        }
+      ]
+    },
+    {
+      "id": "bonus-21",
+      "category": "relation",
+      "title": "Un collègue semble démotivé",
+      "context": "Son engagement baisse, sans explication évidente.",
+      "cards": [
+        {
+          "id": "bonus-21-c1",
+          "label": "Prendre de ses nouvelles",
+          "primary": "ecoute",
+          "secondary": "collaboration"
+        },
+        {
+          "id": "bonus-21-c2",
+          "label": "Clarifier ce qui a changé",
+          "primary": "communication",
+          "secondary": "structuration"
+        },
+        {
+          "id": "bonus-21-c3",
+          "label": "Adapter la collaboration",
+          "primary": "adaptabilite",
+          "secondary": "ecoute"
+        },
+        {
+          "id": "bonus-21-c4",
+          "label": "Proposer une aide concrète",
+          "primary": "initiative",
+          "secondary": "communication"
+        }
+      ]
+    },
+    {
+      "id": "bonus-22",
+      "category": "relation",
+      "title": "Un retour est mal reçu",
+      "context": "Une remarque constructive déclenche une réaction défensive.",
+      "cards": [
+        {
+          "id": "bonus-22-c1",
+          "label": "Accueillir le ressenti",
+          "primary": "ecoute",
+          "secondary": "collaboration"
+        },
+        {
+          "id": "bonus-22-c2",
+          "label": "Reformuler les faits",
+          "primary": "communication",
+          "secondary": "structuration"
+        },
+        {
+          "id": "bonus-22-c3",
+          "label": "Changer la manière d’aborder le sujet",
+          "primary": "adaptabilite",
+          "secondary": "ecoute"
+        },
+        {
+          "id": "bonus-22-c4",
+          "label": "Proposer un échange ultérieur",
+          "primary": "initiative",
+          "secondary": "communication"
+        }
+      ]
+    },
+    {
+      "id": "bonus-23",
+      "category": "relation",
+      "title": "Une tension se crée en réunion",
+      "context": "Le ton monte entre deux participants.",
+      "cards": [
+        {
+          "id": "bonus-23-c1",
+          "label": "Laisser chacun s’exprimer",
+          "primary": "ecoute",
+          "secondary": "collaboration"
+        },
+        {
+          "id": "bonus-23-c2",
+          "label": "Revenir à l’objet du débat",
+          "primary": "communication",
+          "secondary": "structuration"
+        },
+        {
+          "id": "bonus-23-c3",
+          "label": "Proposer une pause ou un autre format",
+          "primary": "adaptabilite",
+          "secondary": "ecoute"
+        },
+        {
+          "id": "bonus-23-c4",
+          "label": "Recadrer la réunion",
+          "primary": "initiative",
+          "secondary": "communication"
+        }
+      ]
+    },
+    {
+      "id": "bonus-24",
+      "category": "relation",
+      "title": "Un message a été mal interprété",
+      "context": "Un échange écrit génère un malentendu.",
+      "cards": [
+        {
+          "id": "bonus-24-c1",
+          "label": "Demander comment il a été compris",
+          "primary": "ecoute",
+          "secondary": "collaboration"
+        },
+        {
+          "id": "bonus-24-c2",
+          "label": "Préciser l’intention initiale",
+          "primary": "communication",
+          "secondary": "structuration"
+        },
+        {
+          "id": "bonus-24-c3",
+          "label": "Passer à l’oral",
+          "primary": "adaptabilite",
+          "secondary": "ecoute"
+        },
+        {
+          "id": "bonus-24-c4",
+          "label": "Proposer de repartir sur une base claire",
+          "primary": "initiative",
+          "secondary": "communication"
+        }
+      ]
+    },
+    {
+      "id": "bonus-25",
+      "category": "relation",
+      "title": "Un partenaire ne répond plus",
+      "context": "La collaboration ralentit à cause du silence d’un interlocuteur.",
+      "cards": [
+        {
+          "id": "bonus-25-c1",
+          "label": "Chercher à comprendre sa situation",
+          "primary": "ecoute",
+          "secondary": "collaboration"
+        },
+        {
+          "id": "bonus-25-c2",
+          "label": "Clarifier le besoin et le délai",
+          "primary": "communication",
+          "secondary": "structuration"
+        },
+        {
+          "id": "bonus-25-c3",
+          "label": "Changer de canal",
+          "primary": "adaptabilite",
+          "secondary": "ecoute"
+        },
+        {
+          "id": "bonus-25-c4",
+          "label": "Faire avancer ce qui peut l’être",
+          "primary": "initiative",
+          "secondary": "communication"
+        }
+      ]
+    },
+    {
+      "id": "bonus-26",
+      "category": "autonomie",
+      "title": "Tu découvres un problème discret",
+      "context": "Personne ne semble encore l’avoir remarqué.",
+      "cards": [
+        {
+          "id": "bonus-26-c1",
+          "label": "Prévenir les personnes concernées",
+          "primary": "communication",
+          "secondary": "collaboration"
+        },
+        {
+          "id": "bonus-26-c2",
+          "label": "Décrire précisément le problème",
+          "primary": "structuration",
+          "secondary": "ecoute"
+        },
+        {
+          "id": "bonus-26-c3",
+          "label": "Explorer son impact",
+          "primary": "adaptabilite",
+          "secondary": "initiative"
+        },
+        {
+          "id": "bonus-26-c4",
+          "label": "Lancer une première correction",
+          "primary": "initiative",
+          "secondary": "structuration"
+        }
+      ]
+    },
+    {
+      "id": "bonus-27",
+      "category": "autonomie",
+      "title": "Une tâche est bloquée",
+      "context": "Tu dépends d’une réponse qui tarde à arriver.",
+      "cards": [
+        {
+          "id": "bonus-27-c1",
+          "label": "Prendre contact directement",
+          "primary": "communication",
+          "secondary": "collaboration"
+        },
+        {
+          "id": "bonus-27-c2",
+          "label": "Préparer les informations manquantes",
+          "primary": "structuration",
+          "secondary": "ecoute"
+        },
+        {
+          "id": "bonus-27-c3",
+          "label": "Repenser l’ordre des tâches",
+          "primary": "adaptabilite",
+          "secondary": "initiative"
+        },
+        {
+          "id": "bonus-27-c4",
+          "label": "Avancer sur une solution temporaire",
+          "primary": "initiative",
+          "secondary": "structuration"
+        }
+      ]
+    },
+    {
+      "id": "bonus-28",
+      "category": "autonomie",
+      "title": "Une amélioration te paraît évidente",
+      "context": "Ce n’est pas dans les priorités définies pour l’instant.",
+      "cards": [
+        {
+          "id": "bonus-28-c1",
+          "label": "Demander l’avis de l’équipe",
+          "primary": "communication",
+          "secondary": "collaboration"
+        },
+        {
+          "id": "bonus-28-c2",
+          "label": "Chiffrer les effets potentiels",
+          "primary": "structuration",
+          "secondary": "ecoute"
+        },
+        {
+          "id": "bonus-28-c3",
+          "label": "Proposer une expérimentation",
+          "primary": "adaptabilite",
+          "secondary": "initiative"
+        },
+        {
+          "id": "bonus-28-c4",
+          "label": "Prendre en charge une première étape",
+          "primary": "initiative",
+          "secondary": "structuration"
+        }
+      ]
+    },
+    {
+      "id": "bonus-29",
+      "category": "autonomie",
+      "title": "Tu récupères un projet inconnu",
+      "context": "La documentation est dispersée et la passation minimale.",
+      "cards": [
+        {
+          "id": "bonus-29-c1",
+          "label": "Rencontrer les personnes clés",
+          "primary": "communication",
+          "secondary": "collaboration"
+        },
+        {
+          "id": "bonus-29-c2",
+          "label": "Cartographier les informations",
+          "primary": "structuration",
+          "secondary": "ecoute"
+        },
+        {
+          "id": "bonus-29-c3",
+          "label": "Adapter progressivement la méthode",
+          "primary": "adaptabilite",
+          "secondary": "initiative"
+        },
+        {
+          "id": "bonus-29-c4",
+          "label": "Traiter un premier sujet concret",
+          "primary": "initiative",
+          "secondary": "structuration"
+        }
+      ]
+    },
+    {
+      "id": "bonus-30",
+      "category": "autonomie",
+      "title": "Une nouvelle responsabilité apparaît",
+      "context": "Personne n’a été officiellement désigné pour la prendre.",
+      "cards": [
+        {
+          "id": "bonus-30-c1",
+          "label": "Identifier qui est concerné",
+          "primary": "communication",
+          "secondary": "collaboration"
+        },
+        {
+          "id": "bonus-30-c2",
+          "label": "Définir le cadre de responsabilité",
+          "primary": "structuration",
+          "secondary": "ecoute"
+        },
+        {
+          "id": "bonus-30-c3",
+          "label": "Proposer un partage temporaire",
+          "primary": "adaptabilite",
+          "secondary": "initiative"
+        },
+        {
+          "id": "bonus-30-c4",
+          "label": "Se porter volontaire",
+          "primary": "initiative",
+          "secondary": "structuration"
+        }
+      ]
+    }
+  ]
+}

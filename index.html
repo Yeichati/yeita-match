@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#faf9f7" />
+  <title>Yei’ta Match · Portrait soft skills</title>
+  <meta name="description" content="Jeu de cartes soft skills pour l'entretien candidat Yeita." />
+</head>
+<body>
+  <div id="root">
+    <div id="startup-status" style="font:16px system-ui,sans-serif;max-width:620px;margin:12vh auto;padding:28px;color:#252846;background:#f5f3ff;border-radius:18px">
+      <strong>Chargement de Yei’ta Match…</strong>
+      <p style="font-size:14px;color:#666">Si cet écran persiste, vérifie le terminal de Vite et la console du navigateur.</p>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('error', function (event) {
+      var node = document.getElementById('startup-status');
+      if (node) {
+        var detail = event.message || 'Erreur de chargement de l’application';
+        node.innerHTML = '<strong>Impossible de démarrer le jeu.</strong><p>Une erreur JavaScript empêche son chargement.</p><pre style="white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px"></pre>';
+        node.querySelector('pre').textContent = detail;
+      }
+    });
+    window.addEventListener('unhandledrejection', function (event) {
+      var node = document.getElementById('startup-status');
+      if (node) {
+        node.textContent = 'Erreur au démarrage : ' + String(event.reason);
+      }
+    });
+  </script>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+</html>
