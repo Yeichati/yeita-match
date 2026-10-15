@@ -23,3 +23,10 @@ jobs:
         run: npm test
       - name: Build
         run: npm run build
+      - name: Check version stamp
+        run: >-
+          node -e "const fs = require('fs');
+          const v = JSON.parse(fs.readFileSync('dist/version.json', 'utf8')).version;
+          const html = fs.readFileSync('dist/index.html', 'utf8');
+          if (!v || !html.includes('name=\"app-version\" content=\"' + v + '\"')) process.exit(1);
+          console.log('version', v)"

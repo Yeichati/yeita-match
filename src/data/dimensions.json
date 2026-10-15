@@ -35,55 +35,37 @@
     {
       "id": "facilitateur",
       "label": "Facilitateur",
-      "dimensions": [
-        "collaboration",
-        "ecoute"
-      ],
+      "dimensions": ["collaboration", "ecoute"],
       "description": "Tu sembles privilégier la coopération et la compréhension mutuelle."
     },
     {
       "id": "explorateur",
       "label": "Explorateur",
-      "dimensions": [
-        "adaptabilite",
-        "initiative"
-      ],
+      "dimensions": ["adaptabilite", "initiative"],
       "description": "Tu sembles à l’aise pour essayer, apprendre et ajuster ta trajectoire."
     },
     {
       "id": "architecte",
       "label": "Architecte",
-      "dimensions": [
-        "structuration",
-        "communication"
-      ],
+      "dimensions": ["structuration", "communication"],
       "description": "Tu sembles apprécier clarifier, organiser et donner du cadre."
     },
     {
       "id": "federateur",
       "label": "Fédérateur",
-      "dimensions": [
-        "communication",
-        "collaboration"
-      ],
+      "dimensions": ["communication", "collaboration"],
       "description": "Tu sembles faire avancer les sujets par la circulation des idées et le collectif."
     },
     {
       "id": "observateur",
       "label": "Observateur",
-      "dimensions": [
-        "ecoute",
-        "structuration"
-      ],
+      "dimensions": ["ecoute", "structuration"],
       "description": "Tu sembles chercher à bien comprendre avant de structurer la suite."
     },
     {
       "id": "catalyseur",
       "label": "Catalyseur",
-      "dimensions": [
-        "initiative",
-        "communication"
-      ],
+      "dimensions": ["initiative", "communication"],
       "description": "Tu sembles aimer lancer le mouvement et rendre les décisions concrètes."
     }
   ],

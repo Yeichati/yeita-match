@@ -1,12 +1,5 @@
 {
-  "categories": [
-    "collectif",
-    "changement",
-    "clarification",
-    "decision",
-    "relation",
-    "autonomie"
-  ],
+  "categories": ["collectif", "changement", "clarification", "decision", "relation", "autonomie"],
   "situations": [
     {
       "id": "situation-01",

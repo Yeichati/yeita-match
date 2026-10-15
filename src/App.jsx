@@ -2,9 +2,9 @@ import { useMemo, useState } from 'react'
 import SiteFooter from './components/SiteFooter.jsx'
 import SiteHeader from './components/SiteHeader.jsx'
 import { downloadJson, exportFileName, printWithTitle } from './lib/exports.js'
+import { meta, situations } from './lib/gameData.js'
 import { calculate, createDeck } from './lib/scoring.js'
 import { parseSession, serializeSession } from './lib/session.js'
-import { useGameData } from './lib/useGameData.js'
 import PlayScreen from './screens/PlayScreen.jsx'
 import ResultScreen from './screens/ResultScreen.jsx'
 import WelcomeScreen from './screens/WelcomeScreen.jsx'
@@ -20,7 +20,6 @@ const EMPTY_PERSON = {
 // Stages: "welcome" → "play" (8 rounds) → "results".
 // "review" is reached by importing a saved game, to write notes after the interview.
 export default function App() {
-  const { data, error } = useGameData()
   const [stage, setStage] = useState('welcome')
   const [setupOpen, setSetupOpen] = useState(false)
   const [person, setPerson] = useState(EMPTY_PERSON)
@@ -33,17 +32,17 @@ export default function App() {
   const showsResult = stage === 'results' || stage === 'review'
   const round = deck[index]
   const selected = round ? answers[round.id] || [] : []
-  const dimensions = useMemo(() => data?.meta.dimensions ?? [], [data])
+  const dimensions = meta.dimensions
   const result = useMemo(
-    () => (data && deck.length && showsResult ? calculate(deck, answers, data.meta) : null),
-    [data, deck, answers, showsResult],
+    () => (deck.length && showsResult ? calculate(deck, answers, meta) : null),
+    [deck, answers, showsResult],
   )
 
   const updatePerson = (changes) => setPerson((p) => ({ ...p, ...changes }))
 
   function start() {
-    if (!data || !person.candidateName.trim() || !person.hostName.trim() || !person.date) return
-    setDeck(createDeck(data.scenes.situations, data.meta.game.rounds))
+    if (!person.candidateName.trim() || !person.hostName.trim() || !person.date) return
+    setDeck(createDeck(situations, meta.game.rounds))
     setAnswers({})
     setIndex(0)
     setStage('play')
@@ -89,13 +88,9 @@ export default function App() {
   async function importJson(event) {
     const file = event.target.files?.[0]
     event.target.value = ''
-    if (!file || !data) return
+    if (!file) return
     try {
-      const session = parseSession(
-        JSON.parse(await file.text()),
-        data.scenes.situations,
-        data.meta.game.rounds,
-      )
+      const session = parseSession(JSON.parse(await file.text()), situations, meta.game.rounds)
       setPerson({
         ...EMPTY_PERSON,
         candidateName: session.candidateName,
@@ -121,10 +116,8 @@ export default function App() {
     <div className="app-shell">
       <SiteHeader onHome={reset} />
       <main className="main">
-        {error && <div className="alert">{error}</div>}
         {stage === 'welcome' && (
           <WelcomeScreen
-            ready={Boolean(data)}
             setupOpen={setupOpen}
             onOpenSetup={() => setSetupOpen(true)}
             onCloseSetup={() => setSetupOpen(false)}

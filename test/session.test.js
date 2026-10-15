@@ -5,7 +5,7 @@ import { exportFileName } from '../src/lib/exports.js'
 import { parseSession, serializeSession } from '../src/lib/session.js'
 
 const { situations } = JSON.parse(
-  readFileSync(new URL('../public/data/situations.json', import.meta.url), 'utf8'),
+  readFileSync(new URL('../src/data/situations.json', import.meta.url), 'utf8'),
 )
 const ROUNDS = 8
 const deck = situations.slice(0, ROUNDS)
