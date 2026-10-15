@@ -9,7 +9,6 @@ import {
 import SetupModal from '../components/SetupModal.jsx'
 
 export default function WelcomeScreen({
-  ready,
   setupOpen,
   onOpenSetup,
   onCloseSetup,
@@ -49,7 +48,7 @@ export default function WelcomeScreen({
         </div>
       </div>
       <div className="welcome-action">
-        <button className="primary large" disabled={!ready} onClick={onOpenSetup}>
+        <button className="primary large" onClick={onOpenSetup}>
           Commencer la partie <ArrowRight size={19} />
         </button>
         <span>Environ 10 à 15 minutes · accompagné d’un recruteur</span>

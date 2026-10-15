@@ -6,6 +6,33 @@
   <meta name="theme-color" content="#faf9f7" />
   <title>Yei’ta Match · Portrait soft skills</title>
   <meta name="description" content="Jeu de cartes soft skills pour l'entretien candidat Yeita." />
+  <meta name="app-version" content="__APP_VERSION__" />
+  <script>
+    // Stale page check. GitHub Pages lets browsers cache index.html for 10 minutes, so right after a
+    // deployment a browser may show the previous version (or fail to load it, its files being gone).
+    // This inline check runs even then: it compares the version of this page with version.json,
+    // fetched without cache, and reloads on a new URL when a newer version is online. The ?v= marker
+    // prevents a reload loop if the server itself still serves the old page.
+    (function () {
+      var meta = document.querySelector('meta[name="app-version"]');
+      var current = meta && meta.content;
+      if (!current || current === 'dev' || current.indexOf('__') === 0 || !window.fetch) return;
+      var url = new URL(window.location.href);
+      if (url.searchParams.get('v') === current) {
+        url.searchParams.delete('v');
+        window.history.replaceState(null, '', url.toString());
+      }
+      fetch('version.json', { cache: 'no-store' })
+        .then(function (response) { return response.ok ? response.json() : null; })
+        .then(function (online) {
+          if (!online || !online.version || online.version === current) return;
+          if (url.searchParams.get('v') === online.version) return;
+          url.searchParams.set('v', online.version);
+          window.location.replace(url.toString());
+        })
+        .catch(function () {});
+    })();
+  </script>
 </head>
 <body>
   <div id="root">

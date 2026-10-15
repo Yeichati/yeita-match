@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs'
 import { calculate, createDeck } from '../src/lib/scoring.js'
 
 const readJson = (file) =>
-  JSON.parse(readFileSync(new URL(`../public/data/${file}`, import.meta.url), 'utf8'))
+  JSON.parse(readFileSync(new URL(`../src/data/${file}`, import.meta.url), 'utf8'))
 const { situations } = readJson('situations.json')
 const meta = readJson('dimensions.json')
 
