@@ -31,9 +31,9 @@ public/data/
 src/
   App.jsx           état de l’application et enchaînement des écrans
   screens/          WelcomeScreen, PlayScreen, ResultScreen
-  components/       SiteHeader, SiteFooter, SetupModal, NotesPanel, Radar, Icons
+  components/       SiteHeader, SiteFooter, SetupModal, NotesPanel, Icons
   lib/
-    scoring.js      tirage des manches et calcul des scores
+    scoring.js      tirage des manches et calcul des scores (non affichés, seuls styles et traits)
     session.js      format du fichier .json et validation à l’import
     exports.js      noms de fichiers, téléchargement JSON, impression PDF
     useGameData.js  chargement des données

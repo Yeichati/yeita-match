@@ -63,14 +63,6 @@ const shapes = {
       <path d="m8 12 3 3 5-6" />
     </>
   ),
-  SlidersHorizontal: (
-    <>
-      <path d="M3 6h18M3 12h18M3 18h18" />
-      <circle cx="8" cy="6" r="2" fill="white" />
-      <circle cx="16" cy="12" r="2" fill="white" />
-      <circle cx="10" cy="18" r="2" fill="white" />
-    </>
-  ),
 }
 function Icon({ name, size = 20, strokeWidth = 2, ...props }) {
   return (
@@ -101,4 +93,3 @@ export const Layers3 = (p) => <Icon name="Layers3" {...p} />
 export const CircleHelp = (p) => <Icon name="CircleHelp" {...p} />
 export const MessageCircle = (p) => <Icon name="MessageCircle" {...p} />
 export const ShieldCheck = (p) => <Icon name="ShieldCheck" {...p} />
-export const SlidersHorizontal = (p) => <Icon name="SlidersHorizontal" {...p} />
