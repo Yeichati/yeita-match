@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import { calculate, createDeck } from '../src/scoring.js'
+import { calculate, createDeck } from '../src/lib/scoring.js'
 
 const readJson = (file) =>
   JSON.parse(readFileSync(new URL(`../public/data/${file}`, import.meta.url), 'utf8'))
