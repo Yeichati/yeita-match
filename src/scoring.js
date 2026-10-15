@@ -75,10 +75,7 @@ export function calculate(deck, answers, meta) {
     .sort((a, b) => b.score - a.score)
   return {
     scores,
-    ordered,
     styles: styles.slice(0, 2),
     top: ordered.slice(0, 3),
-    coverage: Object.fromEntries(DIM_IDS.map((id) => [id, Math.round(opportunity[id])])),
-    answered: deck.filter((s) => (answers[s.id] || []).length === 2).length,
   }
 }

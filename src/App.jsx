@@ -2,18 +2,14 @@ import { useEffect, useMemo, useState } from 'react'
 import {
   ArrowLeft,
   ArrowRight,
-  Check,
-  ChevronRight,
   CircleHelp,
   Compass,
   Download,
   HeartHandshake,
   Layers3,
-  RotateCcw,
   Sparkles,
   Target,
   MessageCircle,
-  Printer,
   ShieldCheck,
   SlidersHorizontal,
 } from './Icons.jsx'
@@ -97,7 +93,6 @@ export default function App() {
     [index, setIndex] = useState(0),
     [answers, setAnswers] = useState({}),
     [person, setPerson] = useState(EMPTY),
-    [review, setReview] = useState(false),
     [setup, setSetup] = useState(false),
     [importError, setImportError] = useState('')
   useEffect(() => {
@@ -129,7 +124,6 @@ export default function App() {
     setDeck(createDeck(data.scenes.situations, data.meta.game.rounds))
     setAnswers({})
     setIndex(0)
-    setReview(false)
     setStage('play')
     setSetup(false)
   }
@@ -147,13 +141,11 @@ export default function App() {
       setStage('results')
     } else {
       setIndex((i) => i + 1)
-      setReview(false)
     }
   }
   function back() {
     if (index > 0) {
       setIndex((i) => i - 1)
-      setReview(false)
     }
   }
   function reset() {
@@ -161,7 +153,6 @@ export default function App() {
     setDeck([])
     setAnswers({})
     setIndex(0)
-    setReview(false)
     setSetup(false)
   }
   function saveJson() {

@@ -1,19 +1,8 @@
-import React from 'react'
 const shapes = {
   ArrowLeft: (
     <>
       <path d="m12 19-7-7 7-7" />
       <path d="M19 12H5" />
-    </>
-  ),
-  Check: (
-    <>
-      <path d="m5 12 4 4L19 6" />
-    </>
-  ),
-  ChevronRight: (
-    <>
-      <path d="m9 18 6-6-6-6" />
     </>
   ),
   ArrowRight: (
@@ -26,18 +15,6 @@ const shapes = {
     <>
       <path d="M12 3v12m-4-4 4 4 4-4" />
       <path d="M4 17v3h16v-3" />
-    </>
-  ),
-  Printer: (
-    <>
-      <path d="M6 9V3h12v6M6 18H4V9h16v9h-2" />
-      <path d="M6 15h12v6H6z" />
-    </>
-  ),
-  RotateCcw: (
-    <>
-      <path d="M3 11a9 9 0 1 1 2 6" />
-      <path d="M3 3v8h8" />
     </>
   ),
   Compass: (
@@ -116,8 +93,6 @@ function Icon({ name, size = 20, strokeWidth = 2, ...props }) {
 export const ArrowLeft = (p) => <Icon name="ArrowLeft" {...p} />
 export const ArrowRight = (p) => <Icon name="ArrowRight" {...p} />
 export const Download = (p) => <Icon name="Download" {...p} />
-export const Printer = (p) => <Icon name="Printer" {...p} />
-export const RotateCcw = (p) => <Icon name="RotateCcw" {...p} />
 export const Compass = (p) => <Icon name="Compass" {...p} />
 export const HeartHandshake = (p) => <Icon name="HeartHandshake" {...p} />
 export const Target = (p) => <Icon name="Target" {...p} />
@@ -127,6 +102,3 @@ export const CircleHelp = (p) => <Icon name="CircleHelp" {...p} />
 export const MessageCircle = (p) => <Icon name="MessageCircle" {...p} />
 export const ShieldCheck = (p) => <Icon name="ShieldCheck" {...p} />
 export const SlidersHorizontal = (p) => <Icon name="SlidersHorizontal" {...p} />
-
-export const Check = (p) => <Icon name="Check" {...p} />
-export const ChevronRight = (p) => <Icon name="ChevronRight" {...p} />
