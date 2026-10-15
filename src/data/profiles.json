@@ -1,0 +1,88 @@
+{
+  "profiles": [
+    {
+      "id": "fil-conducteur",
+      "dominant": "collectif",
+      "second": "sans-chichi",
+      "label": "Fil conducteur",
+      "description": "Fait tenir le groupe ensemble, et dit les choses sans les emballer."
+    },
+    {
+      "id": "passerelle",
+      "dominant": "collectif",
+      "second": "explorateur",
+      "label": "Passerelle",
+      "description": "Ramène des idées d’ailleurs et fait traverser les autres avec."
+    },
+    {
+      "id": "second-souffle",
+      "dominant": "collectif",
+      "second": "meilleure-version",
+      "label": "Second souffle",
+      "description": "Progresse en tirant l’équipe, pas en avançant seul."
+    },
+    {
+      "id": "point-d-appui",
+      "dominant": "sans-chichi",
+      "second": "collectif",
+      "label": "Point d’appui",
+      "description": "On construit dessus. Franc, fiable, zéro poudre aux yeux."
+    },
+    {
+      "id": "lampe-frontale",
+      "dominant": "sans-chichi",
+      "second": "explorateur",
+      "label": "Lampe frontale",
+      "description": "Va chercher ce qui cloche, et dit exactement ce qu’il a trouvé."
+    },
+    {
+      "id": "niveau-a-bulle",
+      "dominant": "sans-chichi",
+      "second": "meilleure-version",
+      "label": "Niveau à bulle",
+      "description": "Exigeant sur le détail, et d’abord avec lui-même."
+    },
+    {
+      "id": "tete-chercheuse",
+      "dominant": "explorateur",
+      "second": "collectif",
+      "label": "Tête chercheuse",
+      "description": "Part devant, revient avec la carte, et la partage."
+    },
+    {
+      "id": "pied-de-biche",
+      "dominant": "explorateur",
+      "second": "sans-chichi",
+      "label": "Pied de biche",
+      "description": "Ouvre ce qui est fermé et regarde vraiment dedans."
+    },
+    {
+      "id": "pas-de-cote",
+      "dominant": "explorateur",
+      "second": "meilleure-version",
+      "label": "Pas de côté",
+      "description": "Apprend en allant voir là où personne ne regarde."
+    },
+    {
+      "id": "cordee",
+      "dominant": "meilleure-version",
+      "second": "collectif",
+      "label": "Cordée",
+      "description": "Monte vite, et vérifie que tout le monde suit."
+    },
+    {
+      "id": "pierre-a-aiguiser",
+      "dominant": "meilleure-version",
+      "second": "sans-chichi",
+      "label": "Pierre à aiguiser",
+      "description": "Travaille son geste sans se raconter d’histoires sur son niveau."
+    },
+    {
+      "id": "marche-d-apres",
+      "dominant": "meilleure-version",
+      "second": "explorateur",
+      "label": "Marche d’après",
+      "description": "Cherche sa prochaine marche en allant voir ailleurs."
+    }
+  ]
+}

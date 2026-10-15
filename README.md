@@ -1,6 +1,6 @@
 # Yei’ta Match
 
-Jeu de cartes soft skills utilisé pendant les entretiens candidats Yeita. Application statique (React + Vite), sans serveur : rien n’est transmis, les données ne sortent du navigateur que par les fichiers exportés.
+Jeu de cartes soft skills utilisé pendant les entretiens candidats Yeita : les choix du candidat font ressortir deux des quatre valeurs Yeita, qui désignent son profil parmi douze. Application statique (React + Vite), sans serveur : rien n’est transmis, les données ne sortent du navigateur que par les fichiers exportés.
 
 ## Local
 
@@ -16,9 +16,10 @@ Formatage : Prettier (`.prettierrc.json`), vérifié par la CI avec `npx prettie
 ## Parcours
 
 1. Accueil → « Commencer » → identité obligatoire (nom complet du candidat, nom complet du maître du jeu et date).
-2. Huit manches de cartes : à chaque manche, le candidat choisit deux cartes, dans l’ordre.
-3. Restitution sans notes, export PDF ou JSON de la partie.
-4. Hors entretien : sur l’accueil, « Reprendre une partie pour rédiger mes notes » → importer le JSON, renseigner les notes puis exporter le PDF avec ou sans notes.
+2. Huit manches : à chaque manche, une situation et quatre cartes (une par valeur) ; le candidat en choisit deux, sans ordre.
+3. En cas d’égalité pour la 1re ou la 2e valeur, une « Dernière manche » de départage (1 carte parmi celles des valeurs à égalité, 2 manches au plus).
+4. Page de profil montrée au candidat : nom du profil, combinaison dominante › seconde, détail des deux valeurs. Export PDF ou JSON de la partie.
+5. Hors entretien : sur l’accueil, « Reprendre une partie pour rédiger mes notes » → importer le JSON, renseigner les notes puis exporter le PDF avec ou sans notes.
 
 Le JSON contient des données personnelles et les choix du candidat : le conserver de manière sécurisée et ne le partager qu'avec les personnes autorisées.
 
@@ -26,30 +27,36 @@ Le JSON contient des données personnelles et les choix du candidat : le conserv
 
 ```
 src/
-  data/
-    situations.json 48 situations (6 catégories × 8), 4 cartes chacune
-    dimensions.json 6 dimensions, 6 styles, paramètres du jeu
+  data/             contenu du jeu, modifiable sans toucher au code
+    values.json     4 valeurs, leurs 3 comportements et soft skills
+    profiles.json   12 profils (dominante › seconde)
+    situations.json 48 situations (6 catégories × 8), 4 cartes chacune, une par valeur
   App.jsx           état de l’application et enchaînement des écrans
-  screens/          WelcomeScreen, PlayScreen, ResultScreen
+  screens/          WelcomeScreen, PlayScreen, ProfileScreen
   components/       SiteHeader, SiteFooter, SetupModal, NotesPanel, Icons
   lib/
-    scoring.js      tirage des manches et calcul des scores (non affichés, seuls styles et traits)
-    session.js      format du fichier .json et validation à l’import
+    scoring.js      tirage, comptage par valeur, départage, choix du profil
+    session.js      format du fichier .json (v2) et validation à l’import
     exports.js      noms de fichiers, téléchargement JSON, impression PDF
     gameData.js     données du jeu (intégrées au build)
   styles.css        styles écran, petits écrans (≤ 760 px, ≤ 390 px) et impression
-test/               tests unitaires (scoring, import/export)
+test/               tests unitaires (contenu, calcul, import/export)
 ```
 
 ## Calcul
 
 - Tirage Fisher–Yates : une situation par catégorie, puis des situations au hasard jusqu’à huit.
-- Premier choix pondéré 4, second choix pondéré 1 ; dimension principale de la carte comptée à 100 %, secondaire à 35 %.
-- Score par dimension : écart normalisé par rapport aux sélections attendues au hasard (50 = neutre, 100 = toujours choisie en premier, 0 = jamais choisie).
+- Chaque carte pointe vers un comportement, donc vers une valeur. Chaque carte choisie vaut 1 point pour sa valeur (16 points par partie).
+- Les deux valeurs les plus choisies donnent le profil : dominante › seconde, lu dans `profiles.json`.
+- Égalité qui décide la 1re ou la 2e place : manche de départage sur une situation non jouée, avec les seules cartes des valeurs à égalité. Les départages sont enregistrés dans le JSON, le profil est recalculé à l’identique à l’import.
+
+## Modifier le contenu
+
+Tout le contenu du jeu est dans `src/data/`. Les tests (`npm test`) vérifient sa cohérence : 4 cartes par situation couvrant les 4 valeurs, comportements existants, un profil par couple de valeurs, identifiants uniques.
 
 ## Limite d'interprétation
 
-Les scores reflètent des préférences exprimées dans ce jeu, pas une évaluation psychométrique validée ni la maîtrise réelle des soft skills.
+Le profil reflète des préférences exprimées dans ce jeu, pas une évaluation psychométrique validée ni la maîtrise réelle des soft skills.
 
 ## PDF
 

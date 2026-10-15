@@ -1,4 +1,5 @@
 const shapes = {
+  Check: <path d="m5 12 4 4L19 6" />,
   ArrowLeft: (
     <>
       <path d="m12 19-7-7 7-7" />
@@ -82,6 +83,7 @@ function Icon({ name, size = 20, strokeWidth = 2, ...props }) {
     </svg>
   )
 }
+export const Check = (p) => <Icon name="Check" {...p} />
 export const ArrowLeft = (p) => <Icon name="ArrowLeft" {...p} />
 export const ArrowRight = (p) => <Icon name="ArrowRight" {...p} />
 export const Download = (p) => <Icon name="Download" {...p} />

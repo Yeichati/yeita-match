@@ -1,0 +1,112 @@
+{
+  "values": [
+    {
+      "id": "collectif",
+      "label": "Jouer collectif",
+      "color": "#1b8a5a",
+      "tint": "#e3f4ea",
+      "expectation": "On attend que tu rendes l’équipe meilleure, pas seulement ton travail.",
+      "behaviors": [
+        {
+          "id": "tisser",
+          "label": "Tisser",
+          "description": "Tu connais du monde, et ce monde te rappelle.",
+          "softSkills": "Networking & Relationship"
+        },
+        {
+          "id": "tenir-ensemble",
+          "label": "Tenir ensemble",
+          "description": "Quand ça tangue, tu restes dans le bateau et tu rames avec les autres.",
+          "softSkills": "Team work & Resilience"
+        },
+        {
+          "id": "se-faire-comprendre",
+          "label": "Se faire comprendre",
+          "description": "Tu parles pour être compris, pas pour avoir raison.",
+          "softSkills": "Communication & Empathy"
+        }
+      ]
+    },
+    {
+      "id": "sans-chichi",
+      "label": "Sans chichi",
+      "color": "#5146d8",
+      "tint": "#ebe9fd",
+      "expectation": "On attend que tu dises les choses comme elles sont, preuves à l’appui, sans emballage.",
+      "behaviors": [
+        {
+          "id": "appui-reel",
+          "label": "S’appuyer sur du réel",
+          "description": "Tu préfères un chiffre moyen à une intuition brillante.",
+          "softSkills": "Data driven & By the book"
+        },
+        {
+          "id": "aller-verifier",
+          "label": "Aller vérifier",
+          "description": "Tu ouvres le fichier avant d’en parler.",
+          "softSkills": "Detailed focus & Investigator"
+        },
+        {
+          "id": "faire-droit",
+          "label": "Faire droit",
+          "description": "Tu fais les choses bien même quand personne ne regarde.",
+          "softSkills": "Ethical & Inclusive"
+        }
+      ]
+    },
+    {
+      "id": "explorateur",
+      "label": "Explorateur",
+      "color": "#9a6516",
+      "tint": "#f8eed8",
+      "expectation": "On attend que tu ailles voir par toi-même, et que tu reviennes avec autre chose que des certitudes.",
+      "behaviors": [
+        {
+          "id": "ouvrir-le-capot",
+          "label": "Ouvrir le capot",
+          "description": "Tu veux comprendre comment ça marche avant de dire ce qu’il faut changer.",
+          "softSkills": "Curiosity & Problem solving"
+        },
+        {
+          "id": "truc-a-cote",
+          "label": "Proposer le truc d’à côté",
+          "description": "Tu sors l’idée que personne n’ose formuler, et tu la défends.",
+          "softSkills": "Creativity & Boldness"
+        },
+        {
+          "id": "changer-avis",
+          "label": "Changer d’avis proprement",
+          "description": "Le terrain te contredit, tu bouges — et tu dis pourquoi.",
+          "softSkills": "Adaptability & Iteration"
+        }
+      ]
+    },
+    {
+      "id": "meilleure-version",
+      "label": "Sa meilleure version",
+      "color": "#c62f58",
+      "tint": "#fce6ec",
+      "expectation": "On attend que tu saches où tu en es, et que tu bouges de là.",
+      "behaviors": [
+        {
+          "id": "porter-au-bout",
+          "label": "Porter jusqu’au bout",
+          "description": "Ce que tu prends, tu le finis, et tu le défends en réunion.",
+          "softSkills": "Motivation & Advocacy"
+        },
+        {
+          "id": "trancher",
+          "label": "Trancher",
+          "description": "Tu décides avec ce que tu as, et tu l’assumes devant tout le monde.",
+          "softSkills": "Strategy & Decision making"
+        },
+        {
+          "id": "regarder-en-face",
+          "label": "Se regarder en face",
+          "description": "Tu sais nommer ce que tu ne sais pas encore faire, sans te flageller ni te survendre.",
+          "softSkills": "Apprentissage de soi"
+        }
+      ]
+    }
+  ]
+}
