@@ -38,12 +38,12 @@ export default function WelcomeScreen({
         </div>
         <div>
           <Target />
-          <strong>6 dimensions</strong>
-          <small>Des tendances comportementales</small>
+          <strong>4 valeurs</strong>
+          <small>Un profil parmi 12</small>
         </div>
         <div>
           <Download />
-          <strong>Ton portrait</strong>
+          <strong>Ton profil</strong>
           <small>Exportable en PDF</small>
         </div>
       </div>
@@ -61,10 +61,9 @@ export default function WelcomeScreen({
       <div className="welcome-note">
         <CircleHelp size={18} />
         <p>
-          À chaque manche, choisis{' '}
-          <strong>tes deux réactions les plus naturelles, dans l’ordre</strong>. Toutes les cartes
-          correspondent à des approches professionnelles possibles : aucune réponse n’est la « bonne
-          » par défaut.
+          À chaque manche, choisis <strong>les deux réactions qui te ressemblent le plus</strong>.
+          Toutes les cartes correspondent à des approches professionnelles possibles : aucune
+          réponse n’est la « bonne » par défaut.
         </p>
       </div>
       {setupOpen && (

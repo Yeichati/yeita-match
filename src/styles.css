@@ -427,6 +427,11 @@ button:disabled {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
 }
+/* Tie-break round: 2 or 3 cards, centred at the width of a regular card. */
+.choice-grid.few {
+  grid-template-columns: repeat(var(--count), minmax(0, 228px));
+  justify-content: center;
+}
 .choice-card {
   background: white;
   border: 1.5px solid #e7e4ee;
@@ -448,7 +453,7 @@ button:disabled {
     border-color 0.16s,
     box-shadow 0.16s;
 }
-.choice-card:hover {
+.choice-card:hover:not(:disabled) {
   transform: translateY(-3px);
   border-color: #bcb4ed;
   box-shadow: 0 9px 22px #7367cb18;
@@ -618,83 +623,86 @@ button:disabled {
   color: var(--green);
   background: var(--green-soft);
 }
-.peach {
-  color: #d38b53;
-  background: #fff0e3;
-}
-.mint {
-  color: #319b89;
-  background: #e6f6f1;
-}
 .result-hero h1,
 .panel-title h3,
-.style-card h4,
-.trait-index {
+.value-panel h3 {
   overflow-wrap: break-word;
   word-break: normal;
 }
 
-.styles {
-  display: grid;
-  gap: 10px;
-  margin-top: 12px;
-}
-.style-card {
-  background: #f5faf6;
-  border: 1px solid #ddede3;
-  display: flex;
-  gap: 15px;
-  padding: 10px;
-  border-radius: 12px;
-}
-.style-number {
-  font-size: 16px;
+/* Profile header and the two value panels. Each panel takes its colour from the value (JSON). */
+.result-hero .profile-combination {
   font-weight: 800;
-  color: var(--green);
-}
-.style-card h4 {
   font-size: 15px;
-  margin: 0 0 4px;
+  margin: 0 0 8px;
 }
-.style-card p {
-  font-size: 12px;
-  line-height: 1.5;
-  color: #817e91;
-  margin: 0;
+.result-hero .profile-description {
+  font-size: 16px;
+  color: #4f4c63;
+  max-width: 620px;
 }
-
-.top-traits {
-  margin-top: 12px;
-  display: grid;
-  gap: 11px;
+.value-panel {
+  border-top: 4px solid var(--value);
 }
-.top-traits > div {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-.trait-index {
-  background: var(--green-soft);
-  color: var(--green);
-  font-weight: 800;
-  font-size: 12px;
-  border-radius: 50%;
-  width: 29px;
-  height: 29px;
-  display: grid;
-  place-items: center;
-}
-.top-traits > div > span:last-child {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.top-traits strong {
-  font-size: 13px;
-}
-.top-traits small {
+.value-kicker {
   font-size: 11px;
-  color: #928f9e;
+  letter-spacing: 1.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #8f8b9b;
+}
+.value-panel h3 {
+  font-family: Manrope, system-ui, sans-serif;
+  font-size: 22px;
+  letter-spacing: -0.5px;
+  margin: 4px 0 8px;
+  color: var(--value);
+}
+.value-expectation {
+  margin: 0 0 14px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--value-tint);
+  font-size: 13px;
+  line-height: 1.5;
+  color: #3d3a52;
+}
+.behaviors {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.behaviors li {
+  display: grid;
+  gap: 3px;
+  padding-left: 14px;
+  position: relative;
+}
+.behaviors li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--value);
+}
+.behaviors strong {
+  font-size: 14px;
+}
+.behaviors span {
+  font-size: 13px;
+  line-height: 1.45;
+  color: #555267;
+}
+.behaviors small {
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #8f8b9b;
 }
 
 .notes-panel {
@@ -793,7 +801,8 @@ button:disabled {
   .play-screen {
     margin-top: 22px;
   }
-  .choice-grid {
+  .choice-grid,
+  .choice-grid.few {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .choice-card {
@@ -920,36 +929,37 @@ button:disabled {
     border-radius: 8px !important;
   }
 
-  .styles {
-    gap: 6px !important;
-    margin-top: 8px !important;
+  .result-hero .profile-combination {
+    font-size: 11px !important;
+    margin: 0 0 3px !important;
   }
-  .style-card {
-    padding: 7px !important;
-    gap: 9px !important;
-  }
-  .style-card h4 {
+  .result-hero .profile-description {
     font-size: 11px !important;
   }
-  .style-card p {
-    font-size: 9px !important;
-    line-height: 1.3 !important;
+  .value-kicker {
+    font-size: 8px;
   }
-
-  .top-traits {
-    gap: 8px !important;
-    margin-top: 8px !important;
+  .value-panel h3 {
+    font-size: 15px;
+    margin: 2px 0 5px;
   }
-  .top-traits strong {
-    font-size: 10px !important;
+  .value-expectation {
+    font-size: 9px;
+    padding: 6px 8px;
+    margin-bottom: 8px;
   }
-  .top-traits small {
-    font-size: 8px !important;
-    line-height: 1.25 !important;
+  .behaviors {
+    gap: 6px;
   }
-  .trait-index {
-    height: 21px !important;
-    width: 21px !important;
+  .behaviors strong {
+    font-size: 10px;
+  }
+  .behaviors span {
+    font-size: 9px;
+    line-height: 1.35;
+  }
+  .behaviors small {
+    font-size: 7px;
   }
 
   .notes-panel {

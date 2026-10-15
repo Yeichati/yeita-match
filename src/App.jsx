@@ -2,11 +2,18 @@ import { useMemo, useState } from 'react'
 import SiteFooter from './components/SiteFooter.jsx'
 import SiteHeader from './components/SiteHeader.jsx'
 import { downloadJson, exportFileName, printWithTitle } from './lib/exports.js'
-import { meta, situations } from './lib/gameData.js'
-import { calculate, createDeck } from './lib/scoring.js'
+import { profiles, rounds, situations, values } from './lib/gameData.js'
+import {
+  cardValueIndex,
+  countValues,
+  createDeck,
+  createTiebreakRound,
+  findProfile,
+  resolveRanking,
+} from './lib/scoring.js'
 import { parseSession, serializeSession } from './lib/session.js'
 import PlayScreen from './screens/PlayScreen.jsx'
-import ResultScreen from './screens/ResultScreen.jsx'
+import ProfileScreen from './screens/ProfileScreen.jsx'
 import WelcomeScreen from './screens/WelcomeScreen.jsx'
 
 const EMPTY_PERSON = {
@@ -16,8 +23,20 @@ const EMPTY_PERSON = {
   notes: '',
   followup: '',
 }
+const VALUE_IDS = values.map((v) => v.id)
+const VALUE_OF_CARD = cardValueIndex(situations, values)
+const valueById = (id) => values.find((v) => v.id === id)
 
-// Stages: "welcome" → "play" (8 rounds) → "results".
+// Profile reached by a set of answers and tie-breaks: { dominant, second } or { pending }.
+function rankingOf(deck, answers, tiebreaks) {
+  return resolveRanking(
+    countValues(deck, answers, VALUE_OF_CARD, VALUE_IDS),
+    tiebreaks,
+    VALUE_OF_CARD,
+  )
+}
+
+// Stages: "welcome" → "play" (rounds) → "tiebreak" (only on a tie, 1 or 2 rounds) → "results".
 // "review" is reached by importing a saved game, to write notes after the interview.
 export default function App() {
   const [stage, setStage] = useState('welcome')
@@ -26,24 +45,27 @@ export default function App() {
   const [deck, setDeck] = useState([])
   const [index, setIndex] = useState(0)
   const [answers, setAnswers] = useState({})
+  const [tiebreaks, setTiebreaks] = useState([])
+  const [tiebreakRound, setTiebreakRound] = useState(null)
+  const [tiebreakPick, setTiebreakPick] = useState([])
   const [printWithNotes, setPrintWithNotes] = useState(true)
   const [importError, setImportError] = useState('')
 
-  const showsResult = stage === 'results' || stage === 'review'
+  const showsProfile = stage === 'results' || stage === 'review'
   const round = deck[index]
   const selected = round ? answers[round.id] || [] : []
-  const dimensions = meta.dimensions
-  const result = useMemo(
-    () => (deck.length && showsResult ? calculate(deck, answers, meta) : null),
-    [deck, answers, showsResult],
+  const ranking = useMemo(
+    () => (showsProfile ? rankingOf(deck, answers, tiebreaks) : null),
+    [showsProfile, deck, answers, tiebreaks],
   )
 
   const updatePerson = (changes) => setPerson((p) => ({ ...p, ...changes }))
 
   function start() {
     if (!person.candidateName.trim() || !person.hostName.trim() || !person.date) return
-    setDeck(createDeck(situations, meta.game.rounds))
+    setDeck(createDeck(situations, rounds))
     setAnswers({})
+    setTiebreaks([])
     setIndex(0)
     setStage('play')
     setSetupOpen(false)
@@ -53,24 +75,47 @@ export default function App() {
     setStage('welcome')
     setDeck([])
     setAnswers({})
+    setTiebreaks([])
+    setTiebreakRound(null)
     setIndex(0)
     setSetupOpen(false)
   }
 
-  // Clicking a chosen card unselects it; a third click replaces the second choice.
+  // Toggles a card; when `required` cards are selected, the others are disabled (see PlayScreen).
+  const toggle = (list, cardId, required) =>
+    list.includes(cardId)
+      ? list.filter((id) => id !== cardId)
+      : list.length < required
+        ? [...list, cardId]
+        : list
+
   function pick(cardId) {
-    const next = selected.includes(cardId)
-      ? selected.filter((id) => id !== cardId)
-      : selected.length < 2
-        ? [...selected, cardId]
-        : [selected[0], cardId]
-    setAnswers((previous) => ({ ...previous, [round.id]: next }))
+    setAnswers((previous) => ({ ...previous, [round.id]: toggle(selected, cardId, 2) }))
+  }
+
+  // After the last round, and after each tie-break: show the profile, or play a tie-break round
+  // with only the cards of the tied values.
+  function continueWith(nextTiebreaks) {
+    const next = rankingOf(deck, answers, nextTiebreaks)
+    setTiebreaks(nextTiebreaks)
+    setTiebreakPick([])
+    if (next.pending) {
+      const used = [...deck.map((s) => s.id), ...nextTiebreaks.map((t) => t.situation)]
+      setTiebreakRound({
+        between: next.pending,
+        situation: createTiebreakRound(situations, used, next.pending, VALUE_OF_CARD),
+      })
+      setStage('tiebreak')
+    } else {
+      setTiebreakRound(null)
+      setStage('results')
+    }
   }
 
   function nextRound() {
     if (selected.length !== 2) return
-    if (index >= deck.length - 1) setStage('results')
-    else setIndex((i) => i + 1)
+    if (index < deck.length - 1) setIndex((i) => i + 1)
+    else continueWith([])
   }
 
   function previousRound() {
@@ -78,9 +123,28 @@ export default function App() {
     else setIndex((i) => i - 1)
   }
 
+  function nextTiebreak() {
+    if (tiebreakPick.length !== 1) return
+    continueWith([
+      ...tiebreaks,
+      {
+        situation: tiebreakRound.situation.id,
+        between: tiebreakRound.between,
+        chosen: tiebreakPick[0],
+      },
+    ])
+  }
+
+  // Going back from a tie-break returns to the last round; the tie-breaks are replayed after it.
+  function leaveTiebreak() {
+    setTiebreaks([])
+    setTiebreakRound(null)
+    setStage('play')
+  }
+
   function saveJson() {
     downloadJson(
-      serializeSession({ person, deck, answers }),
+      serializeSession({ person, deck, answers, tiebreaks }),
       exportFileName(person, { extension: 'json' }),
     )
   }
@@ -90,7 +154,9 @@ export default function App() {
     event.target.value = ''
     if (!file) return
     try {
-      const session = parseSession(JSON.parse(await file.text()), situations, meta.game.rounds)
+      const session = parseSession(JSON.parse(await file.text()), situations, rounds)
+      if (rankingOf(session.deck, session.answers, session.tiebreaks).pending)
+        throw Error('Départage manquant')
       setPerson({
         ...EMPTY_PERSON,
         candidateName: session.candidateName,
@@ -99,6 +165,7 @@ export default function App() {
       })
       setDeck(session.deck)
       setAnswers(session.answers)
+      setTiebreaks(session.tiebreaks)
       setIndex(session.deck.length - 1)
       setStage('review')
       setImportError('')
@@ -133,18 +200,34 @@ export default function App() {
             round={round}
             index={index}
             total={deck.length}
+            required={2}
             selected={selected}
+            isLast={index === deck.length - 1}
             onPick={pick}
             onNext={nextRound}
             onBack={previousRound}
           />
         )}
-        {showsResult && result && (
-          <ResultScreen
+        {stage === 'tiebreak' && tiebreakRound && (
+          <PlayScreen
+            round={tiebreakRound.situation}
+            index={null}
+            total={null}
+            required={1}
+            selected={tiebreakPick}
+            isLast
+            onPick={(cardId) => setTiebreakPick((list) => toggle(list, cardId, 1))}
+            onNext={nextTiebreak}
+            onBack={leaveTiebreak}
+          />
+        )}
+        {showsProfile && ranking?.dominant && (
+          <ProfileScreen
             mode={stage}
             person={person}
-            result={result}
-            dimensions={dimensions}
+            profile={findProfile(profiles, ranking)}
+            dominant={valueById(ranking.dominant)}
+            second={valueById(ranking.second)}
             printWithNotes={printWithNotes}
             onSaveJson={saveJson}
             onExportPdf={exportPdf}

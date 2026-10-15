@@ -1,6 +1,7 @@
 import {
   ArrowLeft,
   ArrowRight,
+  Check,
   Compass,
   HeartHandshake,
   Sparkles,
@@ -10,71 +11,107 @@ import {
 // Decorative icon per card position.
 const CARD_ICONS = [Compass, HeartHandshake, Target, Sparkles]
 
-const RANK_LABELS = { 1: '1er réflexe', 2: '2e réflexe' }
-const PICK_MESSAGES = [
-  'Choisis tes cartes',
-  'Bien joué, encore une carte.',
-  'Tes deux réflexes sont prêts.',
-]
+const TEXTS = {
+  2: {
+    eyebrow: 'CHOISIS DEUX RÉACTIONS',
+    instruction: 'Choisis deux cartes, dans n’importe quel ordre.',
+    counter: (n) => `${n}/2 choisies`,
+    messages: ['Choisis tes cartes', 'Encore une carte.', 'Tes deux cartes sont prêtes.'],
+  },
+  1: {
+    eyebrow: 'CHOISIS UNE RÉACTION',
+    instruction: 'Choisis une seule carte.',
+    counter: (n) => `${n}/1 choisie`,
+    messages: ['Choisis ta carte', 'Ta carte est prête.'],
+  },
+}
 
-// One round: a situation and four cards. The candidate picks two cards, in order.
-export default function PlayScreen({ round, index, total, selected, onPick, onNext, onBack }) {
-  const isFirst = index === 0
-  const isLast = index === total - 1
+// One round: a situation and its cards. The candidate selects `required` cards, without order;
+// once they are selected, the other cards are disabled until one is unselected.
+// `index`/`total` are null for the tie-break round, shown as the last round.
+export default function PlayScreen({
+  round,
+  index,
+  total,
+  required,
+  selected,
+  isLast,
+  onPick,
+  onNext,
+  onBack,
+}) {
+  const texts = TEXTS[required]
+  const isTiebreak = index === null
+  const full = selected.length >= required
   return (
     <section className="play-screen">
       <div className="play-top">
         <button className="text-btn" onClick={onBack}>
-          <ArrowLeft size={17} /> {isFirst ? 'Quitter' : 'Précédent'}
+          <ArrowLeft size={17} /> {index === 0 ? 'Quitter' : 'Précédent'}
         </button>
         <span className="step-count">
-          MANCHE {index + 1} <span>/ {total}</span>
+          {isTiebreak ? (
+            'DERNIÈRE MANCHE'
+          ) : (
+            <>
+              MANCHE {index + 1} <span>/ {total}</span>
+            </>
+          )}
         </span>
       </div>
       <div className="progress">
-        <span style={{ width: `${((index + 1) / total) * 100}%` }} />
+        <span style={{ width: `${isTiebreak ? 100 : ((index + 1) / total) * 100}%` }} />
       </div>
       <div className="round-head">
         <span className="eyebrow">
-          <span className="eyebrow-circle">✦</span> CHOISIS TES DEUX RÉFLEXES
+          <span className="eyebrow-circle">✦</span> {texts.eyebrow}
         </span>
         <h2>{round.title}</h2>
         <p>{round.context}</p>
       </div>
       <div className="play-instruction">
         <div>
-          <strong>Qu'est-ce qui te vient en premier ?</strong>
-          <span>Choisis une première carte, puis une seconde.</span>
+          <strong>Qu’est-ce qui te ressemble le plus ?</strong>
+          <span>{texts.instruction}</span>
         </div>
-        <span className="selection-counter">{selected.length}/2 choisies</span>
+        <span className="selection-counter">{texts.counter(selected.length)}</span>
       </div>
-      <div className="choice-grid">
+      <div
+        className={`choice-grid ${round.cards.length < 4 ? 'few' : ''}`}
+        style={{ '--count': round.cards.length }}
+      >
         {round.cards.map((card, i) => {
-          const rank = selected.indexOf(card.id) + 1
+          const chosen = selected.includes(card.id)
           const Icon = CARD_ICONS[i % CARD_ICONS.length]
           return (
             <button
               key={card.id}
-              className={`choice-card ${rank ? 'chosen' : ''}`}
+              className={`choice-card ${chosen ? 'chosen' : ''}`}
+              disabled={full && !chosen}
+              aria-pressed={chosen}
               onClick={() => onPick(card.id)}
             >
               <span className="choice-icon">
                 <Icon size={23} strokeWidth={1.8} />
               </span>
               <span className="choice-name">{card.label}</span>
-              <span className="choice-rank">{RANK_LABELS[rank] ?? 'Choisir cette carte'}</span>
-              {rank > 0 && <span className="rank-bubble">{rank}</span>}
+              <span className="choice-rank">{chosen ? 'Sélectionnée' : 'Choisir cette carte'}</span>
+              {chosen && (
+                <span className="rank-bubble">
+                  <Check size={15} strokeWidth={3} />
+                </span>
+              )}
             </button>
           )
         })}
       </div>
       <div className="round-foot">
         <div className="pick-summary">
-          <span className="pick-line">{PICK_MESSAGES[selected.length]}</span>
+          <span className="pick-line">{texts.messages[selected.length]}</span>
           <span>Tu peux modifier ton choix avant de continuer.</span>
         </div>
-        <button className="primary" disabled={selected.length !== 2} onClick={onNext}>
-          {isLast ? 'Découvrir le portrait' : 'Manche suivante'} <ArrowRight size={18} />
+        <button className="primary" disabled={!full} onClick={onNext}>
+          {isLast ? 'Découvrir mon profil' : 'Manche suivante'} <ArrowRight size={18} />
         </button>
       </div>
     </section>
