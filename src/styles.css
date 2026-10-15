@@ -580,11 +580,7 @@ button:disabled {
 }
 .result-grid {
   display: grid;
-  grid-template-columns: 1.06fr 1fr;
-  gap: 12px;
-}
-.right-stack {
-  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
 
@@ -636,61 +632,6 @@ button:disabled {
 .trait-index {
   overflow-wrap: break-word;
   word-break: normal;
-}
-
-.radar {
-  width: min(100%, 370px);
-  max-width: 295px;
-  display: block;
-  margin: 2px auto;
-  overflow: visible;
-}
-.radar-label {
-  font-size: 10px;
-  fill: #77778d;
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 700;
-}
-.score-legend {
-  display: grid;
-  gap: 6px;
-  margin-top: 4px;
-}
-.score-legend > div {
-  display: grid;
-  grid-template-columns: minmax(112px, auto) minmax(55px, 1fr) 50px;
-  gap: 12px;
-  align-items: center;
-  font-size: 11px;
-}
-.score-legend > div > span {
-  font-weight: 700;
-}
-.score-legend strong {
-  text-align: right;
-  color: var(--green);
-}
-.score-legend small {
-  color: #adabbe;
-  font-weight: 400;
-}
-.tiny-track {
-  height: 7px;
-  border-radius: 9px;
-  background: #f0eff6;
-  overflow: hidden;
-}
-.tiny-track span {
-  display: block;
-  height: 100%;
-  border-radius: 9px;
-  background: #54b18a;
-}
-.method-caption {
-  color: #a4a1b0;
-  font-size: 11px;
-  margin: 17px 0 0;
-  line-height: 1.5;
 }
 
 .styles {
@@ -954,10 +895,7 @@ button:disabled {
   }
   .result-grid {
     display: grid !important;
-    grid-template-columns: 1.03fr 1fr !important;
-    gap: 9px !important;
-  }
-  .right-stack {
+    grid-template-columns: 1fr 1fr !important;
     gap: 9px !important;
   }
 
@@ -980,25 +918,6 @@ button:disabled {
     height: 26px !important;
     width: 26px !important;
     border-radius: 8px !important;
-  }
-
-  .radar {
-    width: 215px !important;
-    height: 215px !important;
-    max-width: none !important;
-    margin: 0 auto !important;
-  }
-  .score-legend {
-    gap: 4px !important;
-  }
-  .score-legend > div {
-    font-size: 9px !important;
-    grid-template-columns: 83px 1fr 39px !important;
-    gap: 7px !important;
-  }
-  .method-caption {
-    font-size: 8px !important;
-    margin: 8px 0 0 !important;
   }
 
   .styles {
