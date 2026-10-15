@@ -3,12 +3,15 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { calculate, createDeck } from '../src/scoring.js'
 
-const readJson = (file) => JSON.parse(readFileSync(new URL(`../public/data/${file}`, import.meta.url), 'utf8'))
+const readJson = (file) =>
+  JSON.parse(readFileSync(new URL(`../public/data/${file}`, import.meta.url), 'utf8'))
 const { situations } = readJson('situations.json')
 const meta = readJson('dimensions.json')
 
 const pickFirstTwo = (deck, offset = 0) =>
-  Object.fromEntries(deck.map((s, i) => [s.id, [s.cards[(i + offset) % 4].id, s.cards[(i + offset + 1) % 4].id]]))
+  Object.fromEntries(
+    deck.map((s, i) => [s.id, [s.cards[(i + offset) % 4].id, s.cards[(i + offset + 1) % 4].id]]),
+  )
 
 test('createDeck draws the requested number of distinct situations', () => {
   for (let run = 0; run < 200; run++) {
