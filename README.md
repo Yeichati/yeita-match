@@ -18,8 +18,8 @@ Formatage : Prettier (`.prettierrc.json`), vérifié par la CI avec `npx prettie
 1. Accueil → « Commencer » → identité obligatoire (nom complet du candidat, nom complet du maître du jeu et date).
 2. Huit manches : à chaque manche, une situation et quatre cartes (une par valeur) ; le candidat en choisit deux, sans ordre.
 3. En cas d’égalité pour la 1re ou la 2e valeur, une « Dernière manche » de départage (1 carte parmi celles des valeurs à égalité, 2 manches au plus).
-4. Page de profil montrée au candidat : nom du profil, combinaison dominante › seconde, détail des deux valeurs. Export PDF ou JSON de la partie.
-5. Hors entretien : sur l’accueil, « Reprendre une partie pour rédiger mes notes » → importer le JSON, renseigner les notes puis exporter le PDF avec ou sans notes.
+4. Page de profil montrée au candidat : nom du profil, combinaison dominante › seconde, texte de présentation, détail des deux valeurs. Export PDF ou JSON de la partie.
+5. Hors entretien : sur l’accueil, « Reprendre une partie pour rédiger mes notes » → importer le JSON, renseigner une note par valeur (toujours dans l’ordre Jouer collectif, Sans chichi, Explorateur, Sa meilleure version), enregistrer le JSON avec les notes, exporter le PDF avec ou sans notes.
 
 Le JSON contient des données personnelles et les choix du candidat : le conserver de manière sécurisée et ne le partager qu'avec les personnes autorisées.
 
@@ -29,14 +29,14 @@ Le JSON contient des données personnelles et les choix du candidat : le conserv
 src/
   data/             contenu du jeu, modifiable sans toucher au code
     values.json     4 valeurs, leurs 3 comportements et soft skills
-    profiles.json   12 profils (dominante › seconde)
+    profiles.json   12 profils (dominante › seconde), phrase et texte de présentation
     situations.json 48 situations (6 catégories × 8), 4 cartes chacune, une par valeur
   App.jsx           état de l’application et enchaînement des écrans
   screens/          WelcomeScreen, PlayScreen, ProfileScreen
-  components/       SiteHeader, SiteFooter, SetupModal, NotesPanel, Icons
+  components/       SiteHeader, YeitaLogo, SiteFooter, SetupModal, NotesPanel, Icons
   lib/
     scoring.js      tirage, comptage par valeur, départage, choix du profil
-    session.js      format du fichier .json (v2) et validation à l’import
+    session.js      format du fichier .json (v2, notes comprises) et validation à l’import
     exports.js      noms de fichiers, téléchargement JSON, impression PDF
     gameData.js     données du jeu (intégrées au build)
   styles.css        styles écran, petits écrans (≤ 760 px, ≤ 390 px) et impression
@@ -54,13 +54,17 @@ test/               tests unitaires (contenu, calcul, import/export)
 
 Tout le contenu du jeu est dans `src/data/`. Les tests (`npm test`) vérifient sa cohérence : 4 cartes par situation couvrant les 4 valeurs, comportements existants, un profil par couple de valeurs, identifiants uniques.
 
+## Identité visuelle
+
+Inspirée de yeita.fr : fond `#fffdf9`, noir `#160f20`, violet `#4d25f7` pour les actions, polices Bricolage Grotesque (texte) et DM Mono (étiquettes), servies par Google Fonts. Les couleurs des 4 valeurs sont dans `values.json`.
+
 ## Limite d'interprétation
 
 Le profil reflète des préférences exprimées dans ce jeu, pas une évaluation psychométrique validée ni la maîtrise réelle des soft skills.
 
 ## PDF
 
-Les PDF sont produits via la fonction d'impression native du navigateur (Enregistrer en PDF). Le nom proposé est `Fiche Yeita - Nom du candidat avec Nom du maitre du jeu - Date` avec le suffixe ` - Notes` seulement pour la version avec notes. Le nom dépend de la gestion du titre de page par le navigateur. Les notes sont plafonnées en longueur pour viser une page A4.
+Les PDF sont produits via la fonction d'impression native du navigateur (Enregistrer en PDF). Le nom proposé est `Fiche Yeita - Nom du candidat avec Nom du maitre du jeu - Date` avec le suffixe ` - Notes` seulement pour la version avec notes. Le nom dépend de la gestion du titre de page par le navigateur. Les notes sont plafonnées à 350 caractères par valeur ; le PDF avec notes peut passer sur une seconde page.
 
 ## Déploiement et cache navigateur
 
