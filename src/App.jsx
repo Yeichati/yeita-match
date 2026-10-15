@@ -1,59 +1,165 @@
-import { useEffect, useMemo, useState } from 'react'
-import { ArrowLeft, ArrowRight, Check, ChevronRight, CircleHelp, Compass, Download, HeartHandshake, Layers3, RotateCcw, Sparkles, Target, MessageCircle, Printer, ShieldCheck, SlidersHorizontal } from './Icons.jsx'
-import { calculate, createDeck } from './scoring.js'
+import { useMemo, useState } from 'react'
+import SiteFooter from './components/SiteFooter.jsx'
+import SiteHeader from './components/SiteHeader.jsx'
+import { downloadJson, exportFileName, printWithTitle } from './lib/exports.js'
+import { calculate, createDeck } from './lib/scoring.js'
+import { parseSession, serializeSession } from './lib/session.js'
+import { useGameData } from './lib/useGameData.js'
+import PlayScreen from './screens/PlayScreen.jsx'
+import ResultScreen from './screens/ResultScreen.jsx'
+import WelcomeScreen from './screens/WelcomeScreen.jsx'
 
-const EMPTY = {candidateName:'',hostName:'',date:new Date().toLocaleDateString('en-CA'),notes:'',followup:''}
-const CARD_ICONS = [Compass, HeartHandshake, Target, Sparkles]
-function Radar({scores, dimensions}) {
-  const ids = dimensions.map(d=>d.id), n=ids.length, center=160, R=107
-  const point=(index, radius)=>{const a=(-Math.PI/2)+(index*Math.PI*2/n);return `${center+Math.cos(a)*radius},${center+Math.sin(a)*radius}`}
-  const poly = (r) => ids.map((_,i)=>point(i,r)).join(' ')
-  const value = ids.map((id,i)=>point(i, R * (scores[id]??0)/100)).join(' ')
-  return <svg viewBox="0 0 320 320" role="img" aria-label="Radar des tendances soft skills" className="radar">
-    {[.25,.5,.75,1].map(f=><polygon key={f} points={poly(R*f)} fill="none" stroke="#e6e8f0" strokeWidth="1.5"/>)}
-    {ids.map((id,i)=><line key={id} x1="160" y1="160" x2={point(i,R).split(',')[0]} y2={point(i,R).split(',')[1]} stroke="#e0e4ee"/>)}
-    <polygon points={value} fill="#7369df36" stroke="#7769d7" strokeWidth="2.8" strokeLinejoin="round" />
-    {ids.map((id,i)=>{const [x,y]=point(i, R*(scores[id]??0)/100).split(',');return <circle key={id} cx={x} cy={y} r="4" fill="#7769d7"/>})}
-    {dimensions.map((d,i)=>{const [x,y]=point(i,141).split(',').map(Number);return <text key={d.id} x={x} y={y} textAnchor="middle" dominantBaseline="central" className="radar-label">{d.label}</text>})}
-  </svg>
+const EMPTY_PERSON = {
+  candidateName: '',
+  hostName: '',
+  date: new Date().toLocaleDateString('en-CA'),
+  notes: '',
+  followup: '',
 }
 
+// Stages: "welcome" → "play" (8 rounds) → "results".
+// "review" is reached by importing a saved game, to write notes after the interview.
 export default function App() {
-  const [printMode,setPrintMode]=useState('with-notes')
-  const [data,setData]=useState(null),[error,setError]=useState(''),[stage,setStage]=useState('welcome'),[deck,setDeck]=useState([]),[index,setIndex]=useState(0),[answers,setAnswers]=useState({}),[person,setPerson]=useState(EMPTY),[review,setReview]=useState(false),[setup,setSetup]=useState(false),[importError,setImportError]=useState('')
-  useEffect(()=>{Promise.all([fetch(`${import.meta.env.BASE_URL}data/situations.json`).then(r=>{if(!r.ok)throw Error('situations');return r.json()}),fetch(`${import.meta.env.BASE_URL}data/dimensions.json`).then(r=>{if(!r.ok)throw Error('dimensions');return r.json()})]).then(([scenes,meta])=>setData({scenes,meta})).catch(()=>setError('Les données du jeu sont indisponibles. Recharge la page.'))},[])
-  const round=deck[index], selected=round ? answers[round.id]||[] : []
-  const result=useMemo(()=> data && deck.length && (stage==='results'||stage==='review') ? calculate(deck,answers,data.meta):null,[data,deck,answers,stage])
-  const dims=useMemo(()=>data?.meta.dimensions??[],[data])
-  function start(){if(!data || !person.candidateName.trim() || !person.hostName.trim() || !person.date)return;setDeck(createDeck(data.scenes.situations,data.meta.game.rounds));setAnswers({});setIndex(0);setReview(false);setStage('play');setSetup(false)}
-  function pick(id){const next=selected.includes(id) ? selected.filter(s=>s!==id) : selected.length<2 ? [...selected,id] : [selected[0],id];setAnswers(previous=>({...previous,[round.id]:next}))}
-  function next(){if(selected.length!==2)return;if(index>=deck.length-1){setStage('results')}else{setIndex(i=>i+1);setReview(false)}}
-  function back(){if(index>0){setIndex(i=>i-1);setReview(false)}}
-  function reset(){setStage('welcome');setDeck([]);setAnswers({});setIndex(0);setReview(false);setSetup(false)}
-  function saveJson(){const payload={format:'yeita-match-session',version:1,candidateName:person.candidateName.trim(),hostName:person.hostName.trim(),date:person.date,deck:deck.map(s=>s.id),answers};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=filename(false,'json');a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
-  async function importJson(event){const file=event.target.files?.[0];event.target.value='';if(!file||!data)return;try{const obj=JSON.parse(await file.text());if(obj.format!=='yeita-match-session'||obj.version!==1||!Array.isArray(obj.deck)||!obj.candidateName||!obj.hostName||!/^\d{4}-\d{2}-\d{2}$/.test(obj.date)||!obj.answers||typeof obj.answers!=='object')throw Error('Format non reconnu');const scenes=obj.deck.map(id=>data.scenes.situations.find(s=>s.id===id));if(scenes.length!==data.meta.game.rounds||scenes.some(s=>!s)||new Set(obj.deck).size!==scenes.length)throw Error('Situations invalides');for(const scene of scenes){const picks=obj.answers[scene.id];if(!Array.isArray(picks)||picks.length!==2||new Set(picks).size!==2||picks.some(id=>!scene.cards.some(c=>c.id===id)))throw Error('Réponses invalides')}setPerson({...EMPTY,candidateName:obj.candidateName,hostName:obj.hostName,date:obj.date});setDeck(scenes);setAnswers(obj.answers);setIndex(scenes.length-1);setStage('review');setImportError('')}catch(e){setImportError('Import impossible : '+e.message)}}
-  function filename(notes,extension='pdf'){const clean=v=>String(v).trim().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[\\/:*?"<>|]/g,'-').replace(/\s+/g,' ');return `Fiche Yeita - ${clean(person.candidateName)} avec ${clean(person.hostName)} - ${person.date}${notes?' - Notes':''}.${extension}`} 
-  function exportPdf(includeNotes) {
-    const oldTitle=document.title
-    document.title=filename(includeNotes).replace(/\.pdf$/,'')
-    setPrintMode(includeNotes?'with-notes':'without-notes')
-    const restore=()=>{document.title=oldTitle; window.removeEventListener('afterprint',restore)}
-    window.addEventListener('afterprint',restore,{once:true})
-    requestAnimationFrame(()=>requestAnimationFrame(()=>window.print()))
+  const { data, error } = useGameData()
+  const [stage, setStage] = useState('welcome')
+  const [setupOpen, setSetupOpen] = useState(false)
+  const [person, setPerson] = useState(EMPTY_PERSON)
+  const [deck, setDeck] = useState([])
+  const [index, setIndex] = useState(0)
+  const [answers, setAnswers] = useState({})
+  const [printWithNotes, setPrintWithNotes] = useState(true)
+  const [importError, setImportError] = useState('')
+
+  const showsResult = stage === 'results' || stage === 'review'
+  const round = deck[index]
+  const selected = round ? answers[round.id] || [] : []
+  const dimensions = useMemo(() => data?.meta.dimensions ?? [], [data])
+  const result = useMemo(
+    () => (data && deck.length && showsResult ? calculate(deck, answers, data.meta) : null),
+    [data, deck, answers, showsResult],
+  )
+
+  const updatePerson = (changes) => setPerson((p) => ({ ...p, ...changes }))
+
+  function start() {
+    if (!data || !person.candidateName.trim() || !person.hostName.trim() || !person.date) return
+    setDeck(createDeck(data.scenes.situations, data.meta.game.rounds))
+    setAnswers({})
+    setIndex(0)
+    setStage('play')
+    setSetupOpen(false)
   }
-  const dimName=id=>dims.find(d=>d.id===id)?.label??id
-  return <div className="app-shell">
-    <header className="site-head no-print"><button className="brand" onClick={reset} aria-label="Retour à l'accueil"><span className="brand-wordmark">yeita<span className="brand-period">.</span></span><span className="brand-product">match</span></button><div className="head-right"><span className="version">PORTRAIT SOFT SKILLS</span></div></header>
-    <main className="main">
-    {error && <div className="alert">{error}</div>}
-    {stage==='welcome' && <section className="welcome"><div className="eyebrow"><Sparkles size={16}/> JEU DE CARTES · SOFT SKILLS</div><h1>Découvrir ses <em>soft skills</em></h1><p className="lead">Huit manches de cartes pour faire émerger les préférences de travail et ouvrir la discussion.</p><div className="welcome-stats"><div><Layers3/><strong>8 manches</strong><small>Tirage différent à chaque partie</small></div><div><Target/><strong>6 dimensions</strong><small>Des tendances comportementales</small></div><div><Download/><strong>Ton portrait</strong><small>Exportable en PDF</small></div></div><div className="welcome-action"><button className="primary large" disabled={!data} onClick={()=>setSetup(true)}>Commencer la partie <ArrowRight size={19}/></button><span>Environ 10 à 15 minutes · accompagné d’un recruteur</span><label className="import-link">Reprendre une partie pour rédiger mes notes <input type="file" accept=".json,application/json" onChange={importJson} hidden/></label>{importError&&<p className="alert">{importError}</p>}</div><div className="welcome-note"><CircleHelp size={18}/><p>À chaque manche, choisis <strong>tes deux réactions les plus naturelles, dans l’ordre</strong>. Toutes les cartes correspondent à des approches professionnelles possibles : aucune réponse n’est la « bonne » par défaut.</p></div>{setup&&<div className="modal-backdrop" onClick={()=>setSetup(false)}><div className="setup-modal" role="dialog" aria-modal="true" aria-label="Préparer la partie" onClick={e=>e.stopPropagation()}><button className="modal-close" onClick={()=>setSetup(false)} aria-label="Fermer">×</button><span className="eyebrow">PRÉPARER LA PARTIE</span><h2>Qui joue aujourd’hui ?</h2><p>Ces informations figureront sur le portrait et les exports.</p><form onSubmit={e=>{e.preventDefault();start()}}><label>Nom complet du candidat<input required autoFocus value={person.candidateName} onChange={e=>setPerson(p=>({...p,candidateName:e.target.value}))} placeholder="Prénom Nom"/></label><label>Nom complet du maître du jeu<input required value={person.hostName} onChange={e=>setPerson(p=>({...p,hostName:e.target.value}))} placeholder="Prénom Nom"/></label><label>Date de l’entretien<input required type="date" value={person.date} onChange={e=>setPerson(p=>({...p,date:e.target.value}))}/></label><button className="primary large" type="submit">Jouer <ArrowRight size={18}/></button></form></div></div>}</section>}
-    {stage==='play'  && round && <section className="play-screen"><div className="play-top"><button className="text-btn" onClick={index===0?reset:back}><ArrowLeft size={17}/> {index===0?'Quitter':'Précédent'}</button><span className="step-count">MANCHE {index+1} <span>/ {deck.length}</span></span></div><div className="progress"><span style={{width:`${(index+1)/deck.length*100}%`}}/></div><div className="round-head"><span className="eyebrow"><span className="eyebrow-circle">✦</span> CHOISIS TES DEUX RÉFLEXES</span><h2>{round.title}</h2><p>{round.context}</p></div><div className="play-instruction"><div><strong>Qu'est-ce qui te vient en premier ?</strong><span>Choisis une première carte, puis une seconde.</span></div><span className="selection-counter">{selected.length}/2 choisies</span></div><div className="choice-grid">{round.cards.map((card,i)=>{const rank=selected.indexOf(card.id)+1;const Icon=CARD_ICONS[i%4];return <button key={card.id} className={`choice-card ${rank?'chosen':''}`} onClick={()=>pick(card.id)}><span className="choice-icon"><Icon size={23} strokeWidth={1.8}/></span><span className="choice-name">{card.label}</span><span className="choice-rank">{rank ? (rank===1?'1er réflexe':'2e réflexe') : 'Choisir cette carte'}</span>{rank>0&&<span className="rank-bubble">{rank}</span>}</button>})}</div><div className="round-foot"><div className="pick-summary"><span className="pick-line">{selected.length===0?'Choisis tes cartes':selected.length===1?'Bien joué, encore une carte.':'Tes deux réflexes sont prêts.'}</span><span>Tu peux modifier ton choix avant de continuer.</span></div><button className="primary" disabled={selected.length!==2} onClick={next}>{index===deck.length-1?'Découvrir le portrait':'Manche suivante'} <ArrowRight size={18}/></button></div></section>}
-    {(stage==='results'||stage==='review') && result && <section className={`result-screen ${printMode==='without-notes'?'export-without-notes':''}`}>
-      <div className="result-hero"><div><span className="eyebrow"><Sparkles size={15}/> PORTRAIT · SOFT SKILLS</span><h1>{person.candidateName}</h1><p>Préférences comportementales exprimées pendant la partie.</p><div className="host-line">Avec <strong>{person.hostName}</strong> · {new Date(person.date+'T12:00:00').toLocaleDateString('fr-FR')}</div></div><div className="result-actions no-print">{stage==='results'&&<><button className="secondary" onClick={saveJson}><Download size={17}/> Télécharger la partie (.json)</button><button className="primary" onClick={()=>exportPdf(false)}><Download size={17}/> PDF du portrait</button></>}{stage==='review'&&<><button className="secondary" onClick={()=>exportPdf(false)}><Download size={17}/> PDF sans notes</button><button className="primary" onClick={()=>exportPdf(true)}><Download size={17}/> PDF avec notes</button></>}</div></div>
-      <div className="result-grid"><article className="panel radar-panel"><div className="panel-title"><span className="panel-icon lavender"><SlidersHorizontal size={19}/></span><div><h3>Dimensions observées</h3><p>Tendances issues des choix</p></div></div><Radar scores={result.scores} dimensions={dims}/><div className="score-legend">{dims.map(d=><div key={d.id}><span>{d.label}</span><div className="tiny-track"><span style={{width:`${result.scores[d.id]??0}%`}}/></div><strong>{result.scores[d.id]??'—'}<small>/100</small></strong></div>)}</div><p className="method-caption">Scores relatifs aux choix effectués, pas à un niveau de maîtrise.</p></article><div className="right-stack"><article className="panel"><div className="panel-title"><span className="panel-icon peach"><Compass size={19}/></span><div><h3>Style qui se dessine</h3><p>Deux tendances complémentaires</p></div></div><div className="styles">{result.styles.map((s,i)=><div className="style-card" key={s.id}><span className="style-number">0{i+1}</span><div><h4>{s.label}</h4><p>{s.description}</p></div></div>)}</div></article><article className="panel"><div className="panel-title"><span className="panel-icon mint"><Sparkles size={19}/></span><div><h3>3 traits qui ressortent</h3><p>Les tendances les plus marquées</p></div></div><div className="top-traits">{result.top.map((id,i)=><div key={id}><span className="trait-index">{i+1}</span><span><strong>{dimName(id)}</strong><small>{dims.find(d=>d.id===id)?.description}</small></span></div>)}</div></article></div></div>
-      {stage==='review'&&<article className="panel notes-panel"><div className="panel-title"><span className="panel-icon lavender"><MessageCircle size={19}/></span><div><h3>Notes de l’échange</h3><p>Espace privé du maître du jeu</p></div></div><div className="notes-grid"><label>Observations<textarea rows="3" maxLength={350} placeholder="Exemples concrets, verbatims…" value={person.notes} onChange={e=>setPerson(p=>({...p,notes:e.target.value}))}/><div className="print-note">{person.notes || '—'}</div></label><label>Points à approfondir<textarea rows="3" maxLength={350} placeholder="Sujets à explorer ensuite…" value={person.followup} onChange={e=>setPerson(p=>({...p,followup:e.target.value}))}/><div className="print-note">{person.followup || '—'}</div></label></div></article>}
-      <div className="result-bottom"><p><ShieldCheck size={18}/> Portrait exploratoire fondé sur des choix déclarés ; ce n’est ni un test psychométrique validé ni une mesure objective des soft skills.</p></div>
-    </section>}
-    </main><footer className="site-footer no-print"><span>Réalisé avec amour par Yeita <span className="heart">♥</span></span></footer>
-  </div>
+
+  function reset() {
+    setStage('welcome')
+    setDeck([])
+    setAnswers({})
+    setIndex(0)
+    setSetupOpen(false)
+  }
+
+  // Clicking a chosen card unselects it; a third click replaces the second choice.
+  function pick(cardId) {
+    const next = selected.includes(cardId)
+      ? selected.filter((id) => id !== cardId)
+      : selected.length < 2
+        ? [...selected, cardId]
+        : [selected[0], cardId]
+    setAnswers((previous) => ({ ...previous, [round.id]: next }))
+  }
+
+  function nextRound() {
+    if (selected.length !== 2) return
+    if (index >= deck.length - 1) setStage('results')
+    else setIndex((i) => i + 1)
+  }
+
+  function previousRound() {
+    if (index === 0) reset()
+    else setIndex((i) => i - 1)
+  }
+
+  function saveJson() {
+    downloadJson(
+      serializeSession({ person, deck, answers }),
+      exportFileName(person, { extension: 'json' }),
+    )
+  }
+
+  async function importJson(event) {
+    const file = event.target.files?.[0]
+    event.target.value = ''
+    if (!file || !data) return
+    try {
+      const session = parseSession(
+        JSON.parse(await file.text()),
+        data.scenes.situations,
+        data.meta.game.rounds,
+      )
+      setPerson({
+        ...EMPTY_PERSON,
+        candidateName: session.candidateName,
+        hostName: session.hostName,
+        date: session.date,
+      })
+      setDeck(session.deck)
+      setAnswers(session.answers)
+      setIndex(session.deck.length - 1)
+      setStage('review')
+      setImportError('')
+    } catch (e) {
+      setImportError('Import impossible : ' + e.message)
+    }
+  }
+
+  function exportPdf(includeNotes) {
+    setPrintWithNotes(includeNotes)
+    printWithTitle(exportFileName(person, { notes: includeNotes }).replace(/\.pdf$/, ''))
+  }
+
+  return (
+    <div className="app-shell">
+      <SiteHeader onHome={reset} />
+      <main className="main">
+        {error && <div className="alert">{error}</div>}
+        {stage === 'welcome' && (
+          <WelcomeScreen
+            ready={Boolean(data)}
+            setupOpen={setupOpen}
+            onOpenSetup={() => setSetupOpen(true)}
+            onCloseSetup={() => setSetupOpen(false)}
+            person={person}
+            onPersonChange={updatePerson}
+            onStart={start}
+            onImport={importJson}
+            importError={importError}
+          />
+        )}
+        {stage === 'play' && round && (
+          <PlayScreen
+            round={round}
+            index={index}
+            total={deck.length}
+            selected={selected}
+            onPick={pick}
+            onNext={nextRound}
+            onBack={previousRound}
+          />
+        )}
+        {showsResult && result && (
+          <ResultScreen
+            mode={stage}
+            person={person}
+            result={result}
+            dimensions={dimensions}
+            printWithNotes={printWithNotes}
+            onSaveJson={saveJson}
+            onExportPdf={exportPdf}
+            onPersonChange={updatePerson}
+          />
+        )}
+      </main>
+      <SiteFooter />
+    </div>
+  )
 }
