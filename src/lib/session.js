@@ -1,12 +1,13 @@
 // Saved game file (.json): format, serialisation and validation on import.
 // The file holds personal data (names) and the candidate's choices; it never leaves the browser
 // except through the download triggered by the user. The profile itself is not stored: it is
-// recomputed on import from the choices and tie-breaks, so it always matches them.
+// recomputed on import from the choices and tie-breaks, so it always matches them. Notes (one per
+// value) are optional: the file is first saved at the end of the game, then again with the notes.
 
 export const SESSION_FORMAT = 'yeita-match-session'
 export const SESSION_VERSION = 2
 
-export function serializeSession({ person, deck, answers, tiebreaks }) {
+export function serializeSession({ person, deck, answers, tiebreaks, notes = {} }) {
   return {
     format: SESSION_FORMAT,
     version: SESSION_VERSION,
@@ -20,12 +21,13 @@ export function serializeSession({ person, deck, answers, tiebreaks }) {
       between: t.between,
       chosen: t.chosen,
     })),
+    notes,
   }
 }
 
-// Returns { candidateName, hostName, date, deck, answers, tiebreaks } where deck holds the full
-// situations. Throws an Error with a user-facing message when the file is not a valid saved game.
-export function parseSession(obj, situations, rounds) {
+// Returns { candidateName, hostName, date, deck, answers, tiebreaks, notes } where deck holds the
+// full situations. Throws an Error with a user-facing message when the file is not a valid saved game.
+export function parseSession(obj, situations, rounds, valueIds, maxNoteLength) {
   if (
     obj.format !== SESSION_FORMAT ||
     obj.version !== SESSION_VERSION ||
@@ -69,6 +71,17 @@ export function parseSession(obj, situations, rounds) {
     used.add(scene.id)
   }
 
+  const notes = obj.notes ?? {}
+  if (
+    typeof notes !== 'object' ||
+    Array.isArray(notes) ||
+    Object.entries(notes).some(
+      ([id, text]) =>
+        !valueIds.includes(id) || typeof text !== 'string' || text.length > maxNoteLength,
+    )
+  )
+    throw Error('Notes invalides')
+
   return {
     candidateName: obj.candidateName,
     hostName: obj.hostName,
@@ -76,5 +89,6 @@ export function parseSession(obj, situations, rounds) {
     deck,
     answers: obj.answers,
     tiebreaks: obj.tiebreaks,
+    notes,
   }
 }

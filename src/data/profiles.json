@@ -5,84 +5,144 @@
       "dominant": "collectif",
       "second": "sans-chichi",
       "label": "Fil conducteur",
-      "description": "Fait tenir le groupe ensemble, et dit les choses sans les emballer."
+      "description": "Fait tenir le groupe ensemble, et dit les choses sans les emballer.",
+      "presentation": [
+        "Tu es le fil qui relie les gens et les sujets. Là où tu passes, l’équipe se parle, et elle se parle franchement.",
+        "Ta force, c’est de faire avancer le groupe sans laisser les non-dits s’installer. Tu prends soin de la relation, mais pas au prix de la vérité : quand quelque chose cloche, tu le dis, avec les faits et avec tact.",
+        "À explorer ensemble : comment tu fais quand l’envie de garder le groupe uni et le besoin de dire les choses tirent dans deux sens opposés."
+      ]
     },
     {
       "id": "passerelle",
       "dominant": "collectif",
       "second": "explorateur",
       "label": "Passerelle",
-      "description": "Ramène des idées d’ailleurs et fait traverser les autres avec."
+      "description": "Ramène des idées d’ailleurs et fait traverser les autres avec.",
+      "presentation": [
+        "Tu fais traverser les idées. Tu vas les chercher ailleurs, et tu t’assures que personne ne reste sur la rive.",
+        "Curieux de ce qui se fait à côté, tu ramènes des pistes neuves, sans les imposer : tu prends le temps de les partager, de les expliquer et d’embarquer l’équipe. Avec toi, le changement se fait à plusieurs.",
+        "À explorer ensemble : ce que tu fais quand une idée que tu portes ne prend pas dans le groupe. Tu ralentis pour attendre tout le monde, ou tu cherches un autre chemin ?"
+      ]
     },
     {
       "id": "second-souffle",
       "dominant": "collectif",
       "second": "meilleure-version",
       "label": "Second souffle",
-      "description": "Progresse en tirant l’équipe, pas en avançant seul."
+      "description": "Progresse en tirant l’équipe, pas en avançant seul.",
+      "presentation": [
+        "Tu progresses, et tu fais progresser les autres avec toi. Quand l’équipe fatigue, c’est souvent toi qui relances.",
+        "Tu sais où tu en es et tu veux aller plus loin, mais jamais seul. Tu tiens tes engagements, tu reconnais ce que tu as encore à apprendre, et tu en fais un moteur collectif plutôt qu’une course personnelle.",
+        "À explorer ensemble : comment tu concilies ton envie d’avancer avec le rythme du groupe, et ce que tu fais quand les deux ne s’accordent pas."
+      ]
     },
     {
       "id": "point-d-appui",
       "dominant": "sans-chichi",
       "second": "collectif",
       "label": "Point d’appui",
-      "description": "On construit dessus. Franc, fiable, zéro poudre aux yeux."
+      "description": "On construit dessus. Franc, fiable, zéro poudre aux yeux.",
+      "presentation": [
+        "On peut construire sur toi. Tu dis les choses comme elles sont, et l’équipe sait qu’elle peut compter sur ta parole.",
+        "Tu t’appuies sur des faits, tu vérifies avant de parler et tu fais les choses bien, même quand personne ne regarde. Cette rigueur, tu la mets au service du groupe : ta franchise rassure plus qu’elle ne blesse.",
+        "À explorer ensemble : comment tu fais passer un message difficile sans abîmer la relation, et ce que tu fais quand tes faits contredisent l’avis du groupe."
+      ]
     },
     {
       "id": "lampe-frontale",
       "dominant": "sans-chichi",
       "second": "explorateur",
       "label": "Lampe frontale",
-      "description": "Va chercher ce qui cloche, et dit exactement ce qu’il a trouvé."
+      "description": "Va chercher ce qui cloche, et dit exactement ce qu’il a trouvé.",
+      "presentation": [
+        "Tu éclaires ce que les autres ne voient pas encore. Tu vas chercher ce qui cloche, et tu reviens avec des faits.",
+        "Curieux et exigeant, tu ne te contentes pas des apparences : tu ouvres le capot, tu vérifies, et tu dis exactement ce que tu as trouvé, même si ça dérange. Tes découvertes sont solides parce qu’elles sont étayées.",
+        "À explorer ensemble : jusqu’où tu creuses avant de décider qu’il est temps de conclure, et comment tu partages une mauvaise nouvelle."
+      ]
     },
     {
       "id": "niveau-a-bulle",
       "dominant": "sans-chichi",
       "second": "meilleure-version",
       "label": "Niveau à bulle",
-      "description": "Exigeant sur le détail, et d’abord avec lui-même."
+      "description": "Exigeant sur le détail, et d’abord avec lui-même.",
+      "presentation": [
+        "Tu vérifies que tout est droit, à commencer par toi. Exigeant sur le détail, tu l’es d’abord avec toi-même.",
+        "Tu t’appuies sur le réel et tu fais les choses proprement. Tu sais aussi te regarder en face : tu reconnais tes limites sans te flageller, et tu travailles à les dépasser. C’est cette honnêteté qui rend ton travail fiable.",
+        "À explorer ensemble : comment tu évites que l’exigence devienne du perfectionnisme, et comment tu décides qu’un travail est « assez bien »."
+      ]
     },
     {
       "id": "tete-chercheuse",
       "dominant": "explorateur",
       "second": "collectif",
       "label": "Tête chercheuse",
-      "description": "Part devant, revient avec la carte, et la partage."
+      "description": "Part devant, revient avec la carte, et la partage.",
+      "presentation": [
+        "Tu pars devant, tu explores, et tu reviens avec la carte pour la partager.",
+        "Tu aimes comprendre comment les choses marchent et proposer ce que personne n’a encore osé. Mais tu n’explores pas pour toi seul : tu ramènes ce que tu as trouvé à l’équipe, et tu fais en sorte que chacun puisse s’en servir.",
+        "À explorer ensemble : comment tu gardes le lien avec l’équipe quand tu es loin devant, et ce que tu fais quand le groupe n’est pas prêt à te suivre."
+      ]
     },
     {
       "id": "pied-de-biche",
       "dominant": "explorateur",
       "second": "sans-chichi",
       "label": "Pied de biche",
-      "description": "Ouvre ce qui est fermé et regarde vraiment dedans."
+      "description": "Ouvre ce qui est fermé et regarde vraiment dedans.",
+      "presentation": [
+        "Tu ouvres ce qui est fermé, et tu regardes vraiment dedans.",
+        "Les sujets bloqués ou opaques t’attirent. Tu n’as pas peur de bousculer les habitudes, et tu le fais avec des faits : tu démontes, tu vérifies, et tu dis franchement ce que tu as trouvé. Tes idées audacieuses reposent sur du concret.",
+        "À explorer ensemble : comment tu choisis les portes à forcer, et comment tu embarques ceux qui préféraient qu’elles restent fermées."
+      ]
     },
     {
       "id": "pas-de-cote",
       "dominant": "explorateur",
       "second": "meilleure-version",
       "label": "Pas de côté",
-      "description": "Apprend en allant voir là où personne ne regarde."
+      "description": "Apprend en allant voir là où personne ne regarde.",
+      "presentation": [
+        "Tu apprends en allant voir là où personne ne regarde.",
+        "Tu fais volontiers un pas de côté pour sortir des sentiers battus, et chaque détour est pour toi une occasion d’apprendre. Tu changes d’avis quand le terrain te contredit, et tu sais nommer ce que tu ne maîtrises pas encore : c’est comme ça que tu avances.",
+        "À explorer ensemble : comment tu décides qu’une exploration doit s’arrêter, et comment tu transformes ce que tu apprends en résultats."
+      ]
     },
     {
       "id": "cordee",
       "dominant": "meilleure-version",
       "second": "collectif",
       "label": "Cordée",
-      "description": "Monte vite, et vérifie que tout le monde suit."
+      "description": "Monte vite, et vérifie que tout le monde suit.",
+      "presentation": [
+        "Tu montes vite, et tu vérifies que tout le monde suit.",
+        "Tu prends des engagements et tu les tiens jusqu’au bout ; tu sais trancher et assumer. Mais ta progression n’a de sens que si l’équipe avance aussi : tu tends la main, tu tires le groupe, et tu ne laisses personne derrière.",
+        "À explorer ensemble : ce que tu fais quand ton rythme et celui de l’équipe ne sont pas les mêmes, et comment tu réagis quand un collègue décroche."
+      ]
     },
     {
       "id": "pierre-a-aiguiser",
       "dominant": "meilleure-version",
       "second": "sans-chichi",
       "label": "Pierre à aiguiser",
-      "description": "Travaille son geste sans se raconter d’histoires sur son niveau."
+      "description": "Travaille son geste sans se raconter d’histoires sur son niveau.",
+      "presentation": [
+        "Tu travailles ton geste, sans te raconter d’histoires sur ton niveau.",
+        "Tu veux progresser, et pour ça tu regardes les faits en face, les tiens d’abord. Tu sais ce que tu fais bien et ce que tu dois encore apprendre, tu demandes des retours francs et tu t’en sers. Ce que tu commences, tu le finis proprement.",
+        "À explorer ensemble : le dernier retour difficile que tu as reçu, et ce que tu en as fait."
+      ]
     },
     {
       "id": "marche-d-apres",
       "dominant": "meilleure-version",
       "second": "explorateur",
       "label": "Marche d’après",
-      "description": "Cherche sa prochaine marche en allant voir ailleurs."
+      "description": "Cherche sa prochaine marche en allant voir ailleurs.",
+      "presentation": [
+        "Tu cherches ta prochaine marche, en allant voir ailleurs.",
+        "Tu sais où tu en es et tu veux aller plus loin. Pour grandir, tu explores : nouveaux sujets, nouvelles façons de faire, idées que personne n’ose formuler. Tu décides vite et tu assumes, quitte à corriger le tir en route.",
+        "À explorer ensemble : ce que tu cherches dans ta prochaine étape, et comment tu choisis entre approfondir et explorer."
+      ]
     }
   ]
 }

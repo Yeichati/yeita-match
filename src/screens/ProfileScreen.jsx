@@ -8,9 +8,11 @@ function ValuePanel({ kicker, value }) {
       className="panel value-panel"
       style={{ '--value': value.color, '--value-tint': value.tint }}
     >
-      <span className="value-kicker">{kicker}</span>
-      <h3>{value.label}</h3>
-      <p className="value-expectation">« {value.expectation} »</p>
+      <div className="value-head">
+        <span className="value-kicker">{kicker}</span>
+        <h3>{value.label}</h3>
+        <p className="value-expectation">« {value.expectation} »</p>
+      </div>
       <ul className="behaviors">
         {value.behaviors.map((b) => (
           <li key={b.id}>
@@ -32,10 +34,12 @@ export default function ProfileScreen({
   profile,
   dominant,
   second,
+  values,
+  notes,
+  onNoteChange,
   printWithNotes,
   onSaveJson,
   onExportPdf,
-  onPersonChange,
 }) {
   const formattedDate = new Date(person.date + 'T12:00:00').toLocaleDateString('fr-FR')
 
@@ -70,6 +74,9 @@ export default function ProfileScreen({
           )}
           {mode === 'review' && (
             <>
+              <button className="secondary" onClick={onSaveJson}>
+                <Download size={17} /> Enregistrer la partie et les notes (.json)
+              </button>
               <button className="secondary" onClick={() => onExportPdf(false)}>
                 <Download size={17} /> PDF sans notes
               </button>
@@ -81,14 +88,20 @@ export default function ProfileScreen({
         </div>
       </div>
 
+      <article className="profile-text">
+        {profile.presentation.map((paragraph, i) => (
+          <p key={i} className={i === 0 ? 'profile-intro' : undefined}>
+            {paragraph}
+          </p>
+        ))}
+      </article>
+
       <div className="result-grid">
         <ValuePanel kicker="Ta dominante" value={dominant} />
         <ValuePanel kicker="Ta seconde couleur" value={second} />
       </div>
 
-      {mode === 'review' && (
-        <NotesPanel notes={person.notes} followup={person.followup} onChange={onPersonChange} />
-      )}
+      {mode === 'review' && <NotesPanel values={values} notes={notes} onChange={onNoteChange} />}
 
       <div className="result-bottom">
         <p>

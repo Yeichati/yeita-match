@@ -3,8 +3,8 @@
     {
       "id": "collectif",
       "label": "Jouer collectif",
-      "color": "#1b8a5a",
-      "tint": "#e3f4ea",
+      "color": "#199363",
+      "tint": "#d2f1e3",
       "expectation": "On attend que tu rendes l’équipe meilleure, pas seulement ton travail.",
       "behaviors": [
         {
@@ -30,8 +30,8 @@
     {
       "id": "sans-chichi",
       "label": "Sans chichi",
-      "color": "#5146d8",
-      "tint": "#ebe9fd",
+      "color": "#4f3fed",
+      "tint": "#e7e1fe",
       "expectation": "On attend que tu dises les choses comme elles sont, preuves à l’appui, sans emballage.",
       "behaviors": [
         {
@@ -57,8 +57,8 @@
     {
       "id": "explorateur",
       "label": "Explorateur",
-      "color": "#9a6516",
-      "tint": "#f8eed8",
+      "color": "#9f671a",
+      "tint": "#faeaca",
       "expectation": "On attend que tu ailles voir par toi-même, et que tu reviennes avec autre chose que des certitudes.",
       "behaviors": [
         {
@@ -84,8 +84,8 @@
     {
       "id": "meilleure-version",
       "label": "Sa meilleure version",
-      "color": "#c62f58",
-      "tint": "#fce6ec",
+      "color": "#d23157",
+      "tint": "#ffdfe6",
       "expectation": "On attend que tu saches où tu en es, et que tu bouges de là.",
       "behaviors": [
         {

@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import SiteFooter from './components/SiteFooter.jsx'
 import SiteHeader from './components/SiteHeader.jsx'
+import { NOTE_MAX_LENGTH } from './components/NotesPanel.jsx'
 import { downloadJson, exportFileName, printWithTitle } from './lib/exports.js'
 import { profiles, rounds, situations, values } from './lib/gameData.js'
 import {
@@ -20,8 +21,6 @@ const EMPTY_PERSON = {
   candidateName: '',
   hostName: '',
   date: new Date().toLocaleDateString('en-CA'),
-  notes: '',
-  followup: '',
 }
 const VALUE_IDS = values.map((v) => v.id)
 const VALUE_OF_CARD = cardValueIndex(situations, values)
@@ -48,6 +47,7 @@ export default function App() {
   const [tiebreaks, setTiebreaks] = useState([])
   const [tiebreakRound, setTiebreakRound] = useState(null)
   const [tiebreakPick, setTiebreakPick] = useState([])
+  const [notes, setNotes] = useState({})
   const [printWithNotes, setPrintWithNotes] = useState(true)
   const [importError, setImportError] = useState('')
 
@@ -66,6 +66,7 @@ export default function App() {
     setDeck(createDeck(situations, rounds))
     setAnswers({})
     setTiebreaks([])
+    setNotes({})
     setIndex(0)
     setStage('play')
     setSetupOpen(false)
@@ -144,7 +145,7 @@ export default function App() {
 
   function saveJson() {
     downloadJson(
-      serializeSession({ person, deck, answers, tiebreaks }),
+      serializeSession({ person, deck, answers, tiebreaks, notes }),
       exportFileName(person, { extension: 'json' }),
     )
   }
@@ -154,7 +155,13 @@ export default function App() {
     event.target.value = ''
     if (!file) return
     try {
-      const session = parseSession(JSON.parse(await file.text()), situations, rounds)
+      const session = parseSession(
+        JSON.parse(await file.text()),
+        situations,
+        rounds,
+        VALUE_IDS,
+        NOTE_MAX_LENGTH,
+      )
       if (rankingOf(session.deck, session.answers, session.tiebreaks).pending)
         throw Error('Départage manquant')
       setPerson({
@@ -166,6 +173,7 @@ export default function App() {
       setDeck(session.deck)
       setAnswers(session.answers)
       setTiebreaks(session.tiebreaks)
+      setNotes(session.notes)
       setIndex(session.deck.length - 1)
       setStage('review')
       setImportError('')
@@ -228,10 +236,12 @@ export default function App() {
             profile={findProfile(profiles, ranking)}
             dominant={valueById(ranking.dominant)}
             second={valueById(ranking.second)}
+            values={values}
+            notes={notes}
+            onNoteChange={(valueId, text) => setNotes((n) => ({ ...n, [valueId]: text }))}
             printWithNotes={printWithNotes}
             onSaveJson={saveJson}
             onExportPdf={exportPdf}
-            onPersonChange={updatePerson}
           />
         )}
       </main>

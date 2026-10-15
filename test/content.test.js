@@ -26,6 +26,11 @@ test('exactly one profile per ordered pair of distinct values', () => {
       const found = profiles.filter((p) => p.dominant === d && p.second === s)
       assert.equal(found.length, 1, `${d} › ${s}`)
       assert.ok(found[0].label && found[0].description, found[0].id)
+      assert.ok(Array.isArray(found[0].presentation), found[0].id)
+      assert.ok(
+        found[0].presentation.length >= 2 && found[0].presentation.every(Boolean),
+        found[0].id,
+      )
     }
   }
 })
