@@ -7,13 +7,17 @@
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview --host 0.0.0.0",
-    "test": "node --test"
+    "test": "node --test",
+    "format": "prettier --write src test",
+    "format:check": "prettier --check src test"
   },
   "dependencies": {
-    "@vitejs/plugin-react": "6.1.1",
-    "vite": "8.3.1",
     "react": "19.3.0",
     "react-dom": "19.3.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@vitejs/plugin-react": "6.1.1",
+    "prettier": "3.8.1",
+    "vite": "8.3.1"
+  }
 }
