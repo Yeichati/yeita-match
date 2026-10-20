@@ -738,7 +738,6 @@ button:disabled {
   padding: 0;
   display: grid;
   gap: 12px;
-  max-width: 640px;
 }
 .bars li {
   display: grid;
