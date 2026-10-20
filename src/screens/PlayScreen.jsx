@@ -44,7 +44,7 @@ export default function PlayScreen({
   const isTiebreak = index === null
   const full = selected.length >= required
   return (
-    <section className="play-screen">
+    <section className={`play-screen ${isTiebreak ? 'tiebreak' : ''}`}>
       <div className="play-top">
         <button className="text-btn" onClick={onBack}>
           <ArrowLeft size={17} /> {index === 0 ? 'Quitter' : 'Précédent'}
@@ -87,6 +87,7 @@ export default function PlayScreen({
             <button
               key={card.id}
               className={`choice-card ${chosen ? 'chosen' : ''}`}
+              style={{ '--i': i }}
               disabled={full && !chosen}
               aria-pressed={chosen}
               onClick={() => onPick(card.id)}

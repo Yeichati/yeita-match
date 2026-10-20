@@ -209,6 +209,7 @@ export default function App() {
         )}
         {stage === 'play' && round && (
           <PlayScreen
+            key={round.id}
             round={round}
             index={index}
             total={deck.length}
@@ -222,6 +223,7 @@ export default function App() {
         )}
         {stage === 'tiebreak' && tiebreakRound && (
           <PlayScreen
+            key={tiebreakRound.situation.id}
             round={tiebreakRound.situation}
             index={null}
             total={null}
