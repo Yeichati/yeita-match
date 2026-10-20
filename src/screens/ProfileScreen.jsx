@@ -1,5 +1,6 @@
 import { Download, ShieldCheck, Sparkles } from '../components/Icons.jsx'
 import NotesPanel from '../components/NotesPanel.jsx'
+import ProfileExplanation from '../components/ProfileExplanation.jsx'
 
 // One of the two values of the profile: its expectation and its three behaviours.
 function ValuePanel({ kicker, value }) {
@@ -32,6 +33,9 @@ export default function ProfileScreen({
   mode,
   person,
   profile,
+  profiles,
+  cards,
+  tiebreakValues,
   dominant,
   second,
   values,
@@ -100,6 +104,14 @@ export default function ProfileScreen({
         <ValuePanel kicker="Ta dominante" value={dominant} />
         <ValuePanel kicker="Ta seconde couleur" value={second} />
       </div>
+
+      <ProfileExplanation
+        values={values}
+        profiles={profiles}
+        profile={profile}
+        cards={cards}
+        tiebreakValues={tiebreakValues}
+      />
 
       {mode === 'review' && <NotesPanel values={values} notes={notes} onChange={onNoteChange} />}
 

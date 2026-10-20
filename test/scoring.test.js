@@ -2,6 +2,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import {
   cardValueIndex,
+  cardsPerValue,
   countValues,
   createTiebreakRound,
   findProfile,
@@ -127,4 +128,20 @@ test('random answers on the fixed situations always end on one of the 12 profile
     assert.ok(tiebreaks.length <= tiebreakSituations.length)
     assert.ok(findProfile(profiles, ranking))
   }
+})
+
+test('cards per value include the tie-break cards, counted on their own too', () => {
+  const answers = Object.fromEntries(
+    situations.map((s) => [s.id, [cardOf('collectif', s), cardOf('explorateur', s)]]),
+  )
+  const tiebreaks = [
+    {
+      situation: tiebreakSituations[0].id,
+      between: ['collectif', 'explorateur'],
+      chosen: cardOf('explorateur'),
+    },
+  ]
+  const { total, fromTiebreaks } = cardsPerValue(situations, answers, tiebreaks, valueOf, valueIds)
+  assert.deepEqual(total, totals(8, 0, 9, 0))
+  assert.deepEqual(fromTiebreaks, totals(0, 0, 1, 0))
 })

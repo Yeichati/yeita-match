@@ -18,7 +18,7 @@ Formatage : Prettier (`.prettierrc.json`), vérifié par la CI avec `npx prettie
 1. Accueil → « Commencer » → identité obligatoire (nom complet du candidat, nom complet du maître du jeu et date).
 2. Huit manches, les mêmes pour tous les candidats et dans le même ordre : à chaque manche, une situation et quatre cartes (une par valeur, toujours dans le même ordre) ; le candidat en choisit deux, sans ordre.
 3. En cas d’égalité pour la 1re ou la 2e valeur, une « Dernière manche » surprise : une situation de départage fixe, avec les seules cartes des valeurs à égalité, 1 carte à choisir. Une seconde situation fixe sert si une égalité subsiste (2 manches au plus).
-4. Page de profil montrée au candidat : nom du profil, combinaison dominante › seconde, texte de présentation, détail des deux valeurs. Export PDF ou JSON de la partie.
+4. Page de profil montrée au candidat : nom du profil, combinaison dominante › seconde, texte de présentation, détail des deux valeurs, puis « Comment tes choix mènent à ce profil » : nombre de cartes choisies par valeur (cartes de départage comprises et signalées) et grille des 12 profils avec le sien mis en avant. Export PDF ou JSON de la partie.
 5. Hors entretien : sur l’accueil, « Reprendre une partie pour rédiger mes notes » → importer le JSON, renseigner une note par valeur (toujours dans l’ordre Jouer collectif, Sans chichi, Explorateur, Sa meilleure version), enregistrer le JSON avec les notes, exporter le PDF avec ou sans notes.
 
 Le JSON contient des données personnelles et les choix du candidat : le conserver de manière sécurisée et ne le partager qu'avec les personnes autorisées.
@@ -33,7 +33,7 @@ src/
     situations.json les 8 situations jouées (dans l’ordre) et les 2 situations de départage, 4 cartes chacune, une par valeur
   App.jsx           état de l’application et enchaînement des écrans
   screens/          WelcomeScreen, PlayScreen, ProfileScreen
-  components/       SiteHeader, YeitaLogo, SiteFooter, SetupModal, NotesPanel, Icons
+  components/       SiteHeader, YeitaLogo, SiteFooter, SetupModal, ProfileExplanation, NotesPanel, Icons
   lib/
     scoring.js      comptage par valeur, départage, choix du profil
     session.js      format du fichier .json (v2, notes comprises) et validation à l’import
