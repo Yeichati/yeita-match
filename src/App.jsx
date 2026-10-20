@@ -3,11 +3,10 @@ import SiteFooter from './components/SiteFooter.jsx'
 import SiteHeader from './components/SiteHeader.jsx'
 import { NOTE_MAX_LENGTH } from './components/NotesPanel.jsx'
 import { downloadJson, exportFileName, printWithTitle } from './lib/exports.js'
-import { profiles, rounds, situations, values } from './lib/gameData.js'
+import { profiles, situations, tiebreakSituations, values } from './lib/gameData.js'
 import {
   cardValueIndex,
   countValues,
-  createDeck,
   createTiebreakRound,
   findProfile,
   resolveRanking,
@@ -23,7 +22,7 @@ const EMPTY_PERSON = {
   date: new Date().toLocaleDateString('en-CA'),
 }
 const VALUE_IDS = values.map((v) => v.id)
-const VALUE_OF_CARD = cardValueIndex(situations, values)
+const VALUE_OF_CARD = cardValueIndex([...situations, ...tiebreakSituations], values)
 const valueById = (id) => values.find((v) => v.id === id)
 
 // Profile reached by a set of answers and tie-breaks: { dominant, second } or { pending }.
@@ -63,7 +62,7 @@ export default function App() {
 
   function start() {
     if (!person.candidateName.trim() || !person.hostName.trim() || !person.date) return
-    setDeck(createDeck(situations, rounds))
+    setDeck(situations)
     setAnswers({})
     setTiebreaks([])
     setNotes({})
@@ -101,10 +100,14 @@ export default function App() {
     setTiebreaks(nextTiebreaks)
     setTiebreakPick([])
     if (next.pending) {
-      const used = [...deck.map((s) => s.id), ...nextTiebreaks.map((t) => t.situation)]
       setTiebreakRound({
         between: next.pending,
-        situation: createTiebreakRound(situations, used, next.pending, VALUE_OF_CARD),
+        situation: createTiebreakRound(
+          tiebreakSituations,
+          nextTiebreaks.length,
+          next.pending,
+          VALUE_OF_CARD,
+        ),
       })
       setStage('tiebreak')
     } else {
@@ -158,7 +161,7 @@ export default function App() {
       const session = parseSession(
         JSON.parse(await file.text()),
         situations,
-        rounds,
+        tiebreakSituations,
         VALUE_IDS,
         NOTE_MAX_LENGTH,
       )

@@ -1,30 +1,10 @@
-// Deck drawing and profile resolution.
+// Profile resolution.
 //
-// Each situation offers one card per value, and every card points to a behaviour of one value.
+// Every candidate plays the same situations, in the same order, with the same cards in the same
+// order (see src/data/situations.json). Each situation offers one card per value, and every card points to a behaviour of one value.
 // The candidate picks two cards per round, without order: each pick gives 1 point to its value.
 // The two values with the most points give the profile (dominant › second). When a tie decides
 // either place, the candidate plays a tie-break round restricted to the tied values.
-
-export function shuffle(items) {
-  const out = [...items]
-  for (let i = out.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[out[i], out[j]] = [out[j], out[i]]
-  }
-  return out
-}
-
-// One situation per category first, then random ones up to `count`; cards shuffled.
-export function createDeck(situations, count) {
-  const categories = [...new Set(situations.map((s) => s.category))]
-  const oneByCategory = shuffle(categories).map(
-    (c) => shuffle(situations.filter((s) => s.category === c))[0],
-  )
-  const others = shuffle(situations.filter((s) => !oneByCategory.includes(s)))
-  return shuffle([...oneByCategory, ...others.slice(0, Math.max(0, count - oneByCategory.length))])
-    .slice(0, count)
-    .map((s) => ({ ...s, cards: shuffle(s.cards) }))
-}
 
 // Map from card id to the id of the value its behaviour belongs to.
 export function cardValueIndex(situations, values) {
@@ -70,14 +50,10 @@ export function resolveRanking(totals, tiebreaks, valueOf) {
   return { dominant: ranked[0], second: ranked[1] }
 }
 
-// A situation not played yet, showing only the cards of the tied values.
-export function createTiebreakRound(situations, usedIds, between, valueOf) {
-  const candidates = situations.filter((s) => !usedIds.includes(s.id))
-  const situation = shuffle(candidates)[0]
-  return {
-    ...situation,
-    cards: shuffle(situation.cards.filter((c) => between.includes(valueOf.get(c.id)))),
-  }
+// The next tie-break situation (fixed, in order), showing only the cards of the tied values.
+export function createTiebreakRound(tiebreakSituations, played, between, valueOf) {
+  const situation = tiebreakSituations[played]
+  return { ...situation, cards: situation.cards.filter((c) => between.includes(valueOf.get(c.id))) }
 }
 
 export function findProfile(profiles, { dominant, second }) {

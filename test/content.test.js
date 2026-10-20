@@ -2,7 +2,7 @@
 // hand in the JSON files: a failing test names the faulty entry.
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { profiles, rounds, situations, situationsFile, valueIds, values } from './helpers.js'
+import { profiles, situations, tiebreakSituations, valueIds, values } from './helpers.js'
 
 const behaviorValue = new Map(values.flatMap((v) => v.behaviors.map((b) => [b.id, v.id])))
 
@@ -35,26 +35,43 @@ test('exactly one profile per ordered pair of distinct values', () => {
   }
 })
 
+const allSituations = [...situations, ...tiebreakSituations]
+const valuesOf = (s) => s.cards.map((c) => behaviorValue.get(c.behavior))
+
+test('8 fixed situations and 2 tie-break situations', () => {
+  assert.equal(situations.length, 8)
+  assert.equal(tiebreakSituations.length, 2)
+})
+
 test('each situation has 4 cards, one per value, with known behaviours', () => {
-  for (const s of situations) {
-    assert.ok(s.title && s.context && situationsFile.categories.includes(s.category), s.id)
+  for (const s of allSituations) {
+    assert.ok(s.title && s.context, s.id)
     assert.equal(s.cards.length, 4, s.id)
     for (const c of s.cards) assert.ok(behaviorValue.has(c.behavior) && c.label, c.id)
-    assert.deepEqual(
-      new Set(s.cards.map((c) => behaviorValue.get(c.behavior))),
-      new Set(valueIds),
-      s.id,
-    )
+    assert.deepEqual(new Set(valuesOf(s)), new Set(valueIds), s.id)
+  }
+})
+
+test('cards are not shuffled, so each value appears equally often at each position', () => {
+  for (const id of valueIds) {
+    const positions = situations.map((s) => valuesOf(s).indexOf(id))
+    for (let p = 0; p < 4; p++) {
+      assert.equal(positions.filter((x) => x === p).length, situations.length / 4, `${id} @${p}`)
+    }
+  }
+})
+
+test('every behaviour of every value is played, none twice as often as another', () => {
+  const counts = new Map()
+  for (const s of situations)
+    for (const c of s.cards) counts.set(c.behavior, (counts.get(c.behavior) ?? 0) + 1)
+  for (const v of values) {
+    const n = v.behaviors.map((b) => counts.get(b.id) ?? 0)
+    assert.ok(Math.min(...n) >= 2 && Math.max(...n) - Math.min(...n) <= 1, `${v.id}: ${n}`)
   }
 })
 
 test('situation and card ids are unique', () => {
-  const ids = situations.flatMap((s) => [s.id, ...s.cards.map((c) => c.id)])
+  const ids = allSituations.flatMap((s) => [s.id, ...s.cards.map((c) => c.id)])
   assert.equal(new Set(ids).size, ids.length)
-})
-
-test('enough situations for a game and its tie-break rounds', () => {
-  const categories = new Set(situations.map((s) => s.category))
-  assert.ok(rounds >= categories.size)
-  assert.ok(situations.length >= rounds + 2)
 })
