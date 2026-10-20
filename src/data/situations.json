@@ -1,460 +1,7 @@
 {
-  "game": {
-    "rounds": 8
-  },
-  "categories": ["collectif", "changement", "clarification", "decision", "relation", "autonomie"],
   "situations": [
     {
-      "id": "s01",
-      "category": "collectif",
-      "title": "Un désaccord ralentit l’équipe",
-      "context": "Tu dois avancer malgré deux propositions opposées.",
-      "cards": [
-        {
-          "id": "s01-a",
-          "label": "Demander l’avis de quelqu’un d’extérieur",
-          "behavior": "tisser"
-        },
-        {
-          "id": "s01-b",
-          "label": "Comparer les deux propositions point par point",
-          "behavior": "aller-verifier"
-        },
-        {
-          "id": "s01-c",
-          "label": "Accepter de revoir sa position",
-          "behavior": "changer-avis"
-        },
-        {
-          "id": "s01-d",
-          "label": "Prendre en charge la suite, quelle qu’elle soit",
-          "behavior": "porter-au-bout"
-        }
-      ]
-    },
-    {
-      "id": "s02",
-      "category": "collectif",
-      "title": "Une personne reste en retrait",
-      "context": "En réunion, une voix ne se fait presque jamais entendre.",
-      "cards": [
-        {
-          "id": "s02-a",
-          "label": "Aller la voir après la réunion",
-          "behavior": "tenir-ensemble"
-        },
-        {
-          "id": "s02-b",
-          "label": "Veiller à ce que chacun puisse parler",
-          "behavior": "faire-droit"
-        },
-        {
-          "id": "s02-c",
-          "label": "Chercher ce qui la freine vraiment",
-          "behavior": "ouvrir-le-capot"
-        },
-        {
-          "id": "s02-d",
-          "label": "Changer le format de la réunion, tout de suite",
-          "behavior": "trancher"
-        }
-      ]
-    },
-    {
-      "id": "s03",
-      "category": "collectif",
-      "title": "Un travail collectif patine",
-      "context": "Tout le monde participe, mais les avancées restent floues.",
-      "cards": [
-        {
-          "id": "s03-a",
-          "label": "Reformuler simplement où on en est",
-          "behavior": "se-faire-comprendre"
-        },
-        {
-          "id": "s03-b",
-          "label": "Lister ce qui est vraiment terminé",
-          "behavior": "appui-reel"
-        },
-        {
-          "id": "s03-c",
-          "label": "Proposer une autre façon de s’organiser",
-          "behavior": "truc-a-cote"
-        },
-        {
-          "id": "s03-d",
-          "label": "Reconnaître sa part dans le flou",
-          "behavior": "regarder-en-face"
-        }
-      ]
-    },
-    {
-      "id": "s04",
-      "category": "collectif",
-      "title": "Un atelier part dans tous les sens",
-      "context": "Les idées fusent, mais personne ne sait comment avancer.",
-      "cards": [
-        {
-          "id": "s04-a",
-          "label": "Faire le lien avec ce que font d’autres équipes",
-          "behavior": "tisser"
-        },
-        {
-          "id": "s04-b",
-          "label": "Revenir aux données du problème",
-          "behavior": "aller-verifier"
-        },
-        {
-          "id": "s04-c",
-          "label": "Changer de format et expliquer pourquoi",
-          "behavior": "changer-avis"
-        },
-        {
-          "id": "s04-d",
-          "label": "Repartir avec une action et la porter",
-          "behavior": "porter-au-bout"
-        }
-      ]
-    },
-    {
-      "id": "s05",
-      "category": "collectif",
-      "title": "Deux métiers défendent leurs priorités",
-      "context": "Le design et la technique n’avancent pas au même rythme.",
-      "cards": [
-        {
-          "id": "s05-a",
-          "label": "Rester solidaire des deux côtés",
-          "behavior": "tenir-ensemble"
-        },
-        {
-          "id": "s05-b",
-          "label": "S’assurer que chaque métier est entendu équitablement",
-          "behavior": "faire-droit"
-        },
-        {
-          "id": "s05-c",
-          "label": "Comprendre en détail les contraintes de chacun",
-          "behavior": "ouvrir-le-capot"
-        },
-        {
-          "id": "s05-d",
-          "label": "Arbitrer avec ce qu’on sait aujourd’hui",
-          "behavior": "trancher"
-        }
-      ]
-    },
-    {
-      "id": "s06",
-      "category": "collectif",
-      "title": "Une décision ne fait pas consensus",
-      "context": "Une partie du groupe reste sceptique après une réunion.",
-      "cards": [
-        {
-          "id": "s06-a",
-          "label": "Réexpliquer le pourquoi de la décision",
-          "behavior": "se-faire-comprendre"
-        },
-        {
-          "id": "s06-b",
-          "label": "Montrer les éléments qui l’ont motivée",
-          "behavior": "appui-reel"
-        },
-        {
-          "id": "s06-c",
-          "label": "Proposer un test pour lever les doutes",
-          "behavior": "truc-a-cote"
-        },
-        {
-          "id": "s06-d",
-          "label": "Se demander si on a bien écouté",
-          "behavior": "regarder-en-face"
-        }
-      ]
-    },
-    {
-      "id": "s07",
-      "category": "collectif",
-      "title": "Une nouvelle personne rejoint le projet",
-      "context": "Elle doit trouver sa place dans une équipe déjà rodée.",
-      "cards": [
-        {
-          "id": "s07-a",
-          "label": "La présenter aux bonnes personnes",
-          "behavior": "tisser"
-        },
-        {
-          "id": "s07-b",
-          "label": "Vérifier qu’elle a accès à tout",
-          "behavior": "aller-verifier"
-        },
-        {
-          "id": "s07-c",
-          "label": "Revoir nos habitudes à la lumière de son regard",
-          "behavior": "changer-avis"
-        },
-        {
-          "id": "s07-d",
-          "label": "Suivre son intégration jusqu’à ce qu’elle soit à l’aise",
-          "behavior": "porter-au-bout"
-        }
-      ]
-    },
-    {
-      "id": "s08",
-      "category": "collectif",
-      "title": "Une réunion tourne en boucle",
-      "context": "Tout le monde participe, mais les échanges n’avancent pas.",
-      "cards": [
-        {
-          "id": "s08-a",
-          "label": "Garder le groupe soudé malgré la lassitude",
-          "behavior": "tenir-ensemble"
-        },
-        {
-          "id": "s08-b",
-          "label": "Veiller à ce que la parole reste partagée",
-          "behavior": "faire-droit"
-        },
-        {
-          "id": "s08-c",
-          "label": "Chercher la vraie question derrière le débat",
-          "behavior": "ouvrir-le-capot"
-        },
-        {
-          "id": "s08-d",
-          "label": "Proposer de décider maintenant",
-          "behavior": "trancher"
-        }
-      ]
-    },
-    {
-      "id": "s09",
-      "category": "changement",
-      "title": "Le plan change au dernier moment",
-      "context": "La priorité du jour n’est plus celle d’hier.",
-      "cards": [
-        {
-          "id": "s09-a",
-          "label": "Expliquer le changement à ceux qui l’ignorent",
-          "behavior": "se-faire-comprendre"
-        },
-        {
-          "id": "s09-b",
-          "label": "Demander ce qui justifie ce changement",
-          "behavior": "appui-reel"
-        },
-        {
-          "id": "s09-c",
-          "label": "Voir ce que ce changement rend possible",
-          "behavior": "truc-a-cote"
-        },
-        {
-          "id": "s09-d",
-          "label": "Dire franchement que ça déstabilise",
-          "behavior": "regarder-en-face"
-        }
-      ]
-    },
-    {
-      "id": "s10",
-      "category": "changement",
-      "title": "Un imprévu bouleverse la semaine",
-      "context": "Un obstacle rend ton approche initiale difficile à tenir.",
-      "cards": [
-        {
-          "id": "s10-a",
-          "label": "Appeler quelqu’un qui a déjà vécu ça",
-          "behavior": "tisser"
-        },
-        {
-          "id": "s10-b",
-          "label": "Mesurer l’impact réel de l’obstacle",
-          "behavior": "aller-verifier"
-        },
-        {
-          "id": "s10-c",
-          "label": "Changer d’approche et dire pourquoi",
-          "behavior": "changer-avis"
-        },
-        {
-          "id": "s10-d",
-          "label": "Tenir l’engagement, quitte à s’adapter",
-          "behavior": "porter-au-bout"
-        }
-      ]
-    },
-    {
-      "id": "s11",
-      "category": "changement",
-      "title": "Une nouvelle manière de travailler",
-      "context": "L’équipe veut essayer un outil que tu ne connais pas.",
-      "cards": [
-        {
-          "id": "s11-a",
-          "label": "Jouer le jeu avec l’équipe",
-          "behavior": "tenir-ensemble"
-        },
-        {
-          "id": "s11-b",
-          "label": "Vérifier que l’outil respecte les données de chacun",
-          "behavior": "faire-droit"
-        },
-        {
-          "id": "s11-c",
-          "label": "Comprendre comment l’outil fonctionne",
-          "behavior": "ouvrir-le-capot"
-        },
-        {
-          "id": "s11-d",
-          "label": "Fixer une date pour décider de le garder",
-          "behavior": "trancher"
-        }
-      ]
-    },
-    {
-      "id": "s12",
-      "category": "changement",
-      "title": "Le planning est bouleversé",
-      "context": "Une contrainte extérieure change les priorités du mois.",
-      "cards": [
-        {
-          "id": "s12-a",
-          "label": "Rendre le nouveau plan clair pour tous",
-          "behavior": "se-faire-comprendre"
-        },
-        {
-          "id": "s12-b",
-          "label": "Repartir des délais réellement tenables",
-          "behavior": "appui-reel"
-        },
-        {
-          "id": "s12-c",
-          "label": "Chercher une option à laquelle personne n’a pensé",
-          "behavior": "truc-a-cote"
-        },
-        {
-          "id": "s12-d",
-          "label": "Reconnaître ce qu’on ne sait pas encore estimer",
-          "behavior": "regarder-en-face"
-        }
-      ]
-    },
-    {
-      "id": "s13",
-      "category": "changement",
-      "title": "Une expérimentation échoue",
-      "context": "L’essai ne donne pas le résultat espéré.",
-      "cards": [
-        {
-          "id": "s13-a",
-          "label": "Partager l’échec avec d’autres équipes",
-          "behavior": "tisser"
-        },
-        {
-          "id": "s13-b",
-          "label": "Analyser précisément ce qui n’a pas marché",
-          "behavior": "aller-verifier"
-        },
-        {
-          "id": "s13-c",
-          "label": "Abandonner l’idée et dire pourquoi",
-          "behavior": "changer-avis"
-        },
-        {
-          "id": "s13-d",
-          "label": "Terminer le bilan avant de passer à autre chose",
-          "behavior": "porter-au-bout"
-        }
-      ]
-    },
-    {
-      "id": "s14",
-      "category": "changement",
-      "title": "Un outil habituel disparaît",
-      "context": "L’équipe doit travailler sans son logiciel favori.",
-      "cards": [
-        {
-          "id": "s14-a",
-          "label": "Serrer les rangs le temps de la transition",
-          "behavior": "tenir-ensemble"
-        },
-        {
-          "id": "s14-b",
-          "label": "S’assurer que personne n’est laissé de côté",
-          "behavior": "faire-droit"
-        },
-        {
-          "id": "s14-c",
-          "label": "Démonter ce que l’outil faisait vraiment",
-          "behavior": "ouvrir-le-capot"
-        },
-        {
-          "id": "s14-d",
-          "label": "Choisir vite un remplaçant provisoire",
-          "behavior": "trancher"
-        }
-      ]
-    },
-    {
-      "id": "s15",
-      "category": "changement",
-      "title": "Le besoin change après le lancement",
-      "context": "De nouveaux retours remettent en question le plan initial.",
-      "cards": [
-        {
-          "id": "s15-a",
-          "label": "Expliquer à l’équipe ce que disent les retours",
-          "behavior": "se-faire-comprendre"
-        },
-        {
-          "id": "s15-b",
-          "label": "Trier les retours selon leur poids réel",
-          "behavior": "appui-reel"
-        },
-        {
-          "id": "s15-c",
-          "label": "Imaginer une réponse différente du plan",
-          "behavior": "truc-a-cote"
-        },
-        {
-          "id": "s15-d",
-          "label": "Accepter que le plan initial était imparfait",
-          "behavior": "regarder-en-face"
-        }
-      ]
-    },
-    {
-      "id": "s16",
-      "category": "changement",
-      "title": "Une idée inattendue émerge",
-      "context": "Quelqu’un propose une approche inhabituelle.",
-      "cards": [
-        {
-          "id": "s16-a",
-          "label": "Lui ouvrir les bonnes portes",
-          "behavior": "tisser"
-        },
-        {
-          "id": "s16-b",
-          "label": "Regarder ce qui la rend crédible",
-          "behavior": "aller-verifier"
-        },
-        {
-          "id": "s16-c",
-          "label": "Se laisser convaincre si elle tient la route",
-          "behavior": "changer-avis"
-        },
-        {
-          "id": "s16-d",
-          "label": "Proposer de la porter jusqu’à un premier test",
-          "behavior": "porter-au-bout"
-        }
-      ]
-    },
-    {
       "id": "s17",
-      "category": "clarification",
       "title": "Une demande manque de clarté",
       "context": "On te demande de résoudre un problème sans préciser l’attente.",
       "cards": [
@@ -481,207 +28,69 @@
       ]
     },
     {
-      "id": "s18",
-      "category": "clarification",
-      "title": "Les informations se contredisent",
-      "context": "Plusieurs sources donnent des versions différentes d’un même sujet.",
+      "id": "s01",
+      "title": "Un désaccord ralentit l’équipe",
+      "context": "Tu dois avancer malgré deux propositions opposées.",
       "cards": [
         {
-          "id": "s18-a",
-          "label": "Mettre les versions côte à côte, en clair",
-          "behavior": "se-faire-comprendre"
-        },
-        {
-          "id": "s18-b",
-          "label": "Croire la source qui a des chiffres",
-          "behavior": "appui-reel"
-        },
-        {
-          "id": "s18-c",
-          "label": "Chercher une troisième explication",
-          "behavior": "truc-a-cote"
-        },
-        {
-          "id": "s18-d",
-          "label": "Admettre qu’on ne sait pas encore",
-          "behavior": "regarder-en-face"
-        }
-      ]
-    },
-    {
-      "id": "s19",
-      "category": "clarification",
-      "title": "Une réunion s’éparpille",
-      "context": "Beaucoup d’idées intéressantes émergent, mais le sujet initial disparaît.",
-      "cards": [
-        {
-          "id": "s19-a",
-          "label": "Noter les idées pour les confier à d’autres",
-          "behavior": "tisser"
-        },
-        {
-          "id": "s19-b",
-          "label": "Ramener la réunion à l’ordre du jour",
+          "id": "s01-b",
+          "label": "Comparer les deux propositions point par point",
           "behavior": "aller-verifier"
         },
         {
-          "id": "s19-c",
-          "label": "Accepter que le sujet a changé",
+          "id": "s01-c",
+          "label": "Accepter de revoir sa position",
           "behavior": "changer-avis"
         },
         {
-          "id": "s19-d",
-          "label": "Rappeler l’objectif et tenir le cap",
+          "id": "s01-d",
+          "label": "Prendre en charge la suite, quelle qu’elle soit",
           "behavior": "porter-au-bout"
-        }
-      ]
-    },
-    {
-      "id": "s20",
-      "category": "clarification",
-      "title": "Un objectif est trop vague",
-      "context": "La mission commence sans définition claire de la réussite.",
-      "cards": [
-        {
-          "id": "s20-a",
-          "label": "Construire la définition avec l’équipe",
-          "behavior": "tenir-ensemble"
         },
         {
-          "id": "s20-b",
-          "label": "Poser des critères justes pour tous",
-          "behavior": "faire-droit"
-        },
-        {
-          "id": "s20-c",
-          "label": "Chercher à quoi sert vraiment la mission",
-          "behavior": "ouvrir-le-capot"
-        },
-        {
-          "id": "s20-d",
-          "label": "Fixer soi-même un premier objectif",
-          "behavior": "trancher"
-        }
-      ]
-    },
-    {
-      "id": "s21",
-      "category": "clarification",
-      "title": "Deux sources fiables se contredisent",
-      "context": "Deux sources sérieuses ne racontent pas la même chose.",
-      "cards": [
-        {
-          "id": "s21-a",
-          "label": "Exposer clairement le désaccord à l’équipe",
-          "behavior": "se-faire-comprendre"
-        },
-        {
-          "id": "s21-b",
-          "label": "Se fier aux faits plutôt qu’aux réputations",
-          "behavior": "appui-reel"
-        },
-        {
-          "id": "s21-c",
-          "label": "Imaginer pourquoi les deux pourraient avoir raison",
-          "behavior": "truc-a-cote"
-        },
-        {
-          "id": "s21-d",
-          "label": "Reconnaître les limites de son propre jugement",
-          "behavior": "regarder-en-face"
-        }
-      ]
-    },
-    {
-      "id": "s22",
-      "category": "clarification",
-      "title": "Une demande arrive sans contexte",
-      "context": "On te sollicite pour une urgence mal expliquée.",
-      "cards": [
-        {
-          "id": "s22-a",
-          "label": "Trouver qui connaît l’historique",
+          "id": "s01-a",
+          "label": "Demander l’avis de quelqu’un d’extérieur",
           "behavior": "tisser"
-        },
-        {
-          "id": "s22-b",
-          "label": "Vérifier que l’urgence est réelle",
-          "behavior": "aller-verifier"
-        },
-        {
-          "id": "s22-c",
-          "label": "Revoir ses priorités si c’est justifié",
-          "behavior": "changer-avis"
-        },
-        {
-          "id": "s22-d",
-          "label": "Prendre le sujet et le régler",
-          "behavior": "porter-au-bout"
         }
       ]
     },
     {
-      "id": "s23",
-      "category": "clarification",
-      "title": "Une présentation crée la confusion",
-      "context": "Le groupe ressort avec des interprétations différentes.",
+      "id": "s09",
+      "title": "Le plan change au dernier moment",
+      "context": "La priorité du jour n’est plus celle d’hier.",
       "cards": [
         {
-          "id": "s23-a",
-          "label": "Réunir le groupe pour repartir ensemble",
-          "behavior": "tenir-ensemble"
-        },
-        {
-          "id": "s23-b",
-          "label": "Donner à chacun le même niveau d’information",
-          "behavior": "faire-droit"
-        },
-        {
-          "id": "s23-c",
-          "label": "Comprendre d’où viennent les écarts",
-          "behavior": "ouvrir-le-capot"
-        },
-        {
-          "id": "s23-d",
-          "label": "Décider de l’interprétation retenue",
-          "behavior": "trancher"
-        }
-      ]
-    },
-    {
-      "id": "s24",
-      "category": "clarification",
-      "title": "Les chiffres soulèvent une question",
-      "context": "Un indicateur important évolue sans explication.",
-      "cards": [
-        {
-          "id": "s24-a",
-          "label": "Expliquer simplement ce que montre l’indicateur",
-          "behavior": "se-faire-comprendre"
-        },
-        {
-          "id": "s24-b",
-          "label": "S’en tenir aux chiffres avant de conclure",
-          "behavior": "appui-reel"
-        },
-        {
-          "id": "s24-c",
-          "label": "Tester une hypothèse que personne n’envisage",
+          "id": "s09-c",
+          "label": "Voir ce que ce changement rend possible",
           "behavior": "truc-a-cote"
         },
         {
-          "id": "s24-d",
-          "label": "Dire qu’on ne comprend pas encore",
+          "id": "s09-d",
+          "label": "Dire franchement que ça déstabilise",
           "behavior": "regarder-en-face"
+        },
+        {
+          "id": "s09-a",
+          "label": "Expliquer le changement à ceux qui l’ignorent",
+          "behavior": "se-faire-comprendre"
+        },
+        {
+          "id": "s09-b",
+          "label": "Demander ce qui justifie ce changement",
+          "behavior": "appui-reel"
         }
       ]
     },
     {
       "id": "s25",
-      "category": "decision",
       "title": "Le délai est très court",
       "context": "Tu dois choisir sans avoir tous les éléments.",
       "cards": [
+        {
+          "id": "s25-d",
+          "label": "Assumer le choix jusqu’à la livraison",
+          "behavior": "porter-au-bout"
+        },
         {
           "id": "s25-a",
           "label": "Solliciter quelqu’un qui a déjà fait ce choix",
@@ -696,521 +105,11 @@
           "id": "s25-c",
           "label": "Décider en sachant qu’on pourra corriger",
           "behavior": "changer-avis"
-        },
-        {
-          "id": "s25-d",
-          "label": "Assumer le choix jusqu’à la livraison",
-          "behavior": "porter-au-bout"
-        }
-      ]
-    },
-    {
-      "id": "s26",
-      "category": "decision",
-      "title": "Une idée ambitieuse apparaît",
-      "context": "Elle peut débloquer le sujet, mais comporte des inconnues.",
-      "cards": [
-        {
-          "id": "s26-a",
-          "label": "Embarquer l’équipe dans l’aventure",
-          "behavior": "tenir-ensemble"
-        },
-        {
-          "id": "s26-b",
-          "label": "Mesurer qui elle pourrait pénaliser",
-          "behavior": "faire-droit"
-        },
-        {
-          "id": "s26-c",
-          "label": "Comprendre ce qu’elle cache",
-          "behavior": "ouvrir-le-capot"
-        },
-        {
-          "id": "s26-d",
-          "label": "Dire oui, et l’assumer",
-          "behavior": "trancher"
-        }
-      ]
-    },
-    {
-      "id": "s27",
-      "category": "decision",
-      "title": "Le groupe hésite à se lancer",
-      "context": "Les discussions se poursuivent, sans réelle décision.",
-      "cards": [
-        {
-          "id": "s27-a",
-          "label": "Résumer les options en une phrase chacune",
-          "behavior": "se-faire-comprendre"
-        },
-        {
-          "id": "s27-b",
-          "label": "Ramener le débat aux faits",
-          "behavior": "appui-reel"
-        },
-        {
-          "id": "s27-c",
-          "label": "Proposer une option intermédiaire inattendue",
-          "behavior": "truc-a-cote"
-        },
-        {
-          "id": "s27-d",
-          "label": "Se demander pourquoi on bloque",
-          "behavior": "regarder-en-face"
-        }
-      ]
-    },
-    {
-      "id": "s28",
-      "category": "decision",
-      "title": "Il faut choisir entre deux pistes",
-      "context": "Les deux options sont intéressantes, mais le temps manque.",
-      "cards": [
-        {
-          "id": "s28-a",
-          "label": "Demander l’avis de ceux qui vivront le choix",
-          "behavior": "tisser"
-        },
-        {
-          "id": "s28-b",
-          "label": "Examiner chaque piste en détail",
-          "behavior": "aller-verifier"
-        },
-        {
-          "id": "s28-c",
-          "label": "Se laisser convaincre par la meilleure",
-          "behavior": "changer-avis"
-        },
-        {
-          "id": "s28-d",
-          "label": "Choisir et s’engager sur le résultat",
-          "behavior": "porter-au-bout"
-        }
-      ]
-    },
-    {
-      "id": "s29",
-      "category": "decision",
-      "title": "Une opportunité arrive trop tôt",
-      "context": "Une proposition intéressante menace le planning actuel.",
-      "cards": [
-        {
-          "id": "s29-a",
-          "label": "Protéger l’équipe d’une surcharge",
-          "behavior": "tenir-ensemble"
-        },
-        {
-          "id": "s29-b",
-          "label": "Respecter les engagements déjà pris",
-          "behavior": "faire-droit"
-        },
-        {
-          "id": "s29-c",
-          "label": "Évaluer ce qu’elle implique vraiment",
-          "behavior": "ouvrir-le-capot"
-        },
-        {
-          "id": "s29-d",
-          "label": "Dire non, et l’expliquer",
-          "behavior": "trancher"
-        }
-      ]
-    },
-    {
-      "id": "s30",
-      "category": "decision",
-      "title": "Le groupe manque de recul",
-      "context": "Une décision importante est attendue dans la journée.",
-      "cards": [
-        {
-          "id": "s30-a",
-          "label": "Faire reformuler la décision par chacun",
-          "behavior": "se-faire-comprendre"
-        },
-        {
-          "id": "s30-b",
-          "label": "Repartir des données disponibles",
-          "behavior": "appui-reel"
-        },
-        {
-          "id": "s30-c",
-          "label": "Proposer un regard extérieur inattendu",
-          "behavior": "truc-a-cote"
-        },
-        {
-          "id": "s30-d",
-          "label": "Reconnaître ce qu’on ne maîtrise pas",
-          "behavior": "regarder-en-face"
-        }
-      ]
-    },
-    {
-      "id": "s31",
-      "category": "decision",
-      "title": "Une demande dépasse les capacités",
-      "context": "L’équipe ne peut pas tout livrer dans les délais.",
-      "cards": [
-        {
-          "id": "s31-a",
-          "label": "Trouver du renfort dans d’autres équipes",
-          "behavior": "tisser"
-        },
-        {
-          "id": "s31-b",
-          "label": "Chiffrer précisément ce qui est faisable",
-          "behavior": "aller-verifier"
-        },
-        {
-          "id": "s31-c",
-          "label": "Renégocier le périmètre et expliquer pourquoi",
-          "behavior": "changer-avis"
-        },
-        {
-          "id": "s31-d",
-          "label": "Livrer l’essentiel coûte que coûte",
-          "behavior": "porter-au-bout"
-        }
-      ]
-    },
-    {
-      "id": "s32",
-      "category": "decision",
-      "title": "Deux risques sont difficiles à départager",
-      "context": "Aucune option ne paraît totalement rassurante.",
-      "cards": [
-        {
-          "id": "s32-a",
-          "label": "Prendre la décision à plusieurs",
-          "behavior": "tenir-ensemble"
-        },
-        {
-          "id": "s32-b",
-          "label": "Choisir l’option la plus juste pour tous",
-          "behavior": "faire-droit"
-        },
-        {
-          "id": "s32-c",
-          "label": "Décortiquer chaque risque",
-          "behavior": "ouvrir-le-capot"
-        },
-        {
-          "id": "s32-d",
-          "label": "Choisir la moins mauvaise et avancer",
-          "behavior": "trancher"
-        }
-      ]
-    },
-    {
-      "id": "s33",
-      "category": "relation",
-      "title": "Un retour est difficile à entendre",
-      "context": "Une personne critique une proposition sur laquelle tu as travaillé.",
-      "cards": [
-        {
-          "id": "s33-a",
-          "label": "Reformuler pour être sûr de comprendre",
-          "behavior": "se-faire-comprendre"
-        },
-        {
-          "id": "s33-b",
-          "label": "Demander des exemples précis",
-          "behavior": "appui-reel"
-        },
-        {
-          "id": "s33-c",
-          "label": "Y voir une piste d’amélioration inattendue",
-          "behavior": "truc-a-cote"
-        },
-        {
-          "id": "s33-d",
-          "label": "Reconnaître ce qui est juste dans la critique",
-          "behavior": "regarder-en-face"
-        }
-      ]
-    },
-    {
-      "id": "s34",
-      "category": "relation",
-      "title": "Un nouveau collègue arrive",
-      "context": "Il doit comprendre vite comment l’équipe fonctionne.",
-      "cards": [
-        {
-          "id": "s34-a",
-          "label": "Lui présenter les bonnes personnes",
-          "behavior": "tisser"
-        },
-        {
-          "id": "s34-b",
-          "label": "Préparer une documentation à jour",
-          "behavior": "aller-verifier"
-        },
-        {
-          "id": "s34-c",
-          "label": "Écouter son regard neuf sur nos pratiques",
-          "behavior": "changer-avis"
-        },
-        {
-          "id": "s34-d",
-          "label": "Suivre son arrivée jusqu’à ce qu’il soit autonome",
-          "behavior": "porter-au-bout"
-        }
-      ]
-    },
-    {
-      "id": "s35",
-      "category": "relation",
-      "title": "Une personne semble frustrée",
-      "context": "Un collègue n’arrive plus à avancer sereinement.",
-      "cards": [
-        {
-          "id": "s35-a",
-          "label": "Lui proposer une aide concrète",
-          "behavior": "tenir-ensemble"
-        },
-        {
-          "id": "s35-b",
-          "label": "Signaler la situation si elle est injuste",
-          "behavior": "faire-droit"
-        },
-        {
-          "id": "s35-c",
-          "label": "Chercher la cause de son blocage",
-          "behavior": "ouvrir-le-capot"
-        },
-        {
-          "id": "s35-d",
-          "label": "Proposer d’alléger sa charge, tout de suite",
-          "behavior": "trancher"
-        }
-      ]
-    },
-    {
-      "id": "s36",
-      "category": "relation",
-      "title": "Un collègue semble démotivé",
-      "context": "Son engagement baisse, sans explication évidente.",
-      "cards": [
-        {
-          "id": "s36-a",
-          "label": "Lui parler avec tact de ce que tu observes",
-          "behavior": "se-faire-comprendre"
-        },
-        {
-          "id": "s36-b",
-          "label": "Observer les faits avant d’interpréter",
-          "behavior": "appui-reel"
-        },
-        {
-          "id": "s36-c",
-          "label": "Lui proposer un sujet différent",
-          "behavior": "truc-a-cote"
-        },
-        {
-          "id": "s36-d",
-          "label": "Se demander ce qu’on a pu y contribuer",
-          "behavior": "regarder-en-face"
-        }
-      ]
-    },
-    {
-      "id": "s37",
-      "category": "relation",
-      "title": "Un retour est mal reçu",
-      "context": "Une remarque constructive déclenche une réaction défensive.",
-      "cards": [
-        {
-          "id": "s37-a",
-          "label": "Préserver la relation avant tout",
-          "behavior": "tisser"
-        },
-        {
-          "id": "s37-b",
-          "label": "Revoir précisément ce qui a été dit",
-          "behavior": "aller-verifier"
-        },
-        {
-          "id": "s37-c",
-          "label": "Ajuster sa façon de dire les choses",
-          "behavior": "changer-avis"
-        },
-        {
-          "id": "s37-d",
-          "label": "Reprendre la discussion jusqu’à être compris",
-          "behavior": "porter-au-bout"
-        }
-      ]
-    },
-    {
-      "id": "s38",
-      "category": "relation",
-      "title": "Une tension se crée en réunion",
-      "context": "Le ton monte entre deux participants.",
-      "cards": [
-        {
-          "id": "s38-a",
-          "label": "Calmer le jeu pour garder le groupe uni",
-          "behavior": "tenir-ensemble"
-        },
-        {
-          "id": "s38-b",
-          "label": "Rappeler les règles du respect",
-          "behavior": "faire-droit"
-        },
-        {
-          "id": "s38-c",
-          "label": "Chercher ce qui oppose vraiment les deux",
-          "behavior": "ouvrir-le-capot"
-        },
-        {
-          "id": "s38-d",
-          "label": "Suspendre la réunion",
-          "behavior": "trancher"
-        }
-      ]
-    },
-    {
-      "id": "s39",
-      "category": "relation",
-      "title": "Un message a été mal interprété",
-      "context": "Un échange écrit a créé un malentendu.",
-      "cards": [
-        {
-          "id": "s39-a",
-          "label": "Appeler pour clarifier de vive voix",
-          "behavior": "se-faire-comprendre"
-        },
-        {
-          "id": "s39-b",
-          "label": "Relire le message tel qu’il a été écrit",
-          "behavior": "appui-reel"
-        },
-        {
-          "id": "s39-c",
-          "label": "Proposer une autre façon d’échanger",
-          "behavior": "truc-a-cote"
-        },
-        {
-          "id": "s39-d",
-          "label": "Reconnaître sa part dans le malentendu",
-          "behavior": "regarder-en-face"
-        }
-      ]
-    },
-    {
-      "id": "s40",
-      "category": "relation",
-      "title": "Un partenaire ne répond plus",
-      "context": "La collaboration ralentit à cause d’un silence.",
-      "cards": [
-        {
-          "id": "s40-a",
-          "label": "Passer par un autre contact",
-          "behavior": "tisser"
-        },
-        {
-          "id": "s40-b",
-          "label": "Vérifier que les messages sont bien arrivés",
-          "behavior": "aller-verifier"
-        },
-        {
-          "id": "s40-c",
-          "label": "Revoir le plan sans lui",
-          "behavior": "changer-avis"
-        },
-        {
-          "id": "s40-d",
-          "label": "Relancer jusqu’à obtenir une réponse",
-          "behavior": "porter-au-bout"
-        }
-      ]
-    },
-    {
-      "id": "s41",
-      "category": "autonomie",
-      "title": "Tu repères une amélioration possible",
-      "context": "Personne ne t’a demandé de t’en occuper.",
-      "cards": [
-        {
-          "id": "s41-a",
-          "label": "En parler à l’équipe pour la mener ensemble",
-          "behavior": "tenir-ensemble"
-        },
-        {
-          "id": "s41-b",
-          "label": "Améliorer les choses, même sans être vu",
-          "behavior": "faire-droit"
-        },
-        {
-          "id": "s41-c",
-          "label": "Comprendre pourquoi ça fonctionne ainsi",
-          "behavior": "ouvrir-le-capot"
-        },
-        {
-          "id": "s41-d",
-          "label": "Décider de t’en occuper",
-          "behavior": "trancher"
-        }
-      ]
-    },
-    {
-      "id": "s42",
-      "category": "autonomie",
-      "title": "Un sujet nouveau t’est confié",
-      "context": "Tu disposes de peu de contexte pour commencer.",
-      "cards": [
-        {
-          "id": "s42-a",
-          "label": "Faire valider ta compréhension du sujet",
-          "behavior": "se-faire-comprendre"
-        },
-        {
-          "id": "s42-b",
-          "label": "Rassembler les faits disponibles",
-          "behavior": "appui-reel"
-        },
-        {
-          "id": "s42-c",
-          "label": "Explorer une piste hors des sentiers battus",
-          "behavior": "truc-a-cote"
-        },
-        {
-          "id": "s42-d",
-          "label": "Dire ce que tu ne sais pas encore faire",
-          "behavior": "regarder-en-face"
-        }
-      ]
-    },
-    {
-      "id": "s43",
-      "category": "autonomie",
-      "title": "Une opportunité inattendue se présente",
-      "context": "Elle est intéressante, mais sort de ce qui était prévu.",
-      "cards": [
-        {
-          "id": "s43-a",
-          "label": "En parler aux personnes concernées",
-          "behavior": "tisser"
-        },
-        {
-          "id": "s43-b",
-          "label": "Vérifier ce qu’elle implique",
-          "behavior": "aller-verifier"
-        },
-        {
-          "id": "s43-c",
-          "label": "Revoir le plan si elle en vaut la peine",
-          "behavior": "changer-avis"
-        },
-        {
-          "id": "s43-d",
-          "label": "Finir d’abord ce qui est engagé",
-          "behavior": "porter-au-bout"
         }
       ]
     },
     {
       "id": "s44",
-      "category": "autonomie",
       "title": "Tu découvres un problème discret",
       "context": "Personne ne semble encore l’avoir remarqué.",
       "cards": [
@@ -1237,8 +136,90 @@
       ]
     },
     {
+      "id": "s33",
+      "title": "Un retour est difficile à entendre",
+      "context": "Une personne critique une proposition sur laquelle tu as travaillé.",
+      "cards": [
+        {
+          "id": "s33-b",
+          "label": "Demander des exemples précis",
+          "behavior": "appui-reel"
+        },
+        {
+          "id": "s33-c",
+          "label": "Y voir une piste d’amélioration inattendue",
+          "behavior": "truc-a-cote"
+        },
+        {
+          "id": "s33-d",
+          "label": "Reconnaître ce qui est juste dans la critique",
+          "behavior": "regarder-en-face"
+        },
+        {
+          "id": "s33-a",
+          "label": "Reformuler pour être sûr de comprendre",
+          "behavior": "se-faire-comprendre"
+        }
+      ]
+    },
+    {
+      "id": "s13",
+      "title": "Une expérimentation échoue",
+      "context": "L’essai ne donne pas le résultat espéré.",
+      "cards": [
+        {
+          "id": "s13-c",
+          "label": "Abandonner l’idée et dire pourquoi",
+          "behavior": "changer-avis"
+        },
+        {
+          "id": "s13-d",
+          "label": "Terminer le bilan avant de passer à autre chose",
+          "behavior": "porter-au-bout"
+        },
+        {
+          "id": "s13-a",
+          "label": "Partager l’échec avec d’autres équipes",
+          "behavior": "tisser"
+        },
+        {
+          "id": "s13-b",
+          "label": "Analyser précisément ce qui n’a pas marché",
+          "behavior": "aller-verifier"
+        }
+      ]
+    },
+    {
+      "id": "s38",
+      "title": "Une tension se crée en réunion",
+      "context": "Le ton monte entre deux participants.",
+      "cards": [
+        {
+          "id": "s38-d",
+          "label": "Suspendre la réunion",
+          "behavior": "trancher"
+        },
+        {
+          "id": "s38-a",
+          "label": "Calmer le jeu pour garder le groupe uni",
+          "behavior": "tenir-ensemble"
+        },
+        {
+          "id": "s38-b",
+          "label": "Rappeler les règles du respect",
+          "behavior": "faire-droit"
+        },
+        {
+          "id": "s38-c",
+          "label": "Chercher ce qui oppose vraiment les deux",
+          "behavior": "ouvrir-le-capot"
+        }
+      ]
+    }
+  ],
+  "tiebreaks": [
+    {
       "id": "s45",
-      "category": "autonomie",
       "title": "Une tâche est bloquée",
       "context": "Tu dépends d’une réponse qui tarde à arriver.",
       "cards": [
@@ -1266,15 +247,9 @@
     },
     {
       "id": "s46",
-      "category": "autonomie",
       "title": "Une amélioration te paraît évidente",
       "context": "Ce n’est pas dans les priorités pour l’instant.",
       "cards": [
-        {
-          "id": "s46-a",
-          "label": "Trouver des alliés pour la porter",
-          "behavior": "tisser"
-        },
         {
           "id": "s46-b",
           "label": "Chiffrer son intérêt réel",
@@ -1289,62 +264,11 @@
           "id": "s46-d",
           "label": "La défendre jusqu’à la faire inscrire",
           "behavior": "porter-au-bout"
-        }
-      ]
-    },
-    {
-      "id": "s47",
-      "category": "autonomie",
-      "title": "Tu récupères un projet inconnu",
-      "context": "La documentation est dispersée et la passation minimale.",
-      "cards": [
-        {
-          "id": "s47-a",
-          "label": "Rester en contact avec l’ancienne équipe",
-          "behavior": "tenir-ensemble"
         },
         {
-          "id": "s47-b",
-          "label": "Remettre la documentation au propre",
-          "behavior": "faire-droit"
-        },
-        {
-          "id": "s47-c",
-          "label": "Plonger dans le projet pour le comprendre",
-          "behavior": "ouvrir-le-capot"
-        },
-        {
-          "id": "s47-d",
-          "label": "Fixer tes priorités sans attendre",
-          "behavior": "trancher"
-        }
-      ]
-    },
-    {
-      "id": "s48",
-      "category": "autonomie",
-      "title": "Une nouvelle responsabilité apparaît",
-      "context": "Personne n’a été officiellement désigné pour la prendre.",
-      "cards": [
-        {
-          "id": "s48-a",
-          "label": "Clarifier devant tous qui s’en charge",
-          "behavior": "se-faire-comprendre"
-        },
-        {
-          "id": "s48-b",
-          "label": "Évaluer ce qu’elle demande concrètement",
-          "behavior": "appui-reel"
-        },
-        {
-          "id": "s48-c",
-          "label": "Proposer une organisation différente",
-          "behavior": "truc-a-cote"
-        },
-        {
-          "id": "s48-d",
-          "label": "Te demander si tu es la bonne personne",
-          "behavior": "regarder-en-face"
+          "id": "s46-a",
+          "label": "Trouver des alliés pour la porter",
+          "behavior": "tisser"
         }
       ]
     }

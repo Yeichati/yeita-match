@@ -2,18 +2,18 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { exportFileName } from '../src/lib/exports.js'
 import { parseSession, serializeSession } from '../src/lib/session.js'
-import { rounds, situations, valueIds } from './helpers.js'
+import { situations, tiebreakSituations, valueIds } from './helpers.js'
 
-const deck = situations.slice(0, rounds)
+const deck = situations
 const answers = Object.fromEntries(deck.map((s) => [s.id, [s.cards[0].id, s.cards[1].id]]))
-const extra = situations[rounds]
+const extra = tiebreakSituations[0]
 const tiebreaks = [
   { situation: extra.id, between: ['collectif', 'explorateur'], chosen: extra.cards[0].id },
 ]
 const person = { candidateName: '  Jeanne Émile ', hostName: 'Paul', date: '2026-10-15' }
 const notes = { collectif: 'Cite deux exemples concrets.', explorateur: '' }
 const valid = () => structuredClone(serializeSession({ person, deck, answers, tiebreaks, notes }))
-const parse = (obj) => parseSession(obj, situations, rounds, valueIds, 350)
+const parse = (obj) => parseSession(obj, situations, tiebreakSituations, valueIds, 350)
 
 test('a serialised game, tie-breaks included, can be imported back', () => {
   const session = parse(valid())
@@ -63,8 +63,9 @@ test('files that are not a saved game of this version are rejected', () => {
   }
 })
 
-test('unknown, missing or duplicated situations are rejected', () => {
+test('situations other than the fixed ones, in their order, are rejected', () => {
   for (const mutate of [
+    (o) => o.deck.reverse(),
     (o) => (o.deck[0] = 'does-not-exist'),
     (o) => o.deck.pop(),
     (o) => (o.deck[1] = o.deck[0]),
@@ -93,6 +94,7 @@ test('inconsistent tie-breaks are rejected', () => {
   for (const mutate of [
     (o) => (o.tiebreaks[0].situation = 'does-not-exist'),
     (o) => (o.tiebreaks[0].situation = deck[0].id),
+    (o) => (o.tiebreaks[0].situation = tiebreakSituations[1].id),
     (o) => (o.tiebreaks[0].chosen = deck[0].cards[0].id),
     (o) => (o.tiebreaks[0].between = ['collectif']),
     (o) => o.tiebreaks.push(o.tiebreaks[0]),

@@ -16,8 +16,8 @@ Formatage : Prettier (`.prettierrc.json`), vérifié par la CI avec `npx prettie
 ## Parcours
 
 1. Accueil → « Commencer » → identité obligatoire (nom complet du candidat, nom complet du maître du jeu et date).
-2. Huit manches : à chaque manche, une situation et quatre cartes (une par valeur) ; le candidat en choisit deux, sans ordre.
-3. En cas d’égalité pour la 1re ou la 2e valeur, une « Dernière manche » de départage (1 carte parmi celles des valeurs à égalité, 2 manches au plus).
+2. Huit manches, les mêmes pour tous les candidats et dans le même ordre : à chaque manche, une situation et quatre cartes (une par valeur, toujours dans le même ordre) ; le candidat en choisit deux, sans ordre.
+3. En cas d’égalité pour la 1re ou la 2e valeur, une « Dernière manche » surprise : une situation de départage fixe, avec les seules cartes des valeurs à égalité, 1 carte à choisir. Une seconde situation fixe sert si une égalité subsiste (2 manches au plus).
 4. Page de profil montrée au candidat : nom du profil, combinaison dominante › seconde, texte de présentation, détail des deux valeurs. Export PDF ou JSON de la partie.
 5. Hors entretien : sur l’accueil, « Reprendre une partie pour rédiger mes notes » → importer le JSON, renseigner une note par valeur (toujours dans l’ordre Jouer collectif, Sans chichi, Explorateur, Sa meilleure version), enregistrer le JSON avec les notes, exporter le PDF avec ou sans notes.
 
@@ -30,12 +30,12 @@ src/
   data/             contenu du jeu, modifiable sans toucher au code
     values.json     4 valeurs, leurs 3 comportements et soft skills
     profiles.json   12 profils (dominante › seconde), phrase et texte de présentation
-    situations.json 48 situations (6 catégories × 8), 4 cartes chacune, une par valeur
+    situations.json les 8 situations jouées (dans l’ordre) et les 2 situations de départage, 4 cartes chacune, une par valeur
   App.jsx           état de l’application et enchaînement des écrans
   screens/          WelcomeScreen, PlayScreen, ProfileScreen
   components/       SiteHeader, YeitaLogo, SiteFooter, SetupModal, NotesPanel, Icons
   lib/
-    scoring.js      tirage, comptage par valeur, départage, choix du profil
+    scoring.js      comptage par valeur, départage, choix du profil
     session.js      format du fichier .json (v2, notes comprises) et validation à l’import
     exports.js      noms de fichiers, téléchargement JSON, impression PDF
     gameData.js     données du jeu (intégrées au build)
@@ -45,14 +45,14 @@ test/               tests unitaires (contenu, calcul, import/export)
 
 ## Calcul
 
-- Tirage Fisher–Yates : une situation par catégorie, puis des situations au hasard jusqu’à huit.
+- Pas de hasard : situations, ordre et cartes sont fixes. Comme les cartes ne sont pas mélangées, chaque valeur occupe chaque position (1re à 4e) exactement deux fois sur les 8 situations, pour qu’aucune ne soit avantagée par sa place.
 - Chaque carte pointe vers un comportement, donc vers une valeur. Chaque carte choisie vaut 1 point pour sa valeur (16 points par partie).
 - Les deux valeurs les plus choisies donnent le profil : dominante › seconde, lu dans `profiles.json`.
-- Égalité qui décide la 1re ou la 2e place : manche de départage sur une situation non jouée, avec les seules cartes des valeurs à égalité. Les départages sont enregistrés dans le JSON, le profil est recalculé à l’identique à l’import.
+- Égalité qui décide la 1re ou la 2e place : manche de départage sur la situation de départage suivante, avec les seules cartes des valeurs à égalité. Les départages sont enregistrés dans le JSON, le profil est recalculé à l’identique à l’import.
 
 ## Modifier le contenu
 
-Tout le contenu du jeu est dans `src/data/`. Les tests (`npm test`) vérifient sa cohérence : 4 cartes par situation couvrant les 4 valeurs, comportements existants, un profil par couple de valeurs, identifiants uniques.
+Tout le contenu du jeu est dans `src/data/`. Les tests (`npm test`) vérifient sa cohérence : 8 situations et 2 de départage, 4 cartes par situation couvrant les 4 valeurs, chaque valeur à chaque position deux fois, chaque comportement joué au moins deux fois, un profil par couple de valeurs, identifiants uniques.
 
 ## Identité visuelle
 

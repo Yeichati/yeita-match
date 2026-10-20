@@ -27,7 +27,7 @@ export function serializeSession({ person, deck, answers, tiebreaks, notes = {} 
 
 // Returns { candidateName, hostName, date, deck, answers, tiebreaks, notes } where deck holds the
 // full situations. Throws an Error with a user-facing message when the file is not a valid saved game.
-export function parseSession(obj, situations, rounds, valueIds, maxNoteLength) {
+export function parseSession(obj, situations, tiebreakSituations, valueIds, maxNoteLength) {
   if (
     obj.format !== SESSION_FORMAT ||
     obj.version !== SESSION_VERSION ||
@@ -41,10 +41,10 @@ export function parseSession(obj, situations, rounds, valueIds, maxNoteLength) {
   )
     throw Error('Format non reconnu')
 
-  const byId = (id) => situations.find((s) => s.id === id)
-  const deck = obj.deck.map(byId)
-  if (deck.length !== rounds || deck.some((s) => !s) || new Set(obj.deck).size !== deck.length)
+  // Every game plays the same situations in the same order.
+  if (obj.deck.length !== situations.length || obj.deck.some((id, i) => id !== situations[i].id))
     throw Error('Situations invalides')
+  const deck = situations
 
   for (const scene of deck) {
     const picks = obj.answers[scene.id]
@@ -57,18 +57,17 @@ export function parseSession(obj, situations, rounds, valueIds, maxNoteLength) {
       throw Error('Réponses invalides')
   }
 
-  const used = new Set(obj.deck)
-  for (const t of obj.tiebreaks) {
-    const scene = byId(t?.situation)
+  // Tie-break situations are used in their fixed order.
+  if (obj.tiebreaks.length > tiebreakSituations.length) throw Error('Départage invalide')
+  for (const [i, t] of obj.tiebreaks.entries()) {
+    const scene = tiebreakSituations[i]
     if (
-      !scene ||
-      used.has(scene.id) ||
+      t?.situation !== scene.id ||
       !Array.isArray(t.between) ||
       t.between.length < 2 ||
       !scene.cards.some((c) => c.id === t.chosen)
     )
       throw Error('Départage invalide')
-    used.add(scene.id)
   }
 
   const notes = obj.notes ?? {}

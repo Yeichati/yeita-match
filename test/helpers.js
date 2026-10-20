@@ -6,6 +6,6 @@ export const readData = (file) =>
 export const { values } = readData('values.json')
 export const { profiles } = readData('profiles.json')
 export const situationsFile = readData('situations.json')
-export const { situations } = situationsFile
-export const rounds = situationsFile.game.rounds
+export const situations = situationsFile.situations
+export const tiebreakSituations = situationsFile.tiebreaks
 export const valueIds = values.map((v) => v.id)

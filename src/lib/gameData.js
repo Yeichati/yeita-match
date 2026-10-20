@@ -6,5 +6,6 @@ import valuesFile from '../data/values.json'
 
 export const values = valuesFile.values
 export const profiles = profilesFile.profiles
+// The situations of every game, in order, then the fixed tie-break situations, used in order.
 export const situations = situationsFile.situations
-export const rounds = situationsFile.game.rounds
+export const tiebreakSituations = situationsFile.tiebreaks
