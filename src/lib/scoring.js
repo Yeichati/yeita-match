@@ -56,6 +56,19 @@ export function createTiebreakRound(tiebreakSituations, played, between, valueOf
   return { ...situation, cards: situation.cards.filter((c) => between.includes(valueOf.get(c.id))) }
 }
 
+// Cards chosen per value over the whole game, tie-break cards included, for the explanation shown
+// with the profile. `fromTiebreaks` counts the tie-break cards on their own.
+export function cardsPerValue(deck, answers, tiebreaks, valueOf, valueIds) {
+  const total = countValues(deck, answers, valueOf, valueIds)
+  const fromTiebreaks = Object.fromEntries(valueIds.map((id) => [id, 0]))
+  for (const t of tiebreaks) {
+    const value = valueOf.get(t.chosen)
+    total[value] += 1
+    fromTiebreaks[value] += 1
+  }
+  return { total, fromTiebreaks }
+}
+
 export function findProfile(profiles, { dominant, second }) {
   return profiles.find((p) => p.dominant === dominant && p.second === second)
 }

@@ -707,6 +707,150 @@ button:disabled {
   color: var(--muted);
 }
 
+/* How the cards led to the profile: cards per value and the 12 profiles. */
+.explanation {
+  margin-top: 26px;
+}
+.explanation-title {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin: 0 0 12px;
+}
+.explanation-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 14px;
+  align-items: start;
+}
+.explanation h3 {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+.explanation-lead {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0 0 14px;
+  line-height: 1.5;
+}
+.bars {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.bars li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    'label count'
+    'track track';
+  gap: 5px 10px;
+  align-items: end;
+}
+.bar-label {
+  grid-area: label;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--value);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.bar-label em {
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--value-tint);
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+.bar-track {
+  grid-area: track;
+  display: flex;
+  height: 14px;
+  border-radius: 7px;
+  background: #f1eef4;
+  overflow: hidden;
+}
+.bar-fill {
+  background: var(--value);
+}
+.bar-bonus {
+  background: repeating-linear-gradient(-45deg, var(--value) 0 4px, var(--value-tint) 4px 7px);
+}
+.bar-count {
+  grid-area: count;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: right;
+}
+.bar-count small {
+  display: block;
+  font-weight: 400;
+  font-size: 11px;
+  color: var(--muted);
+}
+.bar-note {
+  margin: 14px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.profiles-grid {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+.profile-tile {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 9px 10px;
+  display: grid;
+  gap: 3px;
+  align-content: start;
+  background: var(--paper);
+}
+.profile-tile.current {
+  border: 2.5px solid var(--violet);
+  background: var(--violet-soft);
+}
+.tile-combo {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--value);
+}
+.profile-tile strong {
+  font-size: 13px;
+  font-weight: 700;
+}
+.tile-description {
+  font-size: 11px;
+  line-height: 1.35;
+  color: var(--muted);
+}
+.tile-badge {
+  justify-self: start;
+  margin-top: 3px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--paper);
+  background: var(--violet);
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
 /* Notes: one block per value, always in the order of values.json. */
 .notes-panel {
   margin-top: 14px;
@@ -836,8 +980,12 @@ button:disabled {
     font-size: 18px;
   }
   .result-grid,
-  .notes-grid {
+  .notes-grid,
+  .explanation-grid {
     grid-template-columns: 1fr;
+  }
+  .profiles-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .site-footer {
     padding: 0 20px;
@@ -958,6 +1106,76 @@ button:disabled {
   }
   .behaviors small {
     font-size: 7px !important;
+  }
+  .explanation {
+    margin-top: 10px !important;
+    break-inside: avoid;
+  }
+  .explanation-title {
+    font-size: 13px !important;
+    margin: 0 0 6px !important;
+  }
+  .explanation-grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr) !important;
+    gap: 10px !important;
+  }
+  .explanation .panel {
+    padding: 9px 10px !important;
+  }
+  .explanation h3 {
+    font-size: 11px !important;
+  }
+  .explanation-lead {
+    font-size: 8.5px !important;
+    margin: 0 0 7px !important;
+  }
+  .bars {
+    gap: 6px !important;
+  }
+  .bar-label {
+    font-size: 9.5px !important;
+  }
+  .bar-label em {
+    font-size: 6.5px !important;
+    padding: 1px 4px !important;
+  }
+  .bar-track {
+    height: 8px !important;
+  }
+  .bar-count {
+    font-size: 9px !important;
+  }
+  .bar-count small,
+  .bar-note {
+    font-size: 7.5px !important;
+  }
+  .bar-note {
+    margin-top: 7px !important;
+  }
+  .profiles-grid {
+    margin-top: 6px !important;
+    gap: 4px !important;
+  }
+  .profile-tile {
+    padding: 4px 5px !important;
+    gap: 1px !important;
+    border-radius: 6px !important;
+  }
+  .profile-tile.current {
+    border-width: 1.5px !important;
+  }
+  .tile-combo {
+    font-size: 5.5px !important;
+  }
+  .profile-tile strong {
+    font-size: 8.5px !important;
+  }
+  .tile-description {
+    font-size: 7px !important;
+  }
+  .tile-badge {
+    font-size: 6px !important;
+    padding: 1px 4px !important;
   }
   .notes-panel {
     margin-top: 10px !important;

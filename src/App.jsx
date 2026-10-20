@@ -6,6 +6,7 @@ import { downloadJson, exportFileName, printWithTitle } from './lib/exports.js'
 import { profiles, situations, tiebreakSituations, values } from './lib/gameData.js'
 import {
   cardValueIndex,
+  cardsPerValue,
   countValues,
   createTiebreakRound,
   findProfile,
@@ -237,6 +238,9 @@ export default function App() {
             mode={stage}
             person={person}
             profile={findProfile(profiles, ranking)}
+            profiles={profiles}
+            cards={cardsPerValue(deck, answers, tiebreaks, VALUE_OF_CARD, VALUE_IDS)}
+            tiebreakValues={tiebreaks.map((t) => VALUE_OF_CARD.get(t.chosen))}
             dominant={valueById(ranking.dominant)}
             second={valueById(ranking.second)}
             values={values}
