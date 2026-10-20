@@ -58,6 +58,8 @@ Tout le contenu du jeu est dans `src/data/`. Les tests (`npm test`) vérifient s
 
 Inspirée de yeita.fr : fond `#fffdf9`, noir `#160f20`, violet `#4d25f7` pour les actions, polices Bricolage Grotesque (texte) et DM Mono (étiquettes), servies par Google Fonts. Les couleurs des 4 valeurs sont dans `values.json`.
 
+Animations en CSS uniquement (`styles.css`, section « Animations »), courtes et sans bloquer les clics : accueil en cascade, entrée de chaque manche et sélection des cartes, badge « Dernière manche », révélation du profil (barres et grille animées à leur entrée à l’écran). Elles ne jouent pas à la reprise d’une partie pour les notes, et sont désactivées à l’impression et pour les personnes ayant demandé à réduire les animations (`prefers-reduced-motion`).
+
 ## Limite d'interprétation
 
 Le profil reflète des préférences exprimées dans ce jeu, pas une évaluation psychométrique validée ni la maîtrise réelle des soft skills.

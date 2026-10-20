@@ -47,8 +47,11 @@ export default function ProfileScreen({
 }) {
   const formattedDate = new Date(person.date + 'T12:00:00').toLocaleDateString('fr-FR')
 
+  // The reveal animation plays at the end of a game only, not when a game is reopened for notes.
   return (
-    <section className={`result-screen ${printWithNotes ? '' : 'export-without-notes'}`}>
+    <section
+      className={`result-screen ${mode === 'results' ? 'reveal' : ''} ${printWithNotes ? '' : 'export-without-notes'}`}
+    >
       <div className="result-hero">
         <div>
           <span className="eyebrow">
