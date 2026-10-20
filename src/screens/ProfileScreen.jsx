@@ -35,7 +35,7 @@ export default function ProfileScreen({
   profile,
   profiles,
   cards,
-  tiebreakValues,
+  tiebreaks,
   dominant,
   second,
   values,
@@ -110,7 +110,7 @@ export default function ProfileScreen({
         profiles={profiles}
         profile={profile}
         cards={cards}
-        tiebreakValues={tiebreakValues}
+        tiebreaks={tiebreaks}
       />
 
       {mode === 'review' && <NotesPanel values={values} notes={notes} onChange={onNoteChange} />}

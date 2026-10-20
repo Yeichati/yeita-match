@@ -3,21 +3,30 @@
 
 const plural = (n) => `${n} carte${n > 1 ? 's' : ''}`
 
-function tiebreakNote(tiebreakValues, labelOf) {
-  if (tiebreakValues.length === 1)
-    return `Égalité tranchée en dernière manche : tu y as choisi une carte ${labelOf(tiebreakValues[0])}, comptée ci-dessus.`
-  if (tiebreakValues.length === 2)
-    return `Deux égalités tranchées en dernière manche : une carte ${labelOf(tiebreakValues[0])} a désigné ta dominante, puis une carte ${labelOf(tiebreakValues[1])} ta seconde couleur. Elles sont comptées ci-dessus.`
+// Says which place each tie-break settled, between which values, and which card was chosen.
+function tiebreakNote(tiebreaks, profile, labelOf) {
+  const list = (ids) =>
+    ids
+      .map(labelOf)
+      .join(ids.length > 2 ? ', ' : ' et ')
+      .replace(/, ([^,]*)$/, ' et $1')
+  const place = (value) => (value === profile.dominant ? 'ta dominante' : 'ta seconde couleur')
+  if (tiebreaks.length === 1) {
+    const [t] = tiebreaks
+    return `Égalité entre ${list(t.between)} pour ${place(t.value)} : tu l’as tranchée en dernière manche avec une carte ${labelOf(t.value)}, comptée ci-dessus.`
+  }
+  if (tiebreaks.length === 2)
+    return `Deux égalités tranchées en dernière manche : entre ${list(tiebreaks[0].between)}, une carte ${labelOf(tiebreaks[0].value)} a désigné ta dominante ; puis entre ${list(tiebreaks[1].between)}, une carte ${labelOf(tiebreaks[1].value)} ta seconde couleur. Elles sont comptées ci-dessus.`
   return null
 }
 
-export default function ProfileExplanation({ values, profiles, profile, cards, tiebreakValues }) {
+export default function ProfileExplanation({ values, profiles, profile, cards, tiebreaks }) {
   const valueById = (id) => values.find((v) => v.id === id)
   const labelOf = (id) => valueById(id).label
   const scale = Math.max(1, ...values.map((v) => cards.total[v.id]))
   const role = (id) =>
     id === profile.dominant ? 'Dominante' : id === profile.second ? 'Seconde couleur' : null
-  const note = tiebreakNote(tiebreakValues, labelOf)
+  const note = tiebreakNote(tiebreaks, profile, labelOf)
 
   return (
     <section className="explanation">

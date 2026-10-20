@@ -240,7 +240,10 @@ export default function App() {
             profile={findProfile(profiles, ranking)}
             profiles={profiles}
             cards={cardsPerValue(deck, answers, tiebreaks, VALUE_OF_CARD, VALUE_IDS)}
-            tiebreakValues={tiebreaks.map((t) => VALUE_OF_CARD.get(t.chosen))}
+            tiebreaks={tiebreaks.map((t) => ({
+              value: VALUE_OF_CARD.get(t.chosen),
+              between: t.between,
+            }))}
             dominant={valueById(ranking.dominant)}
             second={valueById(ranking.second)}
             values={values}
