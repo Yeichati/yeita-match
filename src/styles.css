@@ -719,9 +719,7 @@ button:disabled {
 }
 .explanation-grid {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
   gap: 14px;
-  align-items: start;
 }
 .explanation h3 {
   font-size: 17px;
@@ -740,6 +738,7 @@ button:disabled {
   padding: 0;
   display: grid;
   gap: 12px;
+  max-width: 640px;
 }
 .bars li {
   display: grid;
@@ -980,8 +979,7 @@ button:disabled {
     font-size: 18px;
   }
   .result-grid,
-  .notes-grid,
-  .explanation-grid {
+  .notes-grid {
     grid-template-columns: 1fr;
   }
   .profiles-grid {
@@ -1107,17 +1105,29 @@ button:disabled {
   .behaviors small {
     font-size: 7px !important;
   }
+  /* Notes stay on page 1, right after the value panels; the explanation comes after them and,
+     kept in one piece, moves to page 2 when it does not fit. */
+  .result-screen {
+    display: flex;
+    flex-direction: column;
+  }
+  .notes-panel {
+    order: 1;
+  }
   .explanation {
+    order: 2;
     margin-top: 10px !important;
     break-inside: avoid;
+  }
+  .result-bottom {
+    order: 3;
   }
   .explanation-title {
     font-size: 13px !important;
     margin: 0 0 6px !important;
   }
   .explanation-grid {
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr) !important;
-    gap: 10px !important;
+    gap: 8px !important;
   }
   .explanation .panel {
     padding: 9px 10px !important;
