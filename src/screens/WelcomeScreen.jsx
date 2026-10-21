@@ -34,7 +34,7 @@ export default function WelcomeScreen({
         <div>
           <Layers3 />
           <strong>8 manches</strong>
-          <small>Tirage différent à chaque partie</small>
+          <small>Les mêmes situations pour tous</small>
         </div>
         <div>
           <Target />
